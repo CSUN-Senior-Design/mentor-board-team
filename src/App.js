@@ -9,7 +9,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 //import Activities from './Activities';
 //import Messages from './Messages';
-//import Schedule from './Schedule';
+import Schedule from './Components/Schedule';
 //import Tutors from './Tutors';
 
 function App() {
@@ -17,11 +17,21 @@ function App() {
     <Router>
     <div className="App">
       <header className="App-header">
-      <h1> MentorBoard</h1>
       <Switch>
         <Route path="/" component={Navbar}/>
-        </Switch>
+      </Switch>   
       </header>
+    </div>
+
+
+    <div className="App">
+
+      <div id="schedule">
+        <Switch>
+          <Route path="/" component={Schedule}/>
+        </Switch>
+
+      </div>
     </div>
     </Router>
   );

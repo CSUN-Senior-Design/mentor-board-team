@@ -48,7 +48,7 @@ export class Navbar extends Component {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton component={Link} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
               Home
@@ -66,21 +66,42 @@ export class Navbar extends Component {
               Messages
              
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+
+          <div
+            style={{
+                position: 'absolute', left: '50%', top: '50%',
+                transform: 'translate(-50%, -50%)'
+            }}
+            >
+            <Typography variant="h4" className={classes.title}>
              Mentorboard
-          </Typography>
-          <Button className={classes.loginButton} color="inherit">Login</Button>
+           </Typography>
+          </div>
+
+
+          <div
+            style={{
+                position: 'absolute', right: '0%', top: '50%',
+                transform: 'translate(-50%, -50%)'
+            }}
+            >
+            <Button className={classes.loginButton} color="inherit">Login</Button>
+          </div>
+
         </Toolbar>
       </AppBar>
 
-    <Switch>
-        <Route path="/home" component={Home}/>
-        <Route path="/" />
-        <Route path="/schedule" component={Schedule}/>
-        <Route path="/activities" component={Activities}/>
-        <Route path="/messages" component={Messages}/>
-        <Route path="/tutors" component={Tutors}/>
-    </Switch>
+      <Router>
+        <Switch>
+            <Route path="/home" component={Home}/>
+            <Route path="/schedule" component={Schedule}/>
+            <Route path="/activities" component={Activities}/>
+            <Route path="/messages" component={Messages}/>
+            <Route path="/tutors" component={Tutors}/>
+            <Route path="/" />
+        </Switch>
+
+      </Router>
     </div>
   );
     }
