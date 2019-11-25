@@ -20,19 +20,13 @@ function App() {
       <Switch>
         <Route path="/" component={Navbar}/>
       </Switch>   
+
+      <Switch>
+          <Route exact path="/schedule" component={Schedule}/>
+        </Switch>
       </header>
     </div>
 
-
-    <div className="App">
-
-      <div id="schedule">
-        <Switch>
-          <Route path="/" component={Schedule}/>
-        </Switch>
-
-      </div>
-    </div>
     </Router>
   );
 }

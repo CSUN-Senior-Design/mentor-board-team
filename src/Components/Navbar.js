@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
       marginRight: theme.spacing(2),
     },
     loginButton:{
-        fontSize: 50,
-        marginLeft: theme.spacing(7),
+      fontSize: 50,
+      marginLeft: theme.spacing(7),
     
     },
     title: {
@@ -48,43 +48,39 @@ export class Navbar extends Component {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="absolute">
         <Toolbar>
-          <IconButton component={Link} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Home
-          </IconButton>
-          <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Schedule
-          </IconButton>
-          <IconButton component={Link} to= "/activities" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Activities
-          </IconButton>
-          <IconButton component={Link} to= "/tutors" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Tutors
-          </IconButton>
-          <IconButton component={Link} to= "/messages" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Messages
-             
-          </IconButton>
+        <div style={{
+                position: 'absolute', left: '10%'
+            }}>
 
-          <div
-            style={{
-                position: 'absolute', left: '50%', top: '50%',
-                transform: 'translate(-50%, -50%)'
-            }}
-            >
+            <IconButton component={Link} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+                Home
+            </IconButton>
+            <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+                Schedule
+            </IconButton>
+            <IconButton component={Link} to= "/activities" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+                Activities
+            </IconButton>
+            <IconButton component={Link} to= "/tutors" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+                Tutors
+            </IconButton>
+            <IconButton component={Link} to= "/messages" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+                Messages
+              
+            </IconButton>
+          </div>
+
+
+          <div style={{ position: 'absolute', left: '50%' }} >
             <Typography variant="h4" className={classes.title}>
              Mentorboard
            </Typography>
           </div>
 
 
-          <div
-            style={{
-                position: 'absolute', right: '0%', top: '50%',
-                transform: 'translate(-50%, -50%)'
-            }}
-            >
+          <div style={{ position: 'absolute', right: '0%' }} >
             <Button className={classes.loginButton} color="inherit">Login</Button>
           </div>
 
@@ -93,11 +89,11 @@ export class Navbar extends Component {
 
       <Router>
         <Switch>
-            <Route path="/home" component={Home}/>
-            <Route path="/schedule" component={Schedule}/>
-            <Route path="/activities" component={Activities}/>
-            <Route path="/messages" component={Messages}/>
-            <Route path="/tutors" component={Tutors}/>
+            <Route exact path="/home" component={Home}/>
+            <Route exact path="/schedule" component={Schedule}/>
+            <Route exact path="/activities" component={Activities}/>
+            <Route exact path="/messages" component={Messages}/>
+            <Route exact path="/tutors" component={Tutors}/>
             <Route path="/" />
         </Switch>
 
