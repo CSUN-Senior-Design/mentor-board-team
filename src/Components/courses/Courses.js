@@ -10,7 +10,7 @@ export class Courses extends Component {
                 class_type: 'Music',
                 class_time: '4am - 5pm',
                 image_url:'https://image.shutterstock.com/image-vector/cartoon-bass-guitar-260nw-1066103675.jpg',
-                rating: '4',
+                rating: '4.2',
             },
             {
                 key: '2',
@@ -34,7 +34,7 @@ export class Courses extends Component {
                 class_type: 'Music',
                 class_time: '4am - 5pm',
                 image_url:'https://image.shutterstock.com/image-photo/closeup-detail-drum-set-against-600w-1452235409.jpg',
-                rating: '3.5',
+                rating: '3.7',
             },
             {
                 key: '5',
@@ -42,7 +42,7 @@ export class Courses extends Component {
                 class_type: 'Music',
                 class_time: '4pm - 5am',
                 image_url: 'https://image.shutterstock.com/z/stock-photo-pianist-musician-performing-live-playing-keyboard-in-a-band-with-saxophone-player-in-background-576862291.jpg',
-                rating: '4.5',
+                rating: '4.4',
             },
             {
                 key: '6',
@@ -58,7 +58,7 @@ export class Courses extends Component {
                 class_type: 'Science',
                 class_time: '4am - 5pm',
                 image_url:'https://image.shutterstock.com/image-photo/closeup-detail-drum-set-against-600w-1452235409.jpg',
-                rating: '3',
+                rating: '3.3',
             },
             {
                 key: '8',

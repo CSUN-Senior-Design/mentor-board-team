@@ -25,7 +25,7 @@ const CourseItem = props => {
           padding: theme.spacing(2),
           margin: 'auto',
           maxWidth: 500,
-          background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+          background: 'linear-gradient(30deg, #173aa1 30%, #0f508b 70%)',
           alignItems: 'flex-start',
           boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
           color: 'white', 
@@ -64,7 +64,7 @@ const CourseItem = props => {
                     <Typography variant="body2" gutterBottom>
                       {class_type}
                     </Typography>
-                  <Rating name="rating" value={rating} readOnly />
+                  <Rating name="rating" value={rating} precision={0.1}  readOnly />
                   </Grid>
                 </Grid>
                   <Grid item >
