@@ -11,9 +11,11 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Rating from '@material-ui/lab/Rating';
+import Box from "@material-ui/core/Box";
 
 const CourseItem = props => {
-      const {key, image_url,class_name,class_type,class_time} = props.course;
+      const {key, image_url,class_name,class_type,class_time,rating} = props.course;
       const useStyles = makeStyles(theme => ({
         root: {
           flexGrow: 1,
@@ -62,9 +64,7 @@ const CourseItem = props => {
                     <Typography variant="body2" gutterBottom>
                       {class_type}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {key}
-                    </Typography>
+                  <Rating name="rating" value={rating} readOnly />
                   </Grid>
                 </Grid>
                   <Grid item >
