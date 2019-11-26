@@ -8,15 +8,17 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  padding: 60px;
+  /* padding: 60px; */
   text-align: center;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
+  
+
 }
 
 .App-body{

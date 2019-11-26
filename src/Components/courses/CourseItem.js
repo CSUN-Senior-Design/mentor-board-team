@@ -22,7 +22,7 @@ const CourseItem = props => {
           
         },
         paper: {
-          padding: theme.spacing(2),
+          padding: theme.spacing(.5),
           margin: 'auto',
           maxWidth: 500,
           background: 'linear-gradient(30deg, #173aa1 30%, #0f508b 70%)',

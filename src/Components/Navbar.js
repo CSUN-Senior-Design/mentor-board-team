@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       width: 1000
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(10),
     },
     loginButton:{
         fontSize: 50,
