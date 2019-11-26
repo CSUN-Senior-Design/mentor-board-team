@@ -13,23 +13,25 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <h1> MentorBoard</h1>
-          <Sidebar></Sidebar>
-          <Schedule></Schedule>
-          <Switch>
-            <Route exact path="/home" component={Navbar} />
-          </Switch>
-        </header>
-        <div className="App-body">
-          <Switch>
-            <Route path="/activities" component={Activities} />
-          </Switch>
-        </div>
+        <Sidebar></Sidebar>
         <div>
-          <Switch>
-            <Route path="/schedule" component={Schedule} />
-          </Switch>
+          <header className="App-header">
+            <h1> MentorBoard</h1>
+            <Schedule></Schedule>
+            <Switch>
+              <Route exact path="/home" component={Navbar} />
+            </Switch>
+          </header>
+          <div className="App-body">
+            <Switch>
+              <Route path="/activities" component={Activities} />
+            </Switch>
+          </div>
+          <div>
+            <Switch>
+              <Route path="/schedule" component={Schedule} />
+            </Switch>
+          </div>
         </div>
       </div>
     </Router>
