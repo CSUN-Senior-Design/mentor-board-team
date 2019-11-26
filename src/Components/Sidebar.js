@@ -56,7 +56,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {["Appointments", "About Us", "Contact Us"].map((text, index) => (
+        {["About Us", "Contact Us"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
