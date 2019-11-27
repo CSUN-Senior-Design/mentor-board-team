@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    NavLink
   } from "react-router-dom";
 import Activities from './Activities';
 import Messages from './Messages';
@@ -54,19 +54,19 @@ export class Navbar extends Component {
                 position: 'absolute', left: '10%'
             }}>
 
-            <IconButton component={Link} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+            <IconButton component={NavLink} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
                 Home
             </IconButton>
-            <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+            <IconButton component={NavLink} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
                 Schedule
             </IconButton>
-            <IconButton component={Link} to= "/activities" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+            <IconButton component={NavLink} to= "/activities" edge="start" className={classes.menuButton} color="red" aria-label="menu">
                 Activities
             </IconButton>
-            <IconButton component={Link} to= "/tutors" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+            <IconButton component={NavLink} to= "/tutors" edge="start" className={classes.menuButton} color="red" aria-label="menu">
                 Tutors
             </IconButton>
-            <IconButton component={Link} to= "/messages" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+            <IconButton component={NavLink} to= "/messages" edge="start" className={classes.menuButton} color="red" aria-label="menu">
                 Messages
               
             </IconButton>
@@ -89,11 +89,11 @@ export class Navbar extends Component {
 
       <Router>
         <Switch>
-            <Route exact path="/home" component={Home}/>
-            <Route exact path="/schedule" component={Schedule}/>
-            <Route exact path="/activities" component={Activities}/>
-            <Route exact path="/messages" component={Messages}/>
-            <Route exact path="/tutors" component={Tutors}/>
+            <Route path="/schedule" component={Schedule}/>
+            <Route path="/activities" component={Activities}/>
+            <Route path="/messages" component={Messages}/>
+            <Route path="/tutors" component={Tutors}/>
+            <Route path="/home" component={Home}/>
             <Route path="/" />
         </Switch>
 
