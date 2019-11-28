@@ -8,6 +8,8 @@ import Schedule from "./Components/Schedule";
 //import Messages from './Messages';
 //import Schedule from './Schedule';
 //import Tutors from './Tutors';
+import { Icon } from "@material-ui/core";
+import logo from "./mindhive2.png";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <Sidebar></Sidebar>
       <div className="App">
         <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
           <h1> MentorBoard</h1>
           <Schedule></Schedule>
           <Switch>
