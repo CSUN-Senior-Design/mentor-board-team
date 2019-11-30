@@ -9,20 +9,18 @@ import {
 
 import SearchBar from './SearchBar'
 
-const search = {
-    marginTop: "0%",
-    color: "red"
-}
-
 export class Schedule extends Component {
     render() {
         return (
-            
-
-            <div style = {search} >
-                <SearchBar/>  
+            <div className="searchBar">
+                <SearchBar
+                    id={"Schedule Search Bar"}
+                    label="Schedule Search"
+                    placeHolder="search activities"
+                    locked={false}
+                    active={false}
+                />  
             </div>
-            
         );
     }
 }

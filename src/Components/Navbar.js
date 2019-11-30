@@ -54,7 +54,7 @@ export class Navbar extends Component {
                 position: 'absolute', left: '10%'
             }}>
 
-            <IconButton component={NavLink} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+            <IconButton component={NavLink} to= "/home" edge="start" className={classes.menuButton} aria-label="menu">
                 Home
             </IconButton>
             <IconButton component={NavLink} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
