@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/mentor-board-team/static/css/main.4fa231ad.chunk.css",
-    "main.js": "/mentor-board-team/static/js/main.6f9000a5.chunk.js",
-    "main.js.map": "/mentor-board-team/static/js/main.6f9000a5.chunk.js.map",
-    "runtime-main.js": "/mentor-board-team/static/js/runtime-main.9a67fdf6.js",
-    "runtime-main.js.map": "/mentor-board-team/static/js/runtime-main.9a67fdf6.js.map",
-    "static/css/2.25b83785.chunk.css": "/mentor-board-team/static/css/2.25b83785.chunk.css",
-    "static/js/2.488f4e3a.chunk.js": "/mentor-board-team/static/js/2.488f4e3a.chunk.js",
-    "static/js/2.488f4e3a.chunk.js.map": "/mentor-board-team/static/js/2.488f4e3a.chunk.js.map",
-    "index.html": "/mentor-board-team/index.html",
-    "precache-manifest.77ffff4b0926324b9f2a65532c0d692e.js": "/mentor-board-team/precache-manifest.77ffff4b0926324b9f2a65532c0d692e.js",
-    "service-worker.js": "/mentor-board-team/service-worker.js",
-    "static/css/2.25b83785.chunk.css.map": "/mentor-board-team/static/css/2.25b83785.chunk.css.map",
-    "static/css/main.4fa231ad.chunk.css.map": "/mentor-board-team/static/css/main.4fa231ad.chunk.css.map"
+    "main.css": "/mbdeploy/static/css/main.4fa231ad.chunk.css",
+    "main.js": "/mbdeploy/static/js/main.7afac9db.chunk.js",
+    "main.js.map": "/mbdeploy/static/js/main.7afac9db.chunk.js.map",
+    "runtime-main.js": "/mbdeploy/static/js/runtime-main.a7ca5c0a.js",
+    "runtime-main.js.map": "/mbdeploy/static/js/runtime-main.a7ca5c0a.js.map",
+    "static/css/2.25b83785.chunk.css": "/mbdeploy/static/css/2.25b83785.chunk.css",
+    "static/js/2.488f4e3a.chunk.js": "/mbdeploy/static/js/2.488f4e3a.chunk.js",
+    "static/js/2.488f4e3a.chunk.js.map": "/mbdeploy/static/js/2.488f4e3a.chunk.js.map",
+    "index.html": "/mbdeploy/index.html",
+    "precache-manifest.1cb964ce584e28107f145ec24882ab7d.js": "/mbdeploy/precache-manifest.1cb964ce584e28107f145ec24882ab7d.js",
+    "service-worker.js": "/mbdeploy/service-worker.js",
+    "static/css/2.25b83785.chunk.css.map": "/mbdeploy/static/css/2.25b83785.chunk.css.map",
+    "static/css/main.4fa231ad.chunk.css.map": "/mbdeploy/static/css/main.4fa231ad.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.9a67fdf6.js",
+    "static/js/runtime-main.a7ca5c0a.js",
     "static/css/2.25b83785.chunk.css",
     "static/js/2.488f4e3a.chunk.js",
     "static/css/main.4fa231ad.chunk.css",
-    "static/js/main.6f9000a5.chunk.js"
+    "static/js/main.7afac9db.chunk.js"
   ]
 }
