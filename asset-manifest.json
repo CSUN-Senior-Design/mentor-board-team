@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/MentorBoard/static/css/main.4fa231ad.chunk.css",
+    "main.js": "/MentorBoard/static/js/main.855838c4.chunk.js",
+    "main.js.map": "/MentorBoard/static/js/main.855838c4.chunk.js.map",
+    "runtime-main.js": "/MentorBoard/static/js/runtime-main.9a3e6aa2.js",
+    "runtime-main.js.map": "/MentorBoard/static/js/runtime-main.9a3e6aa2.js.map",
+    "static/css/2.25b83785.chunk.css": "/MentorBoard/static/css/2.25b83785.chunk.css",
+    "static/js/2.488f4e3a.chunk.js": "/MentorBoard/static/js/2.488f4e3a.chunk.js",
+    "static/js/2.488f4e3a.chunk.js.map": "/MentorBoard/static/js/2.488f4e3a.chunk.js.map",
+    "index.html": "/MentorBoard/index.html",
+    "precache-manifest.8ef836fc8c0da5783b428905e79a42b7.js": "/MentorBoard/precache-manifest.8ef836fc8c0da5783b428905e79a42b7.js",
+    "service-worker.js": "/MentorBoard/service-worker.js",
+    "static/css/2.25b83785.chunk.css.map": "/MentorBoard/static/css/2.25b83785.chunk.css.map",
+    "static/css/main.4fa231ad.chunk.css.map": "/MentorBoard/static/css/main.4fa231ad.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a3e6aa2.js",
+    "static/css/2.25b83785.chunk.css",
+    "static/js/2.488f4e3a.chunk.js",
+    "static/css/main.4fa231ad.chunk.css",
+    "static/js/main.855838c4.chunk.js"
+  ]
+}
