@@ -50,7 +50,7 @@ export class Navbar extends Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton component={Link} to= "/" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+          <IconButton component={Link} to= "/Home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
               Home
           </IconButton>
           <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
@@ -73,8 +73,8 @@ export class Navbar extends Component {
       </AppBar>
 
     <Switch>
-        <Route path="/home" component={Navbar}/>
         <Route path="/" />
+        <Route path="/home" component={Home}/>
         <Route path="/schedule" component={Schedule}/>
         <Route path="/activities" component={Activities}/>
         <Route path="/messages" component={Messages}/>

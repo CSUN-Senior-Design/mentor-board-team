@@ -104,7 +104,6 @@ const events = [
 render() {
     return (
       <div>
-           <Navbar style={{ height: '500pt'}} />
         <p>
           A test for the React Big Calendar.
         </p>

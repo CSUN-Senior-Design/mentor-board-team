@@ -7,10 +7,11 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Navbar from './Components/Navbar';
+import Home from './Components/Home';
 import Activities from './Components/Activities';
 import Schedule from './Components/Schedule';
-// import Messages from './Components/Messages';
-// import Tutors from './Components/Tutors';
+import Messages from './Components/Messages';
+import Tutors from './Components/Tutors';
 
 function App() {
   return (
@@ -18,21 +19,22 @@ function App() {
     <div className="App">
       <header className="App-header">
       <h1>MentorBoard</h1>
-      <Switch>
-        <Route exact path="/" component={Navbar}/>
-      </Switch>
       </header>
-      <div className= "App-body">
+      <div>
+      <Navbar style={{ height: '500pt'}} />
+      </div>   
+      <div>
         <Switch>
-          <Route path="/activities" component={Activities}/>  
-          <Route path="/Schedule" component={Schedule}/>  
-        {/* <Route path="/Messages" component={Messages}/>  
-        <Route path="/Tutors" component={Tutors}/>   */}
+        <Route exact path="/" />
+        <Route path="/home" component={Home}/>
+        <Route path="/schedule" component={Schedule}/>
+        <Route path="/activities" component={Activities}/>
+        <Route path="/messages" component={Messages}/>
+        <Route path="/tutors" component={Tutors}/>
         </Switch>
       </div>
     </div>
     </Router>
   );
   }
-
 export default App;
