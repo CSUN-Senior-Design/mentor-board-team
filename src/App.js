@@ -19,9 +19,10 @@ import logo from "./mindhive2.png";
 function App() {
   return (
     <Router>
+    <Sidebar></Sidebar>
     <div className="App">
       <header className="App-header">
-      <Sidebar></Sidebar>
+      
       <img src={logo} className="App-logo" alt="logo" />
       <h1>MentorBoard</h1>
       </header>
