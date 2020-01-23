@@ -12,12 +12,17 @@ import Activities from './Components/Activities';
 import Schedule from './Components/Schedule';
 import Messages from './Components/Messages';
 import Tutors from './Components/Tutors';
+import Sidebar from "./Components/Sidebar";
+import { Icon } from "@material-ui/core";
+import logo from "./mindhive2.png";
 
 function App() {
   return (
     <Router>
     <div className="App">
       <header className="App-header">
+      <Sidebar></Sidebar>
+      <img src={logo} className="App-logo" alt="logo" />
       <h1>MentorBoard</h1>
       </header>
       <div>
