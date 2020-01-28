@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import Courses from './courses/Courses'
 import Navbar from './Navbar'
+import Header from "./Header"
+
 
 export class Activities extends Component {
     render() {
         return (
-            <div >
-               <div className= "App-body">
+            <React.Fragment>
+                <div> 
+                   <Header></Header>
+                </div>
+         
+            <div className= "App-body">
                <Courses />
-               </div>
             </div>
+            </React.Fragment>
+            
         )
     }
 }

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import Header from './Header';
 //import './style.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -103,20 +104,25 @@ const events = [
 }
 render() {
     return (
-      <div>
-        <p>
-          A test for the React Big Calendar.
-        </p>
-        <div style={{ height: '500pt'}}>
-          <Calendar
-            events={this.state.events}
-            startAccessor="start"
-            endAccessor="end"
-            defaultDate={moment().toDate()}
-            localizer={localizer}
-          />
-        </div>
-      </div>
+        <React.Fragment>
+            <div>
+                <Header></Header>
+            </div>
+            <div>
+                <p>
+                A test for the React Big Calendar.
+                </p>
+                <div style={{ height: '500pt'}}>
+                <Calendar
+                    events={this.state.events}
+                    startAccessor="start"
+                    endAccessor="end"
+                    defaultDate={moment().toDate()}
+                    localizer={localizer}
+                    />
+                </div>
+            </div>
+        </React.Fragment>
     );
   }
 }
