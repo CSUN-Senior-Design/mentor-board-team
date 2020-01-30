@@ -119,6 +119,7 @@ export class Navbar extends Component {
                <Route path="/activities" component={Activities} />
                <Route path="/messages" component={Messages} />
                <Route path="/tutors" component={Tutors} />
+               <Route path="/settingsnavbar" component={SettingsNavbar} />
             </Switch>
          </div>
       );

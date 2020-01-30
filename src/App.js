@@ -14,7 +14,7 @@ import SettingsNavbar from "./Components/SettingsNavbar";
 
 function App() {
    //This is used for testing purposes
-   const x = 3;
+   const x = 5;
 
    if (x === 5) {
       return (
@@ -35,6 +35,7 @@ function App() {
                      <Route path="/activities" component={Activities} />
                      <Route path="/messages" component={Messages} />
                      <Route path="/tutors" component={Tutors} />
+                     <Route path="/settingsnavbar" component={SettingsNavbar} />
                   </Switch>
                </div>
             </div>

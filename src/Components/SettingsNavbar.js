@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Sidebar from "./Sidebar";
 import logo from "../mindhive2.png";
-
+import IconButton from "@material-ui/core/IconButton";
 function TabPanel(props) {
    const { children, value, index, ...other } = props;
 
@@ -71,7 +72,16 @@ export default function SimpleTabs() {
                aria-label="simple tabs example"
                variant="fullWidth"
             >
-               <Sidebar />
+               <IconButton
+                  component={Link}
+                  to="/messages"
+                  edge="start"
+                  className={classes.menuButton}
+                  color="red"
+                  aria-label="menu"
+               >
+                  Back
+               </IconButton>
                <Tab label="Profile Settings" {...a11yProps(1)} />
                <Tab label="Billing Information" {...a11yProps(2)} />
                <Tab label="Privacy Settings" {...a11yProps(3)} />

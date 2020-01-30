@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,6 +11,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import SettingsNavbar from "./SettingsNavbar";
 
 const useStyles = makeStyles({
    list: {
@@ -45,9 +47,15 @@ export default function TemporaryDrawer() {
          onKeyDown={toggleDrawer(side, false)}
       >
          <List>
-            {["Profile", "Settings", "Activities", "Messages"].map(
+            {["Settings", "Messages", "Option 3", "Option 4"].map(
                (text, index) => (
-                  <ListItem button key={text}>
+                  <ListItem
+                     button
+                     key={text}
+                     component={Link}
+                     to="/SettingsNavbar"
+                     edge="start"
+                  >
                      <ListItemIcon>
                         {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                      </ListItemIcon>
