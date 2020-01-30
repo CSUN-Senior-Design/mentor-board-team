@@ -12,75 +12,77 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles({
-  list: {
-    width: 250
-  },
-  fullList: {
-    width: "auto"
-  }
+   list: {
+      width: 250
+   },
+   fullList: {
+      width: "auto"
+   }
 });
 
 export default function TemporaryDrawer() {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    left: false
-  });
+   const classes = useStyles();
+   const [state, setState] = React.useState({
+      left: false
+   });
 
-  const toggleDrawer = (side, open) => event => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+   const toggleDrawer = (side, open) => event => {
+      if (
+         event.type === "keydown" &&
+         (event.key === "Tab" || event.key === "Shift")
+      ) {
+         return;
+      }
 
-    setState({ ...state, [side]: open });
-  };
+      setState({ ...state, [side]: open });
+   };
 
-  const sideList = side => (
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-        {["Home", "Schedule", "Activities", "Messages"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["About Us", "Contact Us"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
-  return (
-    <div>
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        onClick={toggleDrawer("left", true)}
-        edge="start"
+   const sideList = side => (
+      <div
+         className={classes.list}
+         role="presentation"
+         onClick={toggleDrawer(side, false)}
+         onKeyDown={toggleDrawer(side, false)}
       >
-        <MenuIcon />
-      </IconButton>
-      <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
-        {sideList("left")}
-      </Drawer>
-    </div>
-  );
+         <List>
+            {["Profile", "Settings", "Activities", "Messages"].map(
+               (text, index) => (
+                  <ListItem button key={text}>
+                     <ListItemIcon>
+                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                     </ListItemIcon>
+                     <ListItemText primary={text} />
+                  </ListItem>
+               )
+            )}
+         </List>
+         <Divider />
+         <List>
+            {["About Us", "Contact Us"].map((text, index) => (
+               <ListItem button key={text}>
+                  <ListItemIcon>
+                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+               </ListItem>
+            ))}
+         </List>
+      </div>
+   );
+
+   return (
+      <div>
+         <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={toggleDrawer("left", true)}
+            edge="start"
+         >
+            <MenuIcon />
+         </IconButton>
+         <Drawer open={state.left} onClose={toggleDrawer("left", false)}>
+            {sideList("left")}
+         </Drawer>
+      </div>
+   );
 }
