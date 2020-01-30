@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles} from '@material-ui/core'
 import { fontSize } from '@material-ui/system';
-//import MenuIcon from '@material-ui/icons/Menu';
+import Sidebar from './Sidebar'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,14 +47,16 @@ export class Navbar extends Component {
         const {classes} = this.props;
 
   return (
+    <React.Fragment>
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+    <div><Sidebar></Sidebar></div>
           <IconButton component={Link} to= "/Home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
               Home
           </IconButton>
           <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Schedule
+            Schedule
           </IconButton>
           <IconButton component={Link} to= "/activities" edge="start" className={classes.menuButton} color="red" aria-label="menu">
               Activities
@@ -72,15 +74,16 @@ export class Navbar extends Component {
         </Toolbar>
       </AppBar>
 
-    <Switch>
+    {/* <Switch>
         <Route path="/" />
         <Route path="/home" component={Home}/>
         <Route path="/schedule" component={Schedule}/>
         <Route path="/activities" component={Activities}/>
         <Route path="/messages" component={Messages}/>
         <Route path="/tutors" component={Tutors}/>
-    </Switch>
+      </Switch> */}
     </div>
+    </React.Fragment>
   );
     }
 }

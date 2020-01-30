@@ -8,7 +8,6 @@ export class Header extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <Sidebar></Sidebar>
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1>MentorBoard</h1>
                 </header>
