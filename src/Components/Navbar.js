@@ -53,7 +53,7 @@ export class Navbar extends Component {
       <AppBar position="static">
         <Toolbar>
     <div><Sidebar></Sidebar></div>
-          <IconButton component={Link} to= "/Home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
+          <IconButton component={Link} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
               Home
           </IconButton>
           <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
