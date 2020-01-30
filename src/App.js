@@ -11,6 +11,7 @@ import Activities from './Components/Activities';
 import Schedule from './Components/Schedule';
 import Messages from './Components/Messages';
 import Tutors from './Components/Tutors';
+import SettingsNavbar from "./Components/SettingsNavbar";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/activities" component={Activities}/>
         <Route path="/messages" component={Messages}/>
         <Route path="/tutors" component={Tutors}/>
+        <Route path="/settingsnavbar" component={SettingsNavbar} />
         </Switch>
       </div>
     </div>
