@@ -89,9 +89,12 @@ export default function SimpleTabs() {
             </Tabs>
          </AppBar>
          <TabPanel value={value} index={1}>
-            {/* INSERT COMPONENT HERE */}
+            {/* profile setting */}
             <Profile />
-            Item One
+            {/* bio */}
+            {/* changing nick name */}
+            {/* contact */}
+            {/* link for github,linkdin.....*/}
          </TabPanel>
          <TabPanel value={value} index={2}>
             {/* INSERT COMPONENT HERE */}

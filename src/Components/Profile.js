@@ -26,7 +26,6 @@ import React, {useState} from 'react'
         }
             return (
                 <div className = "profile_image">
-                    <h1>profile image</h1>
                     <input type ="file"
                         name="file"
                         placeholder ="Upload and image"
