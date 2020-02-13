@@ -1,7 +1,7 @@
 //import React, { Component } from 'react'
 import React, {useState} from 'react'
 
-export class Profile extends Component {
+export class Profile extends React.Component {
     render() {
         const [image, setImage] = useState('')
         const [loading, setLoading] = useState(false)
