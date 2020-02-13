@@ -1,10 +1,11 @@
 //import React, { Component } from 'react'
 import React, {useState} from 'react'
 
-export class Profile extends React.Component {
-    render() {
+// export class Profile extends React.Component {
+    function Profile() {
         const [image, setImage] = useState('')
         const [loading, setLoading] = useState(false)
+        
         const uploadImage = async e => {
             const files = e.target.files
             const data = new FormData()
@@ -20,25 +21,25 @@ export class Profile extends React.Component {
             )
             const file = await res.json()
 
-            setImage(file.secure.url)
+            setImage(file.secure_url)
             setLoading(false)
         }
-        return (
-            <div className = "profile_image">
-            <h1>profile image</h1>
-             <input type ="file"
-                name="file"
-                placeholder ="Upload and image"
-                onChange = {uploadImage}
-            />
-            {loading ? (
-                <h3>loading....</h3>
-            ) : (
-                <img src ={image} style = {{width: '300px'}} />
-            )}   
-            </div>
-        )
+            return (
+                <div className = "profile_image">
+                    <h1>profile image</h1>
+                    <input type ="file"
+                        name="file"
+                        placeholder ="Upload and image"
+                        onChange = {uploadImage}
+                    />
+                    {loading ? (
+                        <h3>loading....</h3>
+                    ) : (
+                        <img src ={image} style = {{width: '300px'}} />
+                    )}   
+                </div>
+            )
     }
-}
+// }
 
 export default Profile
