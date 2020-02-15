@@ -13,11 +13,17 @@ export class Schedule extends Component {
         return (
             <React.Fragment>
 
-                <div style={{ position: 'relative', zIndex: '1'}}>
+                <div 
+                    style={{ position: 'relative', zIndex: '1'}}
+                    ref= {navBar => this.navBarObj = navBar}
+                >
                     <Header></Header>
                 </div>
             
-                <div style={{ position: 'absolute', left: '20%', right: '20%', zIndex: '10'}}>
+                <div 
+                    style={{ position: 'absolute', left: '20%', right: '20%', zIndex: '10'}}
+                    ref= {calendar => this.calendarObj = calendar}
+                >
                     <Calendar/>,
                 </div>
                 
