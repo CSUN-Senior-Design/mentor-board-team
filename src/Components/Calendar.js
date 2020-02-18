@@ -18,7 +18,11 @@ import { render } from 'react-dom';
 
 import {Inject, ScheduleComponent, ViewsDirective, ViewDirective, Week, Month, Agenda,
         DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule';
+
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+
+import { closest, remove, addClass } from '@syncfusion/ej2-base';
+import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 
 //CSS Style imports for ej2-react-schedule
 import "@syncfusion/ej2-base/styles/material.css";
@@ -47,6 +51,7 @@ export class Calendar extends Component {
             return args['value'].length <= FIELD_STR_MAX_LEN;
         }
 
+        //Holds all of the main activities for the calendar demo.  Activities all start from Feb 10, 2020.
         this.data = [
             {
                 //Default calendar appointment fields.  These are the fields that ej2 recognizes and injects them into the calendar views. 
@@ -176,60 +181,60 @@ export class Calendar extends Component {
             //The date for now will be set to February 10, 2020 for demo purposes.  
             //Future versions will use DataManager to grab server activity data.
 
-            <ScheduleComponent width='80%' height= '750px' cssClass='schedule-date-header-template' 
-                ref={calendar => this.calendarObj = calendar}
-                selectedDate= {new Date(2020, 1, 10)}
-                eventSettings={{ dataSource: this.data,
-                    fields: {
-                        id: 'Id',
-                        subject: { name: 'Subject', title: 'Activity Name', 
-                            validation: { 
-                                required: true, 
-                                minLength: [this.minValidation, 'Must input atleast ' + FIELD_STR_MIN_LEN +' characters'],
-                                regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
-                            } 
-                        },
+                <ScheduleComponent height= '750px' cssClass='schedule-date-header-template' 
+                    ref={calendar => this.calendarObj = calendar}
+                    selectedDate= {new Date(2020, 1, 10)}
+                    eventSettings={{ dataSource: this.data,
+                        fields: {
+                            id: 'Id',
+                            subject: { name: 'Subject', title: 'Activity Name', 
+                                validation: { 
+                                    required: true, 
+                                    minLength: [this.minValidation, 'Must input atleast ' + FIELD_STR_MIN_LEN +' characters'],
+                                    regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
+                                } 
+                            },
 
-                        description: {
-                            name: 'Description', validation: {
-                                maxLength: [this.maxValidation, 'Cant input more than '+ FIELD_STR_MAX_LEN + ' characters'],
-                                regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
-                            }
-                        },
+                            description: {
+                                name: 'Description', validation: {
+                                    maxLength: [this.maxValidation, 'Cant input more than '+ FIELD_STR_MAX_LEN + ' characters'],
+                                    regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
+                                }
+                            },
 
-                        isAllDay: { name: 'IsAllDay' },
-                        startTime: { name: 'StartTime', validation: { required: true, date: true } },
-                        endTime: { name: 'EndTime', validation: {  date: true }}
-                    }}}
+                            isAllDay: { name: 'IsAllDay' },
+                            startTime: { name: 'StartTime', validation: { required: true, date: true } },
+                            endTime: { name: 'EndTime', validation: {  date: true }}
+                        }}}
 
-                dragStart={(this.onDragStart.bind(this))}
-                resizeStart={(this.onResizeStart.bind(this))}
-            >
-                <Inject services = {[ Week, Month, Agenda, DragAndDrop, Resize ]}/>
+                    dragStart={(this.onDragStart.bind(this))}
+                    resizeStart={(this.onResizeStart.bind(this))}
+                >
+                    <Inject services = {[ Week, Month, Agenda, DragAndDrop, Resize ]}/>
 
-                <ResourcesDirective>
-                    <ResourceDirective
-                        field='ActivityType'
-                        title='Activity Type'
-                        name='Activities'
-                        allowMultiple={true}
-                        dataSource={this.resourceData}
-                        textField='ActivityType'
-                        idField='Id'
-                        colorField='Color'
-                    >
-                    </ResourceDirective>
-                </ResourcesDirective>
+                    <ResourcesDirective>
+                        <ResourceDirective
+                            field='ActivityType'
+                            title='Activity Type'
+                            name='Activities'
+                            allowMultiple={true}
+                            dataSource={this.resourceData}
+                            textField='ActivityType'
+                            idField='Id'
+                            colorField='Color'
+                        >
+                        </ResourceDirective>
+                    </ResourcesDirective>
 
-                <ViewsDirective>
-                    <ViewDirective option='Week' startHour='07:00' endHour='24:00'/>
-                    <ViewDirective option='Month' showWeekNumber={true}/>
-                    <ViewDirective option='Agenda'/>
-                </ViewsDirective>
+                    <ViewsDirective>
+                        <ViewDirective option='Week' startHour='07:00' endHour='24:00'/>
+                        <ViewDirective option='Month' showWeekNumber={true}/>
+                        <ViewDirective option='Agenda'/>
+                    </ViewsDirective>
 
-            </ScheduleComponent>
+                </ScheduleComponent>
+            
 
-           
         );
     }
 

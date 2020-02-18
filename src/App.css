@@ -36,3 +36,84 @@
    color: #09d3ac;
 }
 
+.adbar-body {
+   position: 'absolute';
+   float: 'right';
+   width: 10%;
+   font-weight: 500;
+   font-size: x-large;
+   border-width: 2px;
+   border-style: solid;
+   border-top-color: black;
+   border-bottom-color: black;
+   border-left-color: black;
+}
+
+.schedulepage-body {
+   display: flex;
+   position: 'relative';
+   padding-top: 50pt;
+   height: 750px;
+   z-index: 1;
+}
+
+.scheduler-component {
+   padding-left: 150pt;
+   height: 750px;
+   width: 50%;
+}
+
+.treeview-body {
+   padding-left: 25pt;
+   padding-right: 25pt;
+   height: 750px;
+   width: 20%;
+   z-index: 1;
+}
+
+.treeview-title-container {
+   position: 'absolute';
+   font-weight: 500;
+   font-size: x-large;
+}
+
+.treeview-component {
+   height: 700px;
+   border-width: 2px;
+   border-style: solid;
+   border-top-color: black;
+   border-bottom-color: black;
+   border-left-color: black;
+   z-index: 100;
+}
+
+.treeview-item .e-list-item .e-fullrow {
+   height: 125px;
+}
+
+.treeview-item .e-list-item .e-list-text {
+   line-height: normal;
+}
+
+.treeview-image {
+   top: 0;
+   left: 0;
+   height: 56px;
+   width: 56px;
+   border: 1px solid rgb(0, 0, 0);
+   border-radius: 50px;
+}
+
+.treeview-course-name {
+   top: 0;
+   left: 0;
+   font-size: 20px;
+   font-weight: bold;
+}
+
+.treeview-extra {
+   top: 0;
+   left: 0;
+   font-size: 14px;
+   opacity: .87;
+}
