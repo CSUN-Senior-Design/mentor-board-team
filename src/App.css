@@ -14,7 +14,7 @@
    flex-direction: column;
    /* padding: 60px; */
    text-align: center;
-   align-items: center;
+   /* align-items: center; */
    justify-content: left;
    font-size: calc(10px + 2vmin);
    color: #09d3ac;

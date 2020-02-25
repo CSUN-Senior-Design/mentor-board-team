@@ -58,12 +58,12 @@ export default function SimpleTabs() {
    return (
       <div className={classes.root}>
          <header className="App-header">
-            <img
+            {/* <img
                src={logo}
                className="App-logo"
                alt="logo"
                style={{ width: "112px", height: "112px", padding: "10px" }}
-            />
+            /> */}
          </header>
          <AppBar position="static">
             <Tabs
