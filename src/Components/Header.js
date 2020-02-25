@@ -8,17 +8,11 @@ export class Header extends Component {
       return (
          <div className="App">
             <header className="App-header">
-               <img
-                  src={logo}
-                  className="App-logo"
-                  alt="logo"
-                  style={{ width: "112px", height: "112px", padding: "10px" }}
-               />
-               <h1>MentorBoard</h1>
+               <div>
+                  <Navbar style={{ height: "500pt" }} />
+                  <span></span>
+               </div>
             </header>
-            <div>
-               <Navbar style={{ height: "500pt" }} />
-            </div>
          </div>
       );
    }

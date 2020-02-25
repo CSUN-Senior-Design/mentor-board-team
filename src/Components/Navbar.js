@@ -15,6 +15,7 @@ import { withStyles } from "@material-ui/core";
 import { fontSize } from "@material-ui/system";
 import Container from "@material-ui/core/Container";
 import Sidebar from "./Sidebar";
+import logo from "./Logos/mindhive2.png";
 
 const useStyles = makeStyles(theme => ({
    root: {
@@ -52,7 +53,7 @@ export class Navbar extends Component {
                      </div>
                      <IconButton
                         component={Link}
-                        to="/Home"
+                        to="/home"
                         edge="start"
                         className={classes.menuButton}
                         color="red"
@@ -106,6 +107,19 @@ export class Navbar extends Component {
                      <Button className={classes.loginButton} color="inherit">
                         Login
                      </Button>
+                     <div>
+                        <img
+                           src={logo}
+                           className="App-logo"
+                           alt="logo"
+                           style={{
+                              display: "inline",
+                              width: "70px",
+                              height: "70px",
+                              padding: "10px"
+                           }}
+                        />
+                     </div>
                   </Toolbar>
                </AppBar>
 
