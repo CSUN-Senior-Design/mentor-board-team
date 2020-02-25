@@ -18,6 +18,7 @@ export class LandingPage extends Component {
                     Login
                     </Button>
                 </div>
+                
                 <div id = "About"className = "About">
                     <h1>about</h1>
                 </div>
