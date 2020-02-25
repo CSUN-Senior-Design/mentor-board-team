@@ -20,6 +20,18 @@
    color: #09d3ac;
 }
 
+.Front-page {
+   background-color: #ffffff;
+   font-size: 2.5em;
+   height: 100vh;
+}
+
+.About {
+   background-color: white;
+   font-size: 2.5em;
+   height: 100vh;
+}
+
 .App-body {
    background-color: #ffffff;
    min-height: 100vh;
