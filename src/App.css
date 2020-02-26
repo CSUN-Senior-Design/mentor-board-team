@@ -14,10 +14,22 @@
    flex-direction: column;
    /* padding: 60px; */
    text-align: center;
-   align-items: center;
+   /* align-items: center; */
    justify-content: left;
    font-size: calc(10px + 2vmin);
    color: #09d3ac;
+}
+
+.Front-page {
+   background-color: #ffffff;
+   font-size: 2.5em;
+   height: 100vh;
+}
+
+.About {
+   background-color: white;
+   font-size: 2.5em;
+   height: 100vh;
 }
 
 .App-body {

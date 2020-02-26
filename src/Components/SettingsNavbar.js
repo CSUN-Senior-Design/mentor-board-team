@@ -58,12 +58,12 @@ export default function SimpleTabs() {
    return (
       <div className={classes.root}>
          <header className="App-header">
-            <img
+            {/* <img
                src={logo}
                className="App-logo"
                alt="logo"
                style={{ width: "112px", height: "112px", padding: "10px" }}
-            />
+            /> */}
          </header>
          <AppBar position="static">
             <Tabs
@@ -96,8 +96,43 @@ export default function SimpleTabs() {
             Item Two
          </TabPanel>
          <TabPanel value={value} index={3}>
+            <form>
+               <fieldset>
+                  <legend>Settings</legend>
+                  <section className = "SettingsContainer" style={{ display: "flex", justifyContent: "center" }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginRight: "3em" }}>
+                     <label>Show profile</label>
+                     
+                     <label>Show address</label>
+                     
+                     <label>Show email in chats</label>
+                     
+                     <label>Show phone number</label>
+                     
+                     <label>Show birthday</label>
+                  </div>
+                  <div>
+                     Yes<input type="radio" name="show-profile" />
+                     No<input type="radio" name="show-profile" />
+                     <br></br>
+                     Yes<input type="radio" name="show-address" />
+                     No<input type="radio" name="show-address" />
+                     <br></br>
+                     Yes<input type="radio" name="show-email" />
+                     No<input type="radio" name="show-email" />
+                     <br></br>
+                     Yes<input type="radio" name="show-phonenumber" />
+                     No<input type="radio" name="show-phonenumber" />
+                     <br></br>
+                     Yes<input type="radio" name="show-birthday" />
+                     No<input type="radio" name="show-birthday" />
+                  </div>
+                  </section>
+                  <br></br>
+               </fieldset>
+            </form>
             {/* INSERT COMPONENT HERE */}
-            Item Three
+            
          </TabPanel>
       </div>
    );
