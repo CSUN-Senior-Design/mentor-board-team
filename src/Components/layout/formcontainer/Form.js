@@ -2,6 +2,7 @@ import React, { Component } from "react";
 /* Import Component */
 import Button from "../formcomponents/Button";
 import Input from "../formcomponents/Input";
+import Select from "../formcomponents/Select";
 
 export class Form extends Component {
   constructor(props) {
@@ -77,61 +78,86 @@ export class Form extends Component {
   }
   render() {
     return (
-      <div style={formBody}>
-        <fieldset style={fieldStyle}>
-          <legend style={legendStyle}>Billing Information</legend>
-          <Input
-            inputType={"text"}
-            title={"Full Name:"}
-            name={"name"}
-            value={this.state.newUser.name}
-            placeholder={"Enter your name from Debit or Credit Card"}
-            handleChange={this.handleInput}
-          />
-          <Input
-            inputType={"text"}
-            title={"Credit Card Number:"}
-            name={"creditCard"}
-            value={this.state.newUser.creditCard}
-            placeholder={"XXXX XXXX XXXX XXXX"}
-            handleChange={this.handleInput}
-          />
-          <Input
-            inputType={"text"}
-            title={"Expired Date:"}
-            name={"expiredCard"}
-            value={this.state.newUser.expiredCard}
-            placeholder={" "}
-            handleChange={this.handleInput}
-          />
-          <Input
-            inputType={"text"}
-            title={"CCV:"}
-            name={"ccvCard"}
-            value={this.state.newUser.ccvCard}
-            placeholder={" "}
-            handleChange={this.handleInput}
-          />
-          <Button
-            action={this.handleFormSubmit}
-            type={"primary"}
-            title={"Save"}
-            style={buttonStyle}
-          />{" "}
-          <Button
-            action={this.handleClearForm}
-            type={"secondary"}
-            title={"Clear"}
-            style={buttonStyle}
-          />
-        </fieldset>
+      <div>
+        <div style={formBody}>
+          <fieldset style={fieldStyle}>
+            <legend style={legendStyle}>Payment Information</legend>
+            <section
+              className="SettingsContainer"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <div>
+                <Input
+                  inputType={"text"}
+                  title={"Full Name:"}
+                  name={"name"}
+                  value={this.state.newUser.name}
+                  placeholder={"Enter your name from Debit or Credit Card"}
+                  handleChange={this.handleInput}
+                />
+                <Input
+                  inputType={"text"}
+                  title={"Credit Card Number:"}
+                  name={"creditCard"}
+                  value={this.state.newUser.creditCard}
+                  placeholder={"XXXX XXXX XXXX XXXX"}
+                  handleChange={this.handleInput}
+                />
+                <Select
+                  inputType={"text"}
+                  title={"Expired Date:"}
+                  name={"expiredCard"}
+                  value={this.state.newUser.expiredCard}
+                  handleChange={this.handleInput}
+                />
+                <Input
+                  inputType={"text"}
+                  title={"CCV:"}
+                  name={"ccvCard"}
+                  value={this.state.newUser.ccvCard}
+                  placeholder={" "}
+                  handleChange={this.handleInput}
+                />
+              </div>
+            </section>
+            <Button
+              action={this.handleFormSubmit}
+              type={"primary"}
+              title={"SAVE"}
+              style={buttonStyle}
+            />{" "}
+            <Button
+              action={this.handleClearForm}
+              type={"secondary"}
+              title={"CLEAR"}
+              style={buttonStyle}
+            />
+          </fieldset>
+        </div>
+        <div style={formBody}>
+          <fieldset style={fieldStyle}>
+            <legend style={legendStyle}>Payment History</legend>
+            <section
+              className="SettingsContainer"
+              style={{ display: "flex", justifyContent: "center" }}
+            ></section>
+          </fieldset>
+        </div>
       </div>
     );
   }
 }
 
 const buttonStyle = {
-  margin: "10px 10px 10px 10px"
+  color: "white",
+  background: "#3434A1",
+  fontFamily: "inherit",
+  fontSize: "84%",
+  boxSizing: "border-box",
+  margin: "10px 10px 10px 10px",
+  padding: "5px",
+  width: "42%",
+  height: "30px"
 };
 
 const fieldStyle = {
@@ -139,7 +165,7 @@ const fieldStyle = {
 };
 
 const formBody = {
-  fontFamily: "'Josefin Sans', sans-serif",
+  fontFamily: "sans-serif",
   margin: "20px auto",
   maxWidth: "800px",
   padding: "10px"
