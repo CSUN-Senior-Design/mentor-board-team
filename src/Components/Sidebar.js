@@ -67,7 +67,13 @@ export default function TemporaryDrawer() {
          <Divider />
          <List>
             {["About Us", "Contact Us"].map((text, index) => (
-               <ListItem button key={text}>
+               <ListItem
+                  button
+                  key={text}
+                  component={Link}
+                  to="/activityinfopage"
+                  edge="start"
+               >
                   <ListItemIcon>
                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>

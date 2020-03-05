@@ -10,6 +10,8 @@ import Box from "@material-ui/core/Box";
 import Sidebar from "./Sidebar";
 import logo from "./Logos/mindhive2.png";
 import IconButton from "@material-ui/core/IconButton";
+import Consultation from "./ActivityInfo/Consultation";
+import ContactInfo from "./ActivityInfo/ContactInfo";
 function TabPanel(props) {
    const { children, value, index, ...other } = props;
 
@@ -99,40 +101,59 @@ export default function SimpleTabs() {
             <form>
                <fieldset>
                   <legend>Settings</legend>
-                  <section className = "SettingsContainer" style={{ display: "flex", justifyContent: "center" }}>
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginRight: "3em" }}>
-                     <label>Show profile</label>
-                     
-                     <label>Show address</label>
-                     
-                     <label>Show email in chats</label>
-                     
-                     <label>Show phone number</label>
-                     
-                     <label>Show birthday</label>
-                  </div>
-                  <div>
-                     Yes<input type="radio" name="show-profile" />
-                     No<input type="radio" name="show-profile" />
-                     <br></br>
-                     Yes<input type="radio" name="show-address" />
-                     No<input type="radio" name="show-address" />
-                     <br></br>
-                     Yes<input type="radio" name="show-email" />
-                     No<input type="radio" name="show-email" />
-                     <br></br>
-                     Yes<input type="radio" name="show-phonenumber" />
-                     No<input type="radio" name="show-phonenumber" />
-                     <br></br>
-                     Yes<input type="radio" name="show-birthday" />
-                     No<input type="radio" name="show-birthday" />
-                  </div>
+                  <section
+                     className="SettingsContainer"
+                     style={{ display: "flex", justifyContent: "center" }}
+                  >
+                     <div
+                        style={{
+                           display: "flex",
+                           flexDirection: "column",
+                           alignItems: "flex-start",
+                           marginRight: "3em"
+                        }}
+                     >
+                        <label>Show profile</label>
+
+                        <label>Show address</label>
+
+                        <label>Show email in chats</label>
+
+                        <label>Show phone number</label>
+
+                        <label>Show birthday</label>
+                     </div>
+                     <div>
+                        Yes
+                        <input type="radio" name="show-profile" />
+                        No
+                        <input type="radio" name="show-profile" />
+                        <br></br>
+                        Yes
+                        <input type="radio" name="show-address" />
+                        No
+                        <input type="radio" name="show-address" />
+                        <br></br>
+                        Yes
+                        <input type="radio" name="show-email" />
+                        No
+                        <input type="radio" name="show-email" />
+                        <br></br>
+                        Yes
+                        <input type="radio" name="show-phonenumber" />
+                        No
+                        <input type="radio" name="show-phonenumber" />
+                        <br></br>
+                        Yes
+                        <input type="radio" name="show-birthday" />
+                        No
+                        <input type="radio" name="show-birthday" />
+                     </div>
                   </section>
                   <br></br>
                </fieldset>
             </form>
             {/* INSERT COMPONENT HERE */}
-            
          </TabPanel>
       </div>
    );
