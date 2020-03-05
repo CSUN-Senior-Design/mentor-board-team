@@ -23,10 +23,7 @@ function App() {
                   <Route path="/messages" component={Messages} />
                   <Route path="/tutors" component={Tutors} />
                   <Route path="/settingsnavbar" component={SettingsNavbar} />
-                  <Route
-                     path="/activityinfopage"
-                     component={ActivityInfoPage}
-                  />
+                  <Route path="/activityinfopage"component={ActivityInfoPage} />
                </Switch>
             </div>
          </div>
