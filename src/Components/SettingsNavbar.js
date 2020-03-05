@@ -10,6 +10,8 @@ import Box from "@material-ui/core/Box";
 import Sidebar from "./Sidebar";
 import logo from "./Logos/mindhive2.png";
 import IconButton from "@material-ui/core/IconButton";
+import Consultation from "./ActivityInfo/Consultation";
+import ContactInfo from "./ActivityInfo/ContactInfo";
 function TabPanel(props) {
    const { children, value, index, ...other } = props;
 
@@ -98,12 +100,12 @@ export default function SimpleTabs() {
    return (
       <div className={classes.root}>
          <header className="App-header">
-            <img
+            {/* <img
                src={logo}
                className="App-logo"
                alt="logo"
                style={{ width: "112px", height: "112px", padding: "10px" }}
-            />
+            /> */}
          </header>
          <AppBar position="static">
             <Tabs

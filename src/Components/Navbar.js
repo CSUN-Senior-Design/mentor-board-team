@@ -1,25 +1,21 @@
-import React, { Component } from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-import Activities from './Activities';
-import Messages from './Messages';
-import Schedule from './Schedule';
-import Tutors from './Tutors';
-import Home from './Home';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles} from '@material-ui/core'
-import { fontSize } from '@material-ui/system';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Activities from "./Activities";
+import Messages from "./Messages";
+import Schedule from "./Schedule";
+import Tutors from "./Tutors";
+import Home from "./Home";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import { withStyles } from "@material-ui/core";
+import { fontSize } from "@material-ui/system";
 import Container from "@material-ui/core/Container";
-import Sidebar from './Sidebar'
+import Sidebar from "./Sidebar";
+import logo from "./Logos/mindhive2.png";
 
 const useStyles = makeStyles(theme => ({
    root: {
@@ -47,35 +43,81 @@ export class Navbar extends Component {
       const x = 5;
       const { classes } = this.props;
 
-  return (
-    <React.Fragment>
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-    <div><Sidebar></Sidebar></div>
-          <IconButton component={Link} to= "/home" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Home
-          </IconButton>
-          <IconButton component={Link} to= "/schedule" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-            Schedule
-          </IconButton>
-          <IconButton component={Link} to= "/activities" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Activities
-          </IconButton>
-          <IconButton component={Link} to= "/tutors" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Tutors
-          </IconButton>
-          <IconButton component={Link} to= "/messages" edge="start" className={classes.menuButton} color="red" aria-label="menu">
-              Messages
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-             Mentorboard
-          </Typography>
-          <Button className={classes.loginButton} color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+      return (
+         <React.Fragment>
+            <div className={classes.root}>
+               <AppBar position="static">
+                  <Toolbar>
+                     <div>
+                        <Sidebar></Sidebar>
+                     </div>
+                     <IconButton
+                        component={Link}
+                        to="/home"
+                        edge="start"
+                        className={classes.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
+                        Home
+                     </IconButton>
+                     <IconButton
+                        component={Link}
+                        to="/schedule"
+                        edge="start"
+                        className={classes.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
+                        Schedule
+                     </IconButton>
+                     <IconButton
+                        component={Link}
+                        to="/activities"
+                        edge="start"
+                        className={classes.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
+                        Activities
+                     </IconButton>
+                     <IconButton
+                        component={Link}
+                        to="/tutors"
+                        edge="start"
+                        className={classes.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
+                        Tutors
+                     </IconButton>
+                     <IconButton
+                        component={Link}
+                        to="/messages"
+                        edge="start"
+                        className={classes.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
+                        Messages
+                     </IconButton>
+                     <div>
+                        <img
+                           src={logo}
+                           className="App-logo"
+                           alt="logo"
+                           style={{
+                              display: "inline",
+                              width: "70px",
+                              height: "70px",
+                              padding: "10px"
+                           }}
+                        />
+                     </div>
+                  </Toolbar>
+               </AppBar>
 
-    {/* <Switch>
+               {/* <Switch>
         <Route path="/" />
         <Route path="/home" component={Home}/>
         <Route path="/schedule" component={Schedule}/>
@@ -83,10 +125,10 @@ export class Navbar extends Component {
         <Route path="/messages" component={Messages}/>
         <Route path="/tutors" component={Tutors}/>
       </Switch> */}
-    </div>
-    </React.Fragment>
-  );
-    }
+            </div>
+         </React.Fragment>
+      );
+   }
 }
 
 export default withStyles(useStyles)(Navbar);
