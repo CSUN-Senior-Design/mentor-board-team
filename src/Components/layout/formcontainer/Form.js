@@ -77,9 +77,9 @@ export class Form extends Component {
   }
   render() {
     return (
-      <div>
-        <fieldset>
-          <legend>Billing Information</legend>
+      <div style={formBody}>
+        <fieldset style={fieldStyle}>
+          <legend style={legendStyle}>Billing Information</legend>
           <Input
             inputType={"text"}
             title={"Full Name:"}
@@ -132,6 +132,25 @@ export class Form extends Component {
 
 const buttonStyle = {
   margin: "10px 10px 10px 10px"
+};
+
+const fieldStyle = {
+  padding: "10px 30px 0"
+};
+
+const formBody = {
+  fontFamily: "'Josefin Sans', sans-serif",
+  margin: "20px auto",
+  maxWidth: "800px",
+  padding: "10px"
+};
+
+const legendStyle = {
+  display: "block",
+  color: "white",
+  background: "black",
+  padding: "5px 10px",
+  border: "none"
 };
 
 export default Form;
