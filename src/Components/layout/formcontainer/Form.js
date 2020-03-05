@@ -118,6 +118,14 @@ export class Form extends Component {
                   placeholder={" "}
                   handleChange={this.handleInput}
                 />
+                <Input
+                  inputType={"text"}
+                  title={"Zip Code:"}
+                  name={"zipCode"}
+                  value={this.state.newUser.ccvCard}
+                  placeholder={" "}
+                  handleChange={this.handleInput}
+                />
               </div>
             </section>
             <Button
@@ -156,7 +164,7 @@ const buttonStyle = {
   boxSizing: "border-box",
   margin: "10px 10px 10px 10px",
   padding: "5px",
-  width: "42%",
+  width: "17%",
   height: "30px"
 };
 
