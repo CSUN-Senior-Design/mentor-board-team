@@ -11,6 +11,7 @@ import Sidebar from "./Sidebar";
 import logo from "./Logos/mindhive2.png";
 import IconButton from "@material-ui/core/IconButton";
 import Profile from "./Profile";
+import Bio from "./Bio";
 function TabPanel(props) {
    const { children, value, index, ...other } = props;
 
@@ -91,7 +92,7 @@ export default function SimpleTabs() {
          <TabPanel value={value} index={1}>
             {/* INSERT COMPONENT HERE */}
             <Profile />
-            Item One
+            <Bio />
          </TabPanel>
          <TabPanel value={value} index={2}>
             {/* INSERT COMPONENT HERE */}
