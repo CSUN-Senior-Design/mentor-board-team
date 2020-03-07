@@ -14,6 +14,8 @@ import Consultation from "./ActivityInfo/Consultation";
 import ContactInfo from "./ActivityInfo/ContactInfo";
 import Form from "../Components/layout/formcontainer/Form";
 
+import Profile from "./Profile";
+import Bio from "./Bio";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -132,8 +134,9 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={1}>
-        {/* INSERT COMPONENT HERE */}
-        Item One
+        {/* INSERT COMPONENT HERE */}        
+          <Profile />
+          <Bio />
       </TabPanel>
       <TabPanel value={value} index={2}>
         {/* INSERT COMPONENT HERE */}
