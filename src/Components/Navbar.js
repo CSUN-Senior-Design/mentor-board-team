@@ -116,15 +116,6 @@ export class Navbar extends Component {
                      </div>
                   </Toolbar>
                </AppBar>
-
-               {/* <Switch>
-        <Route path="/" />
-        <Route path="/home" component={Home}/>
-        <Route path="/schedule" component={Schedule}/>
-        <Route path="/activities" component={Activities}/>
-        <Route path="/messages" component={Messages}/>
-        <Route path="/tutors" component={Tutors}/>
-      </Switch> */}
             </div>
          </React.Fragment>
       );
