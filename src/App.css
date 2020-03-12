@@ -1,51 +1,54 @@
-
 .App {
-   text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-   height: 40vmin;
+  height: 40vmin;
 }
 
 .App-header {
-   background-color: #ffffff;
-   /* min-height: 100vh; */
-   display: flex;
-   flex-direction: column;
-   /* padding: 60px; */
-   text-align: center;
-   /* align-items: center; */
-   justify-content: left;
-   font-size: calc(10px + 2vmin);
-   color: #09d3ac;
+  background-color: #ffffff;
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  /* padding: 60px; */
+  text-align: center;
+  /* align-items: center; */
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: #09d3ac;
 }
 
 .Front-page {
-   background-color: #ffffff;
-   font-size: 2.5em;
-   height: 100vh;
+  background-color: #ffffff;
+  font-size: 2.5em;
+  height: 100vh;
 }
 
 .About {
-   background-color: white;
-   font-size: 2.5em;
-   height: 100vh;
+  background-color: white;
+  font-size: 2.5em;
+  height: 100vh;
 }
 
 .App-body {
-   background-color: #ffffff;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: left;
-   justify-content: space-around;
-   font-size: calc(10px + 2vmin);
-   color: white;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-   color: #09d3ac;
+  color: #09d3ac;
+}
+
+.Consultation {
+   text-align: center;
 }
 
 .adbar-body {

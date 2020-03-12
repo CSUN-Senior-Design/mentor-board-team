@@ -7,25 +7,27 @@ import Schedule from "./Components/Schedule";
 import Messages from "./Components/Messages";
 import Tutors from "./Components/Tutors";
 import SettingsNavbar from "./Components/SettingsNavbar";
-import LandingPage from './Components/LandingPage';
+import LandingPage from "./Components/LandingPage";
+import ActivityInfoPage from "./Components/ActivityInfo/ActivityInfoPage";
 
 function App() {
-  return (
-    <Router>
-    <div className="App">
-      <div>
-        <Switch>
-        <Route exact path="/" component={LandingPage}/>
-        <Route path="/home" component={Home}/>
-        <Route path="/schedule" component={Schedule}/>
-        <Route path="/activities" component={Activities}/>
-        <Route path="/messages" component={Messages}/>
-        <Route path="/tutors" component={Tutors}/>
-        <Route path="/settingsnavbar" component={SettingsNavbar} />
-        </Switch>
-      </div>
-    </div>
-    </Router>
-  );
-  }
+   return (
+      <Router>
+         <div className="App">
+            <div>
+               <Switch>
+                  <Route exact path="/" component={LandingPage} />
+                  <Route path="/home" component={Home} />
+                  <Route path="/schedule" component={Schedule} />
+                  <Route path="/activities" component={Activities} />
+                  <Route path="/messages" component={Messages} />
+                  <Route path="/tutors" component={Tutors} />
+                  <Route path="/settingsnavbar" component={SettingsNavbar} />
+                  <Route path="/activityinfopage"component={ActivityInfoPage} />
+               </Switch>
+            </div>
+         </div>
+      </Router>
+   );
+}
 export default App;
