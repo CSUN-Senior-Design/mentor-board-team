@@ -15,6 +15,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import Consultation from "./ActivityInfo/Consultation";
+import ContactInfo from "./ActivityInfo/ContactInfo";
 function TabPanel(props) {
    const { children, value, index, ...other } = props;
 
@@ -154,12 +156,12 @@ export default function SimpleTabs() {
    return (
       <div className={classes.root}>
          <header className="App-header">
-            <img
+            {/* <img
                src={logo}
                className="App-logo"
                alt="logo"
                style={{ width: "112px", height: "112px", padding: "10px" }}
-            />
+            /> */}
          </header>
          <AppBar position="static">
             <Tabs
