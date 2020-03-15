@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 
 const CourseItem = props => {
    const {
@@ -47,7 +49,11 @@ const CourseItem = props => {
          display: "block",
          maxWidth: "100%",
          maxHeight: "100%"
-      }
+      },
+      menuButton: {
+         marginRight: theme.spacing(10)
+      },
+
    }));
    const style = useStyles();
 
@@ -78,9 +84,16 @@ const CourseItem = props => {
                      </Grid>
                   </Grid>
                   <Grid item>
-                     <Typography variant="body2" style={{ cursor: "pointer" }}>
+                  <IconButton
+                        component={Link}
+                        to={'/activityinfopage/' + key} 
+                        edge="start"
+                        className={style.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
                         More
-                     </Typography>
+                     </IconButton>
                   </Grid>
                   <Grid item>
                      <Typography variant="subtitle1"></Typography>
