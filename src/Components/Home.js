@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from "./Header"
+import Login from "./Login"
 
 export class Home extends Component {
     render() {
@@ -9,7 +10,7 @@ export class Home extends Component {
                 <Header/>
             </div>
             <div>
-                <h2>Home</h2> 
+                <Login/>
             </div>
             </React.Fragment>
         )
