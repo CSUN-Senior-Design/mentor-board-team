@@ -10,6 +10,11 @@ import Box from "@material-ui/core/Box";
 import Sidebar from "./Sidebar";
 import logo from "./Logos/mindhive2.png";
 import IconButton from "@material-ui/core/IconButton";
+import ToggleSwitch from "./ToggleSwitch.js";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import Consultation from "./ActivityInfo/Consultation";
 import ContactInfo from "./ActivityInfo/ContactInfo";
 import Form from "../Components/layout/formcontainer/Form";
@@ -53,45 +58,96 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
+
+
+
+
 class PrivateSetting extends React.Component {
+   state = {
+      data: [
+         {
+            id: 'showprofile',
+            marked: false
+         },
+         {
+            id: 'showaddress',
+            marked: false
+         },
+         {
+            id: 'showemail',
+            marked: false
+         },
+         {
+            id: 'showphonenumber',
+            marked: false
+         },
+         {
+            id: 'showbirthday',
+            marked: false
+         }
+      ]
+   }
+
+   markPS = (id) => {
+      console.log(id);
+      this.setState({ data: this.state.data.map( i => {
+         if(i.id === id) {
+            i.marked = !i.marked
+         }
+         return i;
+      }) });
+   }
+
    render(){
       return <form>
-      <fieldset>
-         <legend>Settings</legend>
-         <section className = "SettingsContainer" style={{ display: "flex", justifyContent: "center" }}>
-         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginRight: "3em" }}>
-            <label>Show profile</label>
-            
-            <label>Show address</label>
-            
-            <label>Show email in chats</label>
-            
-            <label>Show phone number</label>
-            
-            <label>Show birthday</label>
-         </div>
-         <div>
-            Yes<input type="radio" name="show-profile" />
-            No<input type="radio" name="show-profile" />
-            <br></br>
-            Yes<input type="radio" name="show-address" />
-            No<input type="radio" name="show-address" />
-            <br></br>
-            Yes<input type="radio" name="show-email" />
-            No<input type="radio" name="show-email" />
-            <br></br>
-            Yes<input type="radio" name="show-phonenumber" />
-            No<input type="radio" name="show-phonenumber" />
-            <br></br>
-            Yes<input type="radio" name="show-birthday" />
-            No<input type="radio" name="show-birthday" />
-         </div>
+         <section className = "SettingsContainer" style={settings_style}>
+            <List component="nav" style={Styles_PrivacySetting} aria-label="mailbox folders">
+               <ListItem>
+                  <ListItemText primary="Show profile" />
+                  <ToggleSwitch mark={this.markPS} id='showprofile' style={{float: 'right'}}/>
+               </ListItem>
+               <Divider />
+               <ListItem>
+                  <ListItemText primary="Show address" />
+                  <ToggleSwitch mark={this.markPS} id='showaddress' style={{float: 'right'}}/>
+               </ListItem>
+               <Divider />
+               <ListItem>
+                  <ListItemText primary="Show email" />
+                  <ToggleSwitch mark={this.markPS} id='showemail' style={{float: 'right'}}/>
+               </ListItem>
+               <Divider />
+               <ListItem>
+                  <ListItemText primary="Show phone number" />
+                  <ToggleSwitch mark={this.markPS} id='showphonenumber' style={{float: 'right'}}/>
+               </ListItem>
+               <Divider />
+               <ListItem>
+                  <ListItemText primary="Show birthday" />
+                  <ToggleSwitch mark={this.markPS} id='showbirthday' style={{float: 'right'}}/>
+               </ListItem>
+            </List>
          </section>
          <br></br>
-      </fieldset>
    </form>;
    }
 }
+
+const settings_style = {
+   display: "flex",
+   justifyContent: "center"
+}
+const Styles_PrivacySetting = {
+   width: '50%',
+   maxWidth: '360',
+   backgroundColor: 'theme.palette.background.paper'
+}
+
+
+
+
+
 
 export default function SimpleTabs() {
   const classes = useStyles();
