@@ -42,7 +42,7 @@ export class Login extends Component {
                             <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '300px', minHeight: '30px'}} >Login</Button>
                         </div>
                         <div className={'footerBox'}>
-                            <div className={'line'}></div>
+                            <div className={'loginLine'}></div>
                             <div className={'textForOr or'}>OR</div>    
                         </div>
                         <div className={'otherChoice'}>
