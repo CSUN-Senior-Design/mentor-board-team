@@ -39,7 +39,7 @@ export class Login extends Component {
                             <div className={'forgot'}>Forgot password?</div>
                         </div>
                         <div className={'submit'}>
-                            <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '300px', minHeight: '30px'}} >Login</Button>
+                            <Button style={{maxWidth: '100px', maxHeight: '100px', minWidth: '300px', minHeight: '30px'}} href="home">Login</Button>
                         </div>
                         <div className={'footerBox'}>
                             <div className={'loginLine'}></div>
