@@ -17,6 +17,9 @@ export class Schedule extends Component {
     constructor(){
         super(...arguments);
 
+        this.calendarRef = React.createRef()
+        this.sidebarRef = React.createRef()
+
         //Local variables necessary for the side-bar dragndrop features.
         this.isTreeItemDropped = false;
         this.draggedItemId = '';
@@ -77,7 +80,7 @@ export class Schedule extends Component {
     onTreeDragStop(event) {
 
         let treeElement = closest(event.target, '.e-treeview');
-        let classElement = this.calendarObj.element.querySelector('.e-device-hover');
+        let classElement = this.calendarRef.element.querySelector('.e-device-hover');
 
         if (classElement) {
             classElement.classList.remove('e-device-hover');
@@ -88,11 +91,11 @@ export class Schedule extends Component {
             let scheduleElement = closest(event.target, '.e-content-wrap');
 
             if (scheduleElement) {
-                let treeviewData = this.treeObj.fields.dataSource;
+                let treeviewData = this.sidebarRef.fields.dataSource;
 
                 if (event.target.classList.contains('e-work-cells')) {
                     const filteredData = treeviewData.filter((item) => item.Id === parseInt(event.draggedNodeData.id, 10));
-                    let cellData = this.calendarObj.getCellDetails(event.target);
+                    let cellData = this.calendarRef.getCellDetails(event.target);
                     
                     let eventData = {
                         Name: filteredData[0].Name,
@@ -102,7 +105,7 @@ export class Schedule extends Component {
                         Description: filteredData[0].Description
                     };
 
-                    this.calendarObj.openEditor(eventData, 'Add', true);
+                    this.calendarRef.openEditor(eventData, 'Add', true);
                     this.isTreeItemDropped = true;
                     this.draggedItemId = event.draggedNodeData.id;
                 }
@@ -112,8 +115,8 @@ export class Schedule extends Component {
 
     //handles when the user is doing a drag action from the course sidebar panel.
     onItemDrag(event) {
-        if (this.calendarObj.isAdaptive) {
-            let classElement = this.calendarObj.element.querySelector('.e-device-hover');
+        if (this.calendarRef.isAdaptive) {
+            let classElement = this.calendarRef.element.querySelector('.e-device-hover');
            
             if (classElement) {
                 classElement.classList.remove('e-device-hover');
@@ -140,9 +143,9 @@ export class Schedule extends Component {
     //handles when the user initiates a dragging action from the course sidebar panel.
     onActionBegin(event) {
         if (event.requestType === 'eventCreate' && this.isTreeItemDropped) {
-            let treeViewdata = this.treeObj.fields.dataSource;
+            let treeViewdata = this.sidebarRef.fields.dataSource;
             const filteredPeople = treeViewdata.filter((item) => item.Id !== parseInt(this.draggedItemId, 10));
-            this.treeObj.fields.dataSource = filteredPeople;
+            this.sidebarRef.fields.dataSource = filteredPeople;
             let elements = document.querySelectorAll('.e-drag-item.treeview-external-drag');
 
             for (let i = 0; i < elements.length; i++) {
@@ -164,16 +167,17 @@ export class Schedule extends Component {
             
             <div className = 'schedulepage-body'>
                 <div className = 'scheduler-component'
-                    ref= {calendar => this.calendarObj = calendar}
                 >
-                    <Calendar/>
+                    <Calendar
+                        ref={(calendarRef) => { this.child = calendarRef; }}
+                    />
                 </div>
                 
                 <div className = "treeview-body">
                     <div className = 'treeview-title-container'> Available Courses </div>
                     <div className = 'treeview-component'>
                         <TreeViewComponent 
-                            ref={this.props.sideBarRef}
+                            ref={this.sidebarRef}
                             fields={this.fields}
                             allowDragAndDrop={this.allowDragAndDrops}
                             nodeTemplate={this.nodeTemplate}

@@ -182,7 +182,7 @@ export class Calendar extends Component {
             //Future versions will use DataManager to grab server activity data.
 
                 <ScheduleComponent height= '750px' cssClass='schedule-date-header-template' 
-                    ref={calendar => this.calendarObj = calendar}
+                    ref={(calendarRef) => { this.heading = calendarRef; }}
                     selectedDate= {new Date(2020, 1, 10)}
                     eventSettings={{ dataSource: this.data,
                         fields: {
