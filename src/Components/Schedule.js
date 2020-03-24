@@ -31,7 +31,7 @@ export class Schedule extends Component {
                         id: '1',
                         courseName: 'Comp 256 Tutoring',
                         instructor: 'Richard Lorentz',
-                        reviews: '2.3',
+                        reviews: '5.0',
                         imgUrl: 'https://www.csun.edu/~lorentz/images/me.jpg'
                     },
         
@@ -47,15 +47,15 @@ export class Schedule extends Component {
                         id: '3',
                         courseName: 'Comp 310 Tutoring',
                         instructor: 'Richard Lorentz',
-                        reviews: '1.9',
+                        reviews: '4.5',
                         imgUrl: 'https://www.csun.edu/~lorentz/images/me.jpg'
                     },
         
                     {
                         id: '4',
-                        courseName: 'Time Waster',
-                        instructor: 'Useless Idiot',
-                        reviews: '5.0',
+                        courseName: 'Linear Algebra Tutoring',
+                        instructor: 'Chadwick Sprouse',
+                        reviews: '3.8',
                         imgUrl: 'https://cdn.clipart.email/8aa653ea6ed1fb3c58f507ae5ff87502_male-head-portrait-silhouette-h-m-coloring-pages_670-867.gif'
                     }
                 ];
