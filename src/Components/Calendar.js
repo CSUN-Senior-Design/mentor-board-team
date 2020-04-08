@@ -14,15 +14,14 @@
 */
 
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 import {Inject, ScheduleComponent, ViewsDirective, ViewDirective, Week, Month, Agenda,
         DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule';
 
-import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { extend } from '@syncfusion/ej2-base';
+import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 
-import { closest, remove, addClass } from '@syncfusion/ej2-base';
-import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
+import * as dataSource from '../Datasources/scheduleData.json';
 
 //CSS Style imports for ej2-react-schedule
 import "@syncfusion/ej2-base/styles/material.css";
@@ -35,13 +34,31 @@ import "@syncfusion/ej2-navigations/styles/material.css";
 import "@syncfusion/ej2-popups/styles/material.css";
 import "@syncfusion/ej2-react-schedule/styles/material.css";
 
+import "@syncfusion/ej2-base/styles/material.css";
+import "@syncfusion/ej2-buttons/styles/material.css";
+import { AvLibraryMusic } from 'material-ui/svg-icons';
+
 const FIELD_STR_MIN_LEN = 5;
 const FIELD_STR_MAX_LEN = 100;
+const FILTERS_MAX = 5;
 
 export class Calendar extends Component {
 
+    
+    
     constructor(){
         super();
+
+        //Holds all of the main activities for the calendar demo.  Activities all start from Feb 10, 2020.
+        this.data = extend([], dataSource.activities, null, true);
+
+        this.state = {
+            itemDragStartDate: null,
+            itemDragEndDate: null,
+            filteredData: this.data,
+            selectedFilters: FILTERS_MAX
+        }
+
 
         this.minValidation = (args) => {
             return args['value'].length >= FIELD_STR_MIN_LEN;
@@ -50,110 +67,6 @@ export class Calendar extends Component {
         this.maxValidation = (args) => {
             return args['value'].length <= FIELD_STR_MAX_LEN;
         }
-
-        //Holds all of the main activities for the calendar demo.  Activities all start from Feb 10, 2020.
-        this.data = [
-            {
-                //Default calendar appointment fields.  These are the fields that ej2 recognizes and injects them into the calendar views. 
-                id: 1,
-                Subject: "Guitar Class",
-                Description: "Advanced cords and melodies with Professor Kobain",
-                Location: "1445 Maple, Glendale",
-                StartTime: new Date(2020, 1, 10, 8, 30),
-                EndTime: new Date(2020, 1, 10, 10, 30),
-                IsAllDay: false,
-
-                //This recurrence rule states that the guitar lesson will appear on the calendar every week on mondays, wednesdays, and fridays.  Ends after 15 classes.
-                RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15',
-                
-                //Activity type classifier.  Used to auto-apply custom styling based on the type of event.
-                //Activity Types:  1 = School Class, 2 = Tutoring Session, 3 = Other Course, 4 = Meeting, 5 = Hangout
-                ActivityType: 3
-            },
-
-            {
-                id: 2,
-                Subject: "Comp 666",
-                Description: "Skynet crash course",
-                Location: "822 fischer, Glendale",
-                StartTime: new Date(2020, 1, 10, 12, 30),
-                EndTime: new Date(2020, 1, 10, 14, 30),
-                IsAllDay: false,
-
-                RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,TU,TH;COUNT=15;',
-
-                ActivityType: 1
-            },
-
-            {
-                id: 3,
-                Subject: "Dabbing Lessons",
-                Description: "Show the haters whose boss",
-                Location: "1337 Skeet, Glenoaks",
-                StartTime: new Date(2020, 1, 10, 16, 0),
-                EndTime: new Date(2020, 1, 10, 20, 0),
-                IsAllDay: false,
-
-                RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE;COUNT=15;',
-                
-                ActivityType: 3
-            },
-
-            {
-                id: 4,
-                Subject: "Break Time",
-                StartTime: new Date(2020, 1, 10, 14, 45),
-                EndTime: new Date(2020, 1, 10, 15, 50),
-                IsAllDay: false,
-                IsBlock: true,
-                RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=MO;COUNT=15;'
-            },
-
-            {
-                id: 5,
-                Subject: "Taking the day off",
-                StartTime: new Date(2020, 1, 15),
-                EndTime: new Date(2020, 1, 15),
-                IsAllDay: true,
-                IsBlock: true
-            },
-
-            {
-                id: 6,
-                Subject: "Lunch With Dave",
-                Description: "Going out for sushi",
-                Location: "987 Fairview, Glenoaks",
-                StartTime: new Date(2020, 1, 11, 15, 0),
-                EndTime: new Date(2020, 1, 11, 16, 30),
-                IsAllDay: false,
-                ActivityType: 5
-            },
-
-            {
-                id: 7,
-                Subject: "JPL Meeting",
-                Description: "Sudden board meeting scheduled with JPL lab",
-                Location: "-REDACTED-",
-                StartTime: new Date(2020, 1, 14, 11, 0),
-                EndTime: new Date(2020, 1, 14, 13, 0),
-                IsAllDay: false,
-                ActivityType: 4
-            },
-
-            {
-                id: 8,
-                Subject: "Calculus Tutoring",
-                Description: "Weekly friday tutoring to help me pass calculus III",
-                Location: "822 fischer, Glendale",
-                StartTime: new Date(2020, 1, 14, 14, 30),
-                EndTime: new Date(2020, 1, 14, 16, 30),
-                IsAllDay: false,
-
-                RecurrenceRule: 'FREQ=WEEKLY;INTERVAL=1;BYDAY=FR;COUNT=15;',
-
-                ActivityType: 2
-            },
-        ]
 
         //Defines the styling for the different types of activities.  The datasource "ActivityType" id points to the Id field in this object.
         this.resourceData = [
@@ -168,48 +81,137 @@ export class Calendar extends Component {
     //Gets called whenever the user drags an event sticker along the calendar.  Allows customizing various aspect of dragging operations.
     onDragStart(args) {
         args.interval = 1;  //Indicates the increments of time that events can be shifted when dragged.  Currently set to 1 minute increments on the calendar grid.
+        
+        this.state.itemDragStartDate = args.data.StartTime;
+        this.state.itemDragEndDate = args.data.EndTime;
+        
+        //console.log(this.state.itemDragStartDate)
     }
+
+    //Check if the time slot is currently busy or not.  Also allows for an activity to be rescheduled within its timeslot.
+    onDragStop(args){
+
+        let existingNodeStart = this.state.itemDragStartDate.getTime();
+        let existingNodeEnd = this.state.itemDragEndDate.getTime();
+        let targetNodeStart = args.data.StartTime.getTime();
+        let targetNodeEnd = args.data.EndTime.getTime();
+
+        console.log(args.data);
+
+        //If the activity is not the same and we try to drag  it into another occupied time slot.
+        if (!((targetNodeStart < existingNodeEnd && targetNodeStart > existingNodeStart) || (targetNodeStart < existingNodeStart && targetNodeEnd > existingNodeStart)))
+        {
+            let startDate = args.data.StartTime;
+            let endDate = args.data.EndTime;
+            args.cancel = !this.scheduleObj.isSlotAvailable(startDate, endDate);
+        }
+
+        //Reset original start and end times for next drag operation.
+        this.state.itemDragStartDate = 0;
+        this.state.itemDragEndDate = 0;
+    }
+
+
 
     //Gets called whenever the user resizes an event sticker on the calendar.  Allows customizing various aspect of resizing operations.
     onResizeStart(args){
         args.interval = 1;  //Indicates the increments of time that events can be shifted when resized.  Currently set to 1 minute increments on the calendar grid.
     }
 
+    onActionBegin(args) {
+        if ((args.requestType === 'eventCreate') && args.data.length > 0) {
+            let eventData = args.data[0];
+            let eventField = this.scheduleObj.eventFields;
+            let startDate = eventData[eventField.startTime];
+            let endDate = eventData[eventField.endTime];
+            args.cancel = !this.scheduleObj.isSlotAvailable(startDate, endDate);
+            console.log(args.cancel);
+        }
+    }
+
+    
+    filterSchool(){
+
+
+    }
+
+
+
+    //Filters and refreshes the activity data displayed on the calendar.
+    filterActivities(args){
+
+        let filterType = args.target.element.attributes.value.value;
+        let filteredItems = [];
+
+        if (filterType === "School")
+            filteredItems = this.data.filter(item => item.ActivityType === 1);
+
+        else if (filterType === "Tutoring")
+            filteredItems = this.data.filter(item => item.ActivityType === 2);
+
+        else if (filterType === "Other Course")
+            filteredItems = this.data.filter(item => item.ActivityType === 3);
+
+        else if (filterType === "Meeting")
+            filteredItems = this.data.filter(item => item.ActivityType === 4);
+
+        else if (filterType === "Hangout")
+            filteredItems = this.data.filter(item => item.ActivityType === 5);
+
+        let finalAry = [];
+
+        if (!args.target.element.checked){
+            finalAry = this.state.filteredData.filter(function(element) {
+                return filteredItems.indexOf(element) === -1;
+            });
+        }
+        else finalAry = this.state.filteredData.concat(filteredItems);
+        
+        
+        //Set the filteredData array to the finalized filtered array, then set the eventSettings to that array.
+        this.setState({ filteredData: finalAry });
+        this.scheduleObj.eventSettings.dataSource = this.state.filteredData;
+
+    }
+
     render(){
         return(
             
-            //The date for now will be set to February 10, 2020 for demo purposes.  
-            //Future versions will use DataManager to grab server activity data.
+            <React.Fragment>
 
-                <ScheduleComponent height= '750px' cssClass='schedule-date-header-template' 
-                    ref={(calendarRef) => { this.heading = calendarRef; }}
-                    selectedDate= {new Date(2020, 1, 10)}
-                    eventSettings={{ dataSource: this.data,
-                        fields: {
-                            id: 'Id',
-                            subject: { name: 'Subject', title: 'Activity Name', 
-                                validation: { 
-                                    required: true, 
-                                    minLength: [this.minValidation, 'Must input atleast ' + FIELD_STR_MIN_LEN +' characters'],
-                                    regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
-                                } 
-                            },
+                <div className = "schedulepage-calendar">
 
-                            description: {
-                                name: 'Description', validation: {
-                                    maxLength: [this.maxValidation, 'Cant input more than '+ FIELD_STR_MAX_LEN + ' characters'],
-                                    regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
-                                }
-                            },
+                    <ScheduleComponent height="97.5%"
+                        ref={schedule => this.scheduleObj = schedule}
+                        selectedDate= {new Date(2020, 1, 10)}
+                        eventSettings={{ dataSource: this.data,
+                            fields: {
+                                id: 'Id',
+                                subject: { name: 'Subject', title: 'Activity Name', 
+                                    validation: { 
+                                        required: true, 
+                                        minLength: [this.minValidation, 'Must input atleast ' + FIELD_STR_MIN_LEN +' characters'],
+                                        regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
+                                    } 
+                                },
 
-                            isAllDay: { name: 'IsAllDay' },
-                            startTime: { name: 'StartTime', validation: { required: true, date: true } },
-                            endTime: { name: 'EndTime', validation: {  date: true }}
-                        }}}
+                                description: {
+                                    name: 'Description', validation: {
+                                        maxLength: [this.maxValidation, 'Cant input more than '+ FIELD_STR_MAX_LEN + ' characters'],
+                                        regex: ['^[a-zA-Z0-9- ]*$', 'Special character(s) not allowed in this field']
+                                    }
+                                },
 
-                    dragStart={(this.onDragStart.bind(this))}
-                    resizeStart={(this.onResizeStart.bind(this))}
-                >
+                                isAllDay: { name: 'IsAllDay' },
+                                startTime: { name: 'StartTime', validation: { required: true, date: true } },
+                                endTime: { name: 'EndTime', validation: {  date: true }}
+                            }}}
+
+                        dragStart={(this.onDragStart.bind(this))}
+                        dragStop={(this.onDragStop.bind(this))}
+                        resizeStart={(this.onResizeStart.bind(this))}
+                        actionBegin={this.onActionBegin.bind(this)}
+                    >
                     <Inject services = {[ Week, Month, Agenda, DragAndDrop, Resize ]}/>
 
                     <ResourcesDirective>
@@ -232,7 +234,28 @@ export class Calendar extends Component {
                         <ViewDirective option='Agenda'/>
                     </ViewsDirective>
 
-                </ScheduleComponent>
+                    </ScheduleComponent>
+                </div>
+
+                <div className = "schedulepage-filters"> 
+                        
+                    <h3 className="filters-header"> Filter By.. </h3>
+
+                    <ul className = "filter-ul-style">
+                        <li className="filter-style"> <CheckBoxComponent cssClass="school" name="Filter" value="School" label="School" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                        <li className="filter-style"> <CheckBoxComponent cssClass="tutoring" name="Filter" value="Tutoring" label="Tutoring" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                        <li className="filter-style"> <CheckBoxComponent cssClass="other-course" name="Filter" value="Other Course" label="Other Course" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                        <li className="filter-style"> <CheckBoxComponent cssClass="meeting" name="Filter" value="Meeting" label="Meeting" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                        <li className="filter-style"> <CheckBoxComponent cssClass="hangout" name="Filter" value="Hangout" label="Hangout" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                    </ul>
+
+                    
+
+                </div>   
+
+            </React.Fragment>
+
+                
             
 
         );
