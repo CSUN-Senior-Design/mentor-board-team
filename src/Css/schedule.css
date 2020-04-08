@@ -1,39 +1,54 @@
 
- .schedulepage-body {
+.schedulepage-body {
     display: flex;
     position: 'relative';
     padding-top: 2.5%;
     height: 700px;
  }
  
- .schedulepage-calendar {
+.schedulepage-calendar {
     padding-left: 2.5%;
     height: 100%;
     width: 50%;
  }
 
-.schedulepage-filters {
+.schedulepage-options {
+   display: flex;
+   flex-direction: column;
    padding-left: 2%;
-   height: 30%;
-   width: 30%;
+   width: 10%;
+   height: 45%;
+ }
+
+.schedulepage-filters {
+   margin-top: 15px;
+   height: 60%;
+   width: 70%;
+   border-bottom: solid rgb(130, 160, 180) 2px;
+   border-left: solid rgb(130, 160, 180) 2px;
+   border-right: solid rgb(130, 160, 180) 2px;
+   border-radius: 7%;
+   background:linear-gradient(rgb(255, 255, 255) 5%, rgb(185, 215, 235) 90%);
 }
 
 .filters-header {
    text-decoration: underline;
-   margin: 0;
+   height: 10%;
+   margin: 5%;
    text-align: left;
 }
 
 .filter-style {
+   display: flex;
    padding-top: 10px;
    margin: 0;
    list-style: none;
-   display: flex;
 }
 
 .filter-ul-style {
    padding-left: 5px;
    text-align: center;
+   margin: 0;
 }
 
 .e-checkbox-wrapper.school .e-frame.e-check,
@@ -64,4 +79,18 @@
 .e-checkbox-wrapper.hangout .e-checkbox:focus + .e-frame.e-check { /* csslint allow: adjoining-classes */
   background-color: purple;
   border-radius: 100%;
+}
+
+.searchbar-body{
+   width: 100%;
+   height: 15%;
+   padding-bottom: 15px;
+
+   border-bottom: black thin dashed;
+}
+
+.searchbar-header {
+   padding-bottom: 5px;
+   display: flex;
+   justify-content: left;
 }

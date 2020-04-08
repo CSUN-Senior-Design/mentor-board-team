@@ -36,7 +36,9 @@ import "@syncfusion/ej2-react-schedule/styles/material.css";
 
 import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-buttons/styles/material.css";
-import { AvLibraryMusic } from 'material-ui/svg-icons';
+
+import "@syncfusion/ej2-base/styles/material.css";
+import "@syncfusion/ej2-react-inputs/styles/material.css";
 
 const FIELD_STR_MIN_LEN = 5;
 const FIELD_STR_MAX_LEN = 100;
@@ -44,8 +46,6 @@ const FILTERS_MAX = 5;
 
 export class Calendar extends Component {
 
-    
-    
     constructor(){
         super();
 
@@ -56,9 +56,9 @@ export class Calendar extends Component {
             itemDragStartDate: null,
             itemDragEndDate: null,
             filteredData: this.data,
-            selectedFilters: FILTERS_MAX
+            selectedFilters: FILTERS_MAX,
+            searchText: ""
         }
-
 
         this.minValidation = (args) => {
             return args['value'].length >= FIELD_STR_MIN_LEN;
@@ -84,8 +84,6 @@ export class Calendar extends Component {
         
         this.state.itemDragStartDate = args.data.StartTime;
         this.state.itemDragEndDate = args.data.EndTime;
-        
-        //console.log(this.state.itemDragStartDate)
     }
 
     //Check if the time slot is currently busy or not.  Also allows for an activity to be rescheduled within its timeslot.
@@ -95,8 +93,6 @@ export class Calendar extends Component {
         let existingNodeEnd = this.state.itemDragEndDate.getTime();
         let targetNodeStart = args.data.StartTime.getTime();
         let targetNodeEnd = args.data.EndTime.getTime();
-
-        console.log(args.data);
 
         //If the activity is not the same and we try to drag  it into another occupied time slot.
         if (!((targetNodeStart < existingNodeEnd && targetNodeStart > existingNodeStart) || (targetNodeStart < existingNodeStart && targetNodeEnd > existingNodeStart)))
@@ -128,14 +124,6 @@ export class Calendar extends Component {
             console.log(args.cancel);
         }
     }
-
-    
-    filterSchool(){
-
-
-    }
-
-
 
     //Filters and refreshes the activity data displayed on the calendar.
     filterActivities(args){
@@ -174,6 +162,23 @@ export class Calendar extends Component {
 
     }
 
+    //Updates the search text for the search bar on each update of a keystroke
+    searchHandleChange(event){
+        this.setState({
+            searchText: event.target.value
+        });
+    }
+
+    //Searches the calendar for an activity based on its name.
+    searchActivities(event){
+
+        //When the user presses the enter key to submit their input in the text field.
+        if (event.key === "Enter"){
+            let filteredItems = this.state.filteredData.filter(item => item.Subject.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1);  
+            this.scheduleObj.eventSettings.dataSource = filteredItems;
+        }
+    }
+
     render(){
         return(
             
@@ -206,7 +211,7 @@ export class Calendar extends Component {
                                 startTime: { name: 'StartTime', validation: { required: true, date: true } },
                                 endTime: { name: 'EndTime', validation: {  date: true }}
                             }}}
-
+                        
                         dragStart={(this.onDragStart.bind(this))}
                         dragStop={(this.onDragStop.bind(this))}
                         resizeStart={(this.onResizeStart.bind(this))}
@@ -236,22 +241,35 @@ export class Calendar extends Component {
 
                     </ScheduleComponent>
                 </div>
+                
+                <div className = "schedulepage-options">
 
-                <div className = "schedulepage-filters"> 
+                    <div className= "searchbar-body">
+
+                        <div className = "searchbar-header"> Search for.. </div>
+                        <input className="e-input" name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onKeyPress={(this.searchActivities.bind(this))} onChange={(this.searchHandleChange.bind(this))} />
                         
-                    <h3 className="filters-header"> Filter By.. </h3>
+                    </div>
 
-                    <ul className = "filter-ul-style">
-                        <li className="filter-style"> <CheckBoxComponent cssClass="school" name="Filter" value="School" label="School" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                        <li className="filter-style"> <CheckBoxComponent cssClass="tutoring" name="Filter" value="Tutoring" label="Tutoring" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                        <li className="filter-style"> <CheckBoxComponent cssClass="other-course" name="Filter" value="Other Course" label="Other Course" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                        <li className="filter-style"> <CheckBoxComponent cssClass="meeting" name="Filter" value="Meeting" label="Meeting" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                        <li className="filter-style"> <CheckBoxComponent cssClass="hangout" name="Filter" value="Hangout" label="Hangout" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                    </ul>
+                    <div className = "schedulepage-filters"> 
+                            
+                        <h3 className="filters-header"> Filter By.. </h3>
 
-                    
+                        <ul className = "filter-ul-style">
+                            <li className="filter-style"> <CheckBoxComponent cssClass="school" name="Filter" value="School" label="School" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent cssClass="tutoring" name="Filter" value="Tutoring" label="Tutoring" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent cssClass="other-course" name="Filter" value="Other Course" label="Other Course" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent cssClass="meeting" name="Filter" value="Meeting" label="Meeting" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent cssClass="hangout" name="Filter" value="Hangout" label="Hangout" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                        </ul>
+                    </div> 
 
-                </div>   
+                </div>
+
+
+                  
+
+                
 
             </React.Fragment>
 
