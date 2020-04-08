@@ -1,30 +1,42 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom';
-import Header from './Header';
-import Calendar from './Calendar'
-import SearchBar from './SearchBar'
 
+import Header from './Header';
+import Calendar from './Calendar';
+
+import * as dataSource from '../Datasources/scheduleData.json';
+import '../Css/schedule.css';
 
 export class Schedule extends Component {
 
+    constructor(){
+        super(...arguments);
+
+        this.scheduleObj = React.createRef();
+    }
+
+    filterCalendar(){
+        this.scheduleObj.filterData(dataSource.filteredActivities);
+        console.log(this.scheduleObj);
+    }
 
 
     render() {
         return (
             <React.Fragment>
 
-                <div style={{ position: 'relative', zIndex: '1'}}>
-                    <Header></Header>
+                <div> <Header></Header> </div>
+            
+                <div className = 'schedulepage-body'>
+                    
+                    <Calendar ref={this.scheduleObj} />
+                   
+                   
+
                 </div>
             
-                <div style={{ position: 'absolute', left: '20%', right: '20%', zIndex: '10'}}>
-                    <Calendar/>,
-                </div>
-                
-
             </React.Fragment>
-        );
-      }
+        )
+    }
 }
 
 export default Schedule

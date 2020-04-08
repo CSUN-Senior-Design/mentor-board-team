@@ -1,0 +1,67 @@
+
+ .schedulepage-body {
+    display: flex;
+    position: 'relative';
+    padding-top: 2.5%;
+    height: 700px;
+ }
+ 
+ .schedulepage-calendar {
+    padding-left: 2.5%;
+    height: 100%;
+    width: 50%;
+ }
+
+.schedulepage-filters {
+   padding-left: 2%;
+   height: 30%;
+   width: 30%;
+}
+
+.filters-header {
+   text-decoration: underline;
+   margin: 0;
+   text-align: left;
+}
+
+.filter-style {
+   padding-top: 10px;
+   margin: 0;
+   list-style: none;
+   display: flex;
+}
+
+.filter-ul-style {
+   padding-left: 5px;
+   text-align: center;
+}
+
+.e-checkbox-wrapper.school .e-frame.e-check,
+.e-checkbox-wrapper.school .e-checkbox:focus + .e-frame.e-check { /* csslint allow: adjoining-classes */
+  background-color: red;
+  border-radius: 100%;
+}
+
+.e-checkbox-wrapper.tutoring .e-frame.e-check,
+.e-checkbox-wrapper.tutoring .e-checkbox:focus + .e-frame.e-check { /* csslint allow: adjoining-classes */
+  background-color: blue;
+  border-radius: 100%;
+}
+
+.e-checkbox-wrapper.other-course .e-frame.e-check,
+.e-checkbox-wrapper.other-course .e-checkbox:focus + .e-frame.e-check { /* csslint allow: adjoining-classes */
+  background-color: orange;
+  border-radius: 100%;
+}
+
+.e-checkbox-wrapper.meeting .e-frame.e-check,
+.e-checkbox-wrapper.meeting .e-checkbox:focus + .e-frame.e-check { /* csslint allow: adjoining-classes */
+  background-color: black;
+  border-radius: 100%;
+}
+
+.e-checkbox-wrapper.hangout .e-frame.e-check,
+.e-checkbox-wrapper.hangout .e-checkbox:focus + .e-frame.e-check { /* csslint allow: adjoining-classes */
+  background-color: purple;
+  border-radius: 100%;
+}
