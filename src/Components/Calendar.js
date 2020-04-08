@@ -152,10 +152,10 @@ export class Calendar extends Component {
         else if (filterType === "Other Course")
             filteredItems = this.data.filter(item => item.ActivityType === 3);
 
-        else if (filterType === "Meeting")
+        else if (filterType === "Hangout")
             filteredItems = this.data.filter(item => item.ActivityType === 4);
 
-        else if (filterType === "Hangout")
+        else if (filterType === "Meeting")
             filteredItems = this.data.filter(item => item.ActivityType === 5);
 
         let finalAry = [];
