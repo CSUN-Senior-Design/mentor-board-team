@@ -39,6 +39,7 @@ import "@syncfusion/ej2-buttons/styles/material.css";
 
 import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-react-inputs/styles/material.css";
+import { TextField } from 'material-ui';
 
 const FIELD_STR_MIN_LEN = 5;
 const FIELD_STR_MAX_LEN = 100;
@@ -128,6 +129,10 @@ export class Calendar extends Component {
     //Filters and refreshes the activity data displayed on the calendar.
     filterActivities(args){
 
+        //Reset the searchbar value so the filter and search bar dont overlap.
+        this.searchbarRef.value = "";
+        console.log(this.searchbarRef.value);
+
         let filterType = args.target.element.attributes.value.value;
         let filteredItems = [];
 
@@ -157,7 +162,10 @@ export class Calendar extends Component {
         
         
         //Set the filteredData array to the finalized filtered array, then set the eventSettings to that array.
-        this.setState({ filteredData: finalAry });
+        this.setState({ 
+            filteredData: finalAry,
+            searchText: ""
+         });
         this.scheduleObj.eventSettings.dataSource = this.state.filteredData;
 
     }
@@ -185,15 +193,18 @@ export class Calendar extends Component {
 
         //When the user presses the enter key to submit their input in the text field.
         if (event.key === "Enter"){
-            let filteredItems = this.data.filter(item => item.Subject.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1);  
-            this.scheduleObj.eventSettings.dataSource = filteredItems;
 
-            //Disable all filters so only the search item appears.  Also prevents a bug which inverts filter states.
-            this.schoolFilterRef.checked = false;
-            this.tutorFilterRef.checked = false;
-            this.otherFilterRef.checked = false;
-            this.meetingFilterRef.checked = false;
-            this.hangoutFilterRef.checked = false;
+            if(this.searchbarRef.value !== "" && this.searchbarRef.value !== null){
+                let filteredItems = this.data.filter(item => item.Subject.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1);  
+                this.scheduleObj.eventSettings.dataSource = filteredItems;
+
+                //Disable all filters so only the search item appears.  Also prevents a bug which inverts filter states.
+                this.schoolFilterRef.checked = false;
+                this.tutorFilterRef.checked = false;
+                this.otherFilterRef.checked = false;
+                this.meetingFilterRef.checked = false;
+                this.hangoutFilterRef.checked = false;
+        }
         }
     }
 
@@ -265,7 +276,7 @@ export class Calendar extends Component {
                     <div className= "searchbar-body">
 
                         <div className = "searchbar-header"> Search for.. </div>
-                        <input className="e-input" name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onKeyPress={(this.searchActivities.bind(this))} onChange={(this.searchHandleChange.bind(this))} />
+                        <input ref={TextField => this.searchbarRef = TextField} className="e-input" name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onKeyPress={(this.searchActivities.bind(this))} onChange={(this.searchHandleChange.bind(this))} />
                         
                     </div>
 
