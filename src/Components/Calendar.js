@@ -19,7 +19,7 @@ import {Inject, ScheduleComponent, ViewsDirective, ViewDirective, Week, Month, A
         DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule';
 
 import { extend } from '@syncfusion/ej2-base';
-import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import { CheckBoxComponent, CheckBox } from '@syncfusion/ej2-react-buttons';
 
 import * as dataSource from '../Datasources/scheduleData.json';
 
@@ -164,9 +164,20 @@ export class Calendar extends Component {
 
     //Updates the search text for the search bar on each update of a keystroke
     searchHandleChange(event){
+        
+        //Reset filters to include everything for the search.
+        this.schoolFilterRef.checked = true;
+        this.tutorFilterRef.checked = true;
+        this.otherFilterRef.checked = true;
+        this.meetingFilterRef.checked = true;
+        this.hangoutFilterRef.checked = true;
+        
         this.setState({
+            filteredData: this.data,
             searchText: event.target.value
-        });
+        })
+
+        this.scheduleObj.eventSettings.dataSource = this.state.filteredData;
     }
 
     //Searches the calendar for an activity based on its name.
@@ -174,8 +185,15 @@ export class Calendar extends Component {
 
         //When the user presses the enter key to submit their input in the text field.
         if (event.key === "Enter"){
-            let filteredItems = this.state.filteredData.filter(item => item.Subject.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1);  
+            let filteredItems = this.data.filter(item => item.Subject.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1);  
             this.scheduleObj.eventSettings.dataSource = filteredItems;
+
+            //Disable all filters so only the search item appears.  Also prevents a bug which inverts filter states.
+            this.schoolFilterRef.checked = false;
+            this.tutorFilterRef.checked = false;
+            this.otherFilterRef.checked = false;
+            this.meetingFilterRef.checked = false;
+            this.hangoutFilterRef.checked = false;
         }
     }
 
@@ -256,11 +274,11 @@ export class Calendar extends Component {
                         <h3 className="filters-header"> Filter By.. </h3>
 
                         <ul className = "filter-ul-style">
-                            <li className="filter-style"> <CheckBoxComponent cssClass="school" name="Filter" value="School" label="School" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                            <li className="filter-style"> <CheckBoxComponent cssClass="tutoring" name="Filter" value="Tutoring" label="Tutoring" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                            <li className="filter-style"> <CheckBoxComponent cssClass="other-course" name="Filter" value="Other Course" label="Other Course" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                            <li className="filter-style"> <CheckBoxComponent cssClass="meeting" name="Filter" value="Meeting" label="Meeting" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
-                            <li className="filter-style"> <CheckBoxComponent cssClass="hangout" name="Filter" value="Hangout" label="Hangout" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent ref={CheckBox => this.schoolFilterRef = CheckBox} cssClass="school" name="Filter" value="School" label="School" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent ref={CheckBox => this.tutorFilterRef = CheckBox} cssClass="tutoring" name="Filter" value="Tutoring" label="Tutoring" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent ref={CheckBox => this.otherFilterRef = CheckBox} cssClass="other-course" name="Filter" value="Other Course" label="Other Course" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent ref={CheckBox => this.meetingFilterRef = CheckBox} cssClass="meeting" name="Filter" value="Meeting" label="Meeting" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
+                            <li className="filter-style"> <CheckBoxComponent ref={CheckBox => this.hangoutFilterRef = CheckBox} cssClass="hangout" name="Filter" value="Hangout" label="Hangout" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
                         </ul>
                     </div> 
 
