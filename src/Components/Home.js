@@ -10,7 +10,7 @@ export class Home extends Component {
                 <Header/>
             </div>
             <div>
-                <Login/>
+                <h1>Home</h1>
             </div>
             </React.Fragment>
         )
