@@ -17,9 +17,9 @@ import React, { Component } from 'react';
 
 import {Inject, ScheduleComponent, ViewsDirective, ViewDirective, Week, Month, Agenda,
         DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule';
-import { ColumnDirective, ColumnsDirective, TreeGridComponent , Filter, Sort } from '@syncfusion/ej2-react-treegrid';
+import { ColumnDirective, ColumnsDirective, TreeGridComponent, Sort, TreeGrid } from '@syncfusion/ej2-react-treegrid';
 
-import { extend } from '@syncfusion/ej2-base';
+import { extend, createElement  } from '@syncfusion/ej2-base';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
@@ -36,6 +36,7 @@ import "@syncfusion/ej2-navigations/styles/material.css";
 import "@syncfusion/ej2-popups/styles/material.css";
 import "@syncfusion/ej2-react-schedule/styles/material.css";
 
+import '@syncfusion/ej2-splitbuttons/styles/material.css';
 import "@syncfusion/ej2-grids/styles/material.css";
 import "@syncfusion/ej2-treegrid/styles/material.css";
 
@@ -62,14 +63,6 @@ export class Calendar extends Component {
             alertsRange: ALERT_SEARCH_RANGE_DEFAULT
         }
 
-        this.minValidation = (args) => {
-            return args['value'].length >= FIELD_STR_MIN_LEN;
-        }
-
-        this.maxValidation = (args) => {
-            return args['value'].length <= FIELD_STR_MAX_LEN;
-        }
-
         //Defines the styling for the different types of activities.  The datasource "ActivityType" id points to the Id field in this object.
         this.resourceData = [
             {ActivityType: 'School', Id: 1, Color: 'red'},
@@ -78,8 +71,50 @@ export class Calendar extends Component {
             {ActivityType: 'Meeting', Id: 4, Color: 'purple'},
             {ActivityType: 'Hangout', Id: 5, Color: 'black'}
         ]
+
+        this.alertsSortingOptions = {
+            columns: [
+                { field: "Priority", direction: "Descending"}
+            ]
+        }
+
+        this.minValidation = (args) => {
+            return args['value'].length >= FIELD_STR_MIN_LEN;
+        }
+
+        this.maxValidation = (args) => {
+            return args['value'].length <= FIELD_STR_MAX_LEN;
+        }
+
     }
 
+    onPopupOpen(args) {
+        if (args.type === 'Editor') {
+            if (!args.element.querySelector('.custom-field-row')) {
+                let row = createElement('div', { className: 'custom-field-row' });
+                let formElement = args.element.querySelector('.e-schedule-form');
+                formElement.firstChild.insertBefore(row, formElement.firstChild.firstChild);
+                let container = createElement('div', { className: 'custom-field-container' });
+                let inputEle = createElement('input', {
+                    className: 'e-field', attrs: { name: 'EventType' }
+                });
+
+                container.appendChild(inputEle);
+                row.appendChild(container);
+
+                let priorityField = new NumericTextBoxComponent(
+                    {
+                        floatLabelType: 'Always', 
+                        placeholder: 'Priority',
+                        width: 75
+                    }
+                );
+
+                priorityField.appendTo(inputEle);
+                inputEle.setAttribute('name', 'Priority');
+            }
+        }
+    }
 
     //Gets called whenever the user drags an event sticker along the calendar.  Allows customizing various aspect of dragging operations.
     onDragStart(args) {
@@ -133,106 +168,115 @@ export class Calendar extends Component {
     //Filters and refreshes the activity data displayed on the calendar.
     filterActivities(args){
 
-        //Reset the searchbar value so the filter and search bar dont overlap.
-        this.searchbarRef.value = "";
-        console.log(this.searchbarRef.value);
+        if (this.searchbarRef.value === "") {
+            //Reset the searchbar value so the filter and search bar dont overlap.
+            this.searchbarRef.value = null;
 
-        let filterType = args.target.element.attributes.value.value;
-        let filteredItems = [];
+            let filterType = args.target.element.attributes.value.value;
+            let filteredItems = [];
 
-        if (filterType === "School")
-            filteredItems = this.data.filter(item => item.ActivityType === 1);
+            if (filterType === "School")
+                filteredItems = this.data.filter(item => item.ActivityType === 1);
 
-        else if (filterType === "Tutoring")
-            filteredItems = this.data.filter(item => item.ActivityType === 2);
+            else if (filterType === "Tutoring")
+                filteredItems = this.data.filter(item => item.ActivityType === 2);
 
-        else if (filterType === "Other Course")
-            filteredItems = this.data.filter(item => item.ActivityType === 3);
+            else if (filterType === "Other Course")
+                filteredItems = this.data.filter(item => item.ActivityType === 3);
 
-        else if (filterType === "Hangout")
-            filteredItems = this.data.filter(item => item.ActivityType === 4);
+            else if (filterType === "Hangout")
+                filteredItems = this.data.filter(item => item.ActivityType === 4);
 
-        else if (filterType === "Meeting")
-            filteredItems = this.data.filter(item => item.ActivityType === 5);
+            else if (filterType === "Meeting")
+                filteredItems = this.data.filter(item => item.ActivityType === 5);
 
-        let finalAry = [];
+            let finalAry = [];
 
-        if (!args.target.element.checked){
-            finalAry = this.state.filteredData.filter(function(element) {
-                return filteredItems.indexOf(element) === -1;
+            if (!args.target.element.checked){
+                finalAry = this.state.filteredData.filter(function(element) {
+                    return filteredItems.indexOf(element) === -1;
+                });
+            }
+            else finalAry = this.state.filteredData.concat(filteredItems);
+            
+            
+            //Set the filteredData array to the finalized filtered array, then set the eventSettings to that array.
+            this.setState({ 
+                filteredData: finalAry,
+                searchText: ""
             });
+            this.scheduleObj.eventSettings.dataSource = this.state.filteredData;
         }
-        else finalAry = this.state.filteredData.concat(filteredItems);
-        
-        
-        //Set the filteredData array to the finalized filtered array, then set the eventSettings to that array.
-        this.setState({ 
-            filteredData: finalAry,
-            searchText: ""
-         });
-        this.scheduleObj.eventSettings.dataSource = this.state.filteredData;
-
     }
 
     //Updates the search text for the search bar on each update of a keystroke
     searchHandleChange(event){
-        
-        //Reset filters to include everything for the search.
-        this.schoolFilterRef.checked = true;
-        this.tutorFilterRef.checked = true;
-        this.otherFilterRef.checked = true;
-        this.meetingFilterRef.checked = true;
-        this.hangoutFilterRef.checked = true;
-        
+
         this.setState({
-            filteredData: this.data,
             searchText: event.target.value
         })
 
-        this.scheduleObj.eventSettings.dataSource = this.state.filteredData;
-    }
+        if(this.searchbarRef.value !== ""){
+            let filteredItems = this.data.filter(item => item.Subject.toLowerCase().indexOf(this.searchbarRef.value.toLowerCase()) !== -1);  
+            
+            this.setState({
+                filteredData: filteredItems
+            })
 
-    //Searches the calendar for an activity based on its name.
-    searchActivities(event){
+            //Disable all filters so only the search item appears.  Also prevents a bug which inverts filter states.
+            this.schoolFilterRef.checked = false;
+            this.tutorFilterRef.checked = false;
+            this.otherFilterRef.checked = false;
+            this.meetingFilterRef.checked = false;
+            this.hangoutFilterRef.checked = false;
 
-        //When the user presses the enter key to submit their input in the text field.
-        if (event.key === "Enter"){
-
-            if(this.searchbarRef.value !== "" && this.searchbarRef.value !== null){
-                let filteredItems = this.data.filter(item => item.Subject.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1);  
-                this.scheduleObj.eventSettings.dataSource = filteredItems;
-
-                //Disable all filters so only the search item appears.  Also prevents a bug which inverts filter states.
-                this.schoolFilterRef.checked = false;
-                this.tutorFilterRef.checked = false;
-                this.otherFilterRef.checked = false;
-                this.meetingFilterRef.checked = false;
-                this.hangoutFilterRef.checked = false;
-            }
+            this.schoolFilterRef.disabled = true;
+            this.tutorFilterRef.disabled = true;
+            this.otherFilterRef.disabled = true;
+            this.meetingFilterRef.disabled = true;
+            this.hangoutFilterRef.disabled = true;
         }
-    }
+        else {
+            //Revert all filter options if the search bar is empty.
+            this.schoolFilterRef.checked = true;
+            this.tutorFilterRef.checked = true;
+            this.otherFilterRef.checked = true;
+            this.meetingFilterRef.checked = true;
+            this.hangoutFilterRef.checked = true;
 
-    initAlerts(){
-        let currentDate = new Date();
-        let searchEndDate = new Date(currentDate.getTime() + (this.state.alertsRange * 86400000));
-        let filteredItems = this.scheduleObj.getOccurrencesByRange(currentDate, searchEndDate);
+            this.schoolFilterRef.disabled = false;
+            this.tutorFilterRef.disabled = false;
+            this.otherFilterRef.disabled = false;
+            this.meetingFilterRef.disabled = false;
+            this.hangoutFilterRef.disabled = false;
 
-        this.setState({
-            alertData: filteredItems
-        })
+            this.setState({
+                filteredData: this.data
+            })
+        }
     }
 
     getAlerts(args){
         let searchRange = args.value;
-        let currentDate = new Date();
+        let currentDate = this.scheduleObj.selectedDate;
         let searchEndDate = new Date(currentDate.getTime() + (searchRange * 86400000));
-        let filteredItems = this.scheduleObj.getOccurrencesByRange(currentDate, searchEndDate);
+        
+        //Get a collection of events that have priority greater than 0.
+        let filteredOccurences = this.scheduleObj.getOccurrencesByRange(currentDate, searchEndDate);
+        let filteredNonOccurences = this.data.filter(activity => (Date.parse(activity.StartTime)  > Date.parse(currentDate) && Date.parse(activity.StartTime) < Date.parse(searchEndDate)) && activity.RecurrenceRule === null && activity.Priority > 0);
+        
+        filteredOccurences = filteredOccurences.filter(activity => activity.Priority > 0)
+
+        let finalAry = filteredOccurences.concat(filteredNonOccurences)
 
         this.setState({
             alertsRange: searchRange,
-            alertData: filteredItems
+            alertData: finalAry
         })
+
+        this.alertsRef.dataSource = this.state.alertData;
     }
+
 
     render(){
         return(
@@ -241,10 +285,12 @@ export class Calendar extends Component {
 
                 <div className = "schedulepage-calendar">
 
-                    <ScheduleComponent height="97.5%"
+                    <ScheduleComponent 
+                        height="97.5%"
                         ref={schedule => this.scheduleObj = schedule}
-                        selectedDate= {new Date(2020, 4, 10)}
-                        eventSettings={{ dataSource: this.data,
+                        selectedDate= {new Date(2020, 3, 13)}
+                        eventSettings={{ 
+                            dataSource: this.state.filteredData,
                             fields: {
                                 id: 'Id',
                                 subject: { name: 'Subject', title: 'Activity Name', 
@@ -264,13 +310,15 @@ export class Calendar extends Component {
 
                                 isAllDay: { name: 'IsAllDay' },
                                 startTime: { name: 'StartTime', validation: { required: true, date: true } },
-                                endTime: { name: 'EndTime', validation: {  date: true }}
+                                endTime: { name: 'EndTime', validation: {  date: true }},
+                                Priority: {name: 'Priority', title: 'Priority'}
                             }}}
                         
                         dragStart={(this.onDragStart.bind(this))}
                         dragStop={(this.onDragStop.bind(this))}
                         resizeStart={(this.onResizeStart.bind(this))}
                         actionBegin={this.onActionBegin.bind(this)}
+                        popupOpen={this.onPopupOpen.bind(this)}
                     >
                     <Inject services = {[ Week, Month, Agenda, DragAndDrop, Resize ]}/>
 
@@ -302,7 +350,7 @@ export class Calendar extends Component {
                     <div className= "searchbar-body">
 
                         <div className = "searchbar-header"> Search Activites </div>
-                        <input className="searchbar" ref={TextField => this.searchbarRef = TextField} name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onKeyPress={(this.searchActivities.bind(this))} onChange={(this.searchHandleChange.bind(this))} />
+                        <input className="searchbar" ref={TextField => this.searchbarRef = TextField} name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onChange={(this.searchHandleChange.bind(this))} />
                         
                     </div>
 
@@ -323,13 +371,14 @@ export class Calendar extends Component {
                         <div className = "alerts-header"> Alerts </div>
 
                         <div>
-                            <TreeGridComponent dataSource={this.state.alertData} height = "325px">
+                            <TreeGridComponent ref={TreeGrid => this.alertsRef = TreeGrid} dataSource={this.state.alertData} height = "325px" allowSorting='true' sortSettings={this.alertsSortingOptions} >
                                 <ColumnsDirective>
-                                <ColumnDirective field='Subject' headerText='Name' width='150' textAlign='Left'/>
-                                <ColumnDirective field='StartTime' headerText='Date' width='130' format='yMd' textAlign='Left' type='date'/>
-                                <ColumnDirective field='Location' headerText='Location' width='200' textAlign='Left'/>
+                                    <ColumnDirective field='Priority' headerText='priority' width='85' textAlign='Left'/>
+                                    <ColumnDirective field='Subject' headerText='name' width='225' textAlign='Center'/>
+                                    <ColumnDirective field='StartTime' headerText='date' width='130' format='yMd' textAlign='Center' type='date'/>
+                                    <ColumnDirective field='Location' headerText='location' width='200' textAlign='Center'/>
                                 </ColumnsDirective>
-                                <Inject services={[Sort, Filter]}/>
+                                <Inject services={[Sort]}/>
                             </TreeGridComponent>
 
                         </div>
@@ -337,7 +386,7 @@ export class Calendar extends Component {
                         <div className = "alerts-options">
                             
                             <div style={{paddingRight: "10px", width: "150px", height: "25px", paddingTop: "5px"}}> Days to search:   </div> 
-                            <NumericTextBoxComponent value={this.state.alertsRange} style={{width: "75px", height: "35px", padding: "0px"}} decimals = {0} validateDecimalOnType={true} onChange={(this.getAlerts.bind(this))} created={(this.initAlerts.bind(this))}/>
+                            <NumericTextBoxComponent value={this.state.alertsRange} style={{width: "75px", height: "35px", padding: "0px"}} decimals = {0} validateDecimalOnType={true} onChange={(this.getAlerts.bind(this))}/>
 
                         </div>
 

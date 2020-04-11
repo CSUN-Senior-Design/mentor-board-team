@@ -5,8 +5,8 @@
             "Subject": "Guitar Lessons",
             "Description": "Advanced cords and melodies with professor Kobain",
             "Location": "1445 Maple, Glendale",
-            "StartTime": "2020-04-10T10:00",
-            "EndTime": "2020-04-10T12:00",
+            "StartTime": "2020-04-13T10:00",
+            "EndTime": "2020-04-13T12:00",
             "IsAllDay": false,
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
             "ActivityType": 3
@@ -17,8 +17,8 @@
             "Subject": "Comp 256 Class",
             "Description": "Discrete Structures with Richard Lorentz",
             "Location": "CSUN, Jacaranda 3105",
-            "StartTime": "2020-04-10T12:30",
-            "EndTime": "2020-04-10T14:30",
+            "StartTime": "2020-04-13T12:30",
+            "EndTime": "2020-04-13T14:30",
             "IsAllDay": false,
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,TU,TH;COUNT=15;",
             "ActivityType": 1
@@ -29,18 +29,19 @@
             "Subject": "Dabbing Lessons",
             "Description": "Show the haters whose boss",
             "Location": "7575 Dobby, Hollywood",
-            "StartTime": "2020-04-10T16:00",
-            "EndTime": "2020-04-10T20:00",
+            "StartTime": "2020-04-13T16:00",
+            "EndTime": "2020-04-13T20:00",
             "IsAllDay": false,
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE;COUNT=15;",
-            "ActivityType": 3
+            "ActivityType": 3,
+            "Priority": 3
         },
 
         {
             "id": 4,
             "Subject": "Break Time",
-            "StartTime": "2020-04-10T14:45",
-            "EndTime": "2020-04-10T15:50",
+            "StartTime": "2020-04-13T14:45",
+            "EndTime": "2020-04-13T15:50",
             "IsAllDay": false,
             "IsBlock": true,
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO;COUNT=15;"
@@ -49,8 +50,8 @@
         {
             "id": 5,
             "Subject": "Sunday is ME-Time",
-            "StartTime": "2020-04-10",
-            "EndTime": "2020-04-10",
+            "StartTime": "2020-04-12",
+            "EndTime": "2020-04-12",
             "IsAllDay": true,
             "IsBlock": true,
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;COUNT=15;"
@@ -60,34 +61,36 @@
             "id": 6,
             "Subject": "Lunch With Andre",
             "Description": "Going out for sushi",
-            "StartTime": "2020-04-12T15:00",
-            "EndTime": "2020-04-12T16:30",
+            "StartTime": "2020-04-14T15:00",
+            "EndTime": "2020-04-14T16:30",
             "Location": "555 Brand, Glendale",
-            "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=TU;COUNT=15;",
+            "RecurrenceRule": null,
             "IsAllDay": false,
-            "ActivityType": 5
+            "ActivityType": 5,
+            "Priority": 2
         },
 
         {
             "id": 7,
             "Subject": "Random Lessons",
             "Description": "I have too much free time",
-            "StartTime": "2020-04-11T20:00",
-            "EndTime": "2020-04-11T22:30",
+            "StartTime": "2020-04-14T20:00",
+            "EndTime": "2020-04-14T22:30",
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO;COUNT=15;",
             "ActivityType": 3
         },
 
         {
             "id": 8,
-            "Subject": "Company Meeting",
-            "Description": "SCRUM Sesh",
+            "Subject": "Company Emergency Meeting",
+            "Description": "I think someone is getting fired....",
             "Location": "998 Verdugo, Glendale",
-            "StartTime": "2020-04-15T15:00",
-            "EndTime": "2020-04-15T16:30",
-            "RecurrenceRule": "FREQ=MONTHLY;INTERVAL=1;BYDAY=FR;COUNT=10;",
+            "StartTime": "2020-04-18T15:00",
+            "EndTime": "2020-04-18T16:30",
+            "RecurrenceRule": null,
             "IsAllDay": false,
-            "ActivityType": 4
+            "ActivityType": 4,
+            "Priority": 5
         },
 
         {
@@ -95,11 +98,38 @@
             "Subject": "Linear Algebra Tutoring",
             "Description": "I hate linear algebra",
             "Location": "7776 Foothill, Sunland",
-            "StartTime": "2020-04-13T15:00",
-            "EndTime": "2020-04-13T17:30",
+            "StartTime": "2020-04-16T15:00",
+            "EndTime": "2020-04-16T17:30",
             "IsAllDay": false,
             "RecurrenceRule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=TH;COUNT=15;",
             "ActivityType": 2
+        },
+
+        {
+            "id": 10,
+            "Subject": "Beach Trip",
+            "Description": "I like swimming",
+            "Location": "Oxnard Beach",
+            "StartTime": "2020-04-17T15:00",
+            "EndTime": "2020-04-17T22:30",
+            "RecurrenceRule": null,
+            "IsAllDay": false,
+            "ActivityType": 5,
+            "Priority": 5
+        },
+
+        {
+            "id": 11,
+            "Subject": "Daves Birthday",
+            "Description": "I hate him, but I like cake",
+            "Location": "2213 Chevy, Glendale",
+            "StartTime": "2020-04-18T18:00",
+            "EndTime": "2020-04-18T23:30",
+            "RecurrenceRule": null,
+            "IsAllDay": false,
+            "ActivityType": 5,
+            "Priority": 1
         }
+
     ]
 }
