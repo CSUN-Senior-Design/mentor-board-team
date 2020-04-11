@@ -17,9 +17,11 @@ import React, { Component } from 'react';
 
 import {Inject, ScheduleComponent, ViewsDirective, ViewDirective, Week, Month, Agenda,
         DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule';
+import { ColumnDirective, ColumnsDirective, TreeGridComponent , Filter, Sort } from '@syncfusion/ej2-react-treegrid';
 
 import { extend } from '@syncfusion/ej2-base';
-import { CheckBoxComponent, CheckBox } from '@syncfusion/ej2-react-buttons';
+import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
+import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
 import * as dataSource from '../Datasources/scheduleData.json';
 
@@ -34,16 +36,13 @@ import "@syncfusion/ej2-navigations/styles/material.css";
 import "@syncfusion/ej2-popups/styles/material.css";
 import "@syncfusion/ej2-react-schedule/styles/material.css";
 
-import "@syncfusion/ej2-base/styles/material.css";
-import "@syncfusion/ej2-buttons/styles/material.css";
-
-import "@syncfusion/ej2-base/styles/material.css";
-import "@syncfusion/ej2-react-inputs/styles/material.css";
-import { TextField } from 'material-ui';
+import "@syncfusion/ej2-grids/styles/material.css";
+import "@syncfusion/ej2-treegrid/styles/material.css";
 
 const FIELD_STR_MIN_LEN = 5;
 const FIELD_STR_MAX_LEN = 100;
 const FILTERS_MAX = 5;
+const ALERT_SEARCH_RANGE_DEFAULT = 7;
 
 export class Calendar extends Component {
 
@@ -58,7 +57,9 @@ export class Calendar extends Component {
             itemDragEndDate: null,
             filteredData: this.data,
             selectedFilters: FILTERS_MAX,
-            searchText: ""
+            searchText: "",
+            alertData: [],
+            alertsRange: ALERT_SEARCH_RANGE_DEFAULT
         }
 
         this.minValidation = (args) => {
@@ -78,6 +79,7 @@ export class Calendar extends Component {
             {ActivityType: 'Hangout', Id: 5, Color: 'black'}
         ]
     }
+
 
     //Gets called whenever the user drags an event sticker along the calendar.  Allows customizing various aspect of dragging operations.
     onDragStart(args) {
@@ -106,6 +108,8 @@ export class Calendar extends Component {
         //Reset original start and end times for next drag operation.
         this.state.itemDragStartDate = 0;
         this.state.itemDragEndDate = 0;
+
+        console.log(args.data);
     }
 
 
@@ -204,8 +208,30 @@ export class Calendar extends Component {
                 this.otherFilterRef.checked = false;
                 this.meetingFilterRef.checked = false;
                 this.hangoutFilterRef.checked = false;
+            }
         }
-        }
+    }
+
+    initAlerts(){
+        let currentDate = new Date();
+        let searchEndDate = new Date(currentDate.getTime() + (this.state.alertsRange * 86400000));
+        let filteredItems = this.scheduleObj.getOccurrencesByRange(currentDate, searchEndDate);
+
+        this.setState({
+            alertData: filteredItems
+        })
+    }
+
+    getAlerts(args){
+        let searchRange = args.value;
+        let currentDate = new Date();
+        let searchEndDate = new Date(currentDate.getTime() + (searchRange * 86400000));
+        let filteredItems = this.scheduleObj.getOccurrencesByRange(currentDate, searchEndDate);
+
+        this.setState({
+            alertsRange: searchRange,
+            alertData: filteredItems
+        })
     }
 
     render(){
@@ -217,7 +243,7 @@ export class Calendar extends Component {
 
                     <ScheduleComponent height="97.5%"
                         ref={schedule => this.scheduleObj = schedule}
-                        selectedDate= {new Date(2020, 1, 10)}
+                        selectedDate= {new Date(2020, 4, 10)}
                         eventSettings={{ dataSource: this.data,
                             fields: {
                                 id: 'Id',
@@ -271,18 +297,18 @@ export class Calendar extends Component {
                     </ScheduleComponent>
                 </div>
                 
-                <div className = "schedulepage-options">
+                <div className = "schedulepage-extras">
 
                     <div className= "searchbar-body">
 
-                        <div className = "searchbar-header"> Search for.. </div>
-                        <input ref={TextField => this.searchbarRef = TextField} className="e-input" name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onKeyPress={(this.searchActivities.bind(this))} onChange={(this.searchHandleChange.bind(this))} />
+                        <div className = "searchbar-header"> Search Activites </div>
+                        <input className="searchbar" ref={TextField => this.searchbarRef = TextField} name="search-bar" type="text" placeholder="Enter Activity Name" value={this.state.searchText} onKeyPress={(this.searchActivities.bind(this))} onChange={(this.searchHandleChange.bind(this))} />
                         
                     </div>
 
                     <div className = "schedulepage-filters"> 
                             
-                        <h3 className="filters-header"> Filter By.. </h3>
+                        <div className="filters-header"> Filters </div>
 
                         <ul className = "filter-ul-style">
                             <li className="filter-style"> <CheckBoxComponent ref={CheckBox => this.schoolFilterRef = CheckBox} cssClass="school" name="Filter" value="School" label="School" checked={true} onChange={(this.filterActivities.bind(this))}/> </li>
@@ -293,12 +319,31 @@ export class Calendar extends Component {
                         </ul>
                     </div> 
 
+                    <div className = "alerts-body">
+                        <div className = "alerts-header"> Alerts </div>
+
+                        <div>
+                            <TreeGridComponent dataSource={this.state.alertData} height = "325px">
+                                <ColumnsDirective>
+                                <ColumnDirective field='Subject' headerText='Name' width='150' textAlign='Left'/>
+                                <ColumnDirective field='StartTime' headerText='Date' width='130' format='yMd' textAlign='Left' type='date'/>
+                                <ColumnDirective field='Location' headerText='Location' width='200' textAlign='Left'/>
+                                </ColumnsDirective>
+                                <Inject services={[Sort, Filter]}/>
+                            </TreeGridComponent>
+
+                        </div>
+
+                        <div className = "alerts-options">
+                            
+                            <div style={{paddingRight: "10px", width: "150px", height: "25px", paddingTop: "5px"}}> Days to search:   </div> 
+                            <NumericTextBoxComponent value={this.state.alertsRange} style={{width: "75px", height: "35px", padding: "0px"}} decimals = {0} validateDecimalOnType={true} onChange={(this.getAlerts.bind(this))} created={(this.initAlerts.bind(this))}/>
+
+                        </div>
+
+                    </div>
+
                 </div>
-
-
-                  
-
-                
 
             </React.Fragment>
 

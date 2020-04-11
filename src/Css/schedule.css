@@ -12,43 +12,52 @@
     width: 50%;
  }
 
-.schedulepage-options {
+.schedulepage-extras {
    display: flex;
    flex-direction: column;
    padding-left: 2%;
-   width: 10%;
-   height: 45%;
+   width: 25%;
+   height: 100%;
  }
 
 .schedulepage-filters {
-   margin-top: 15px;
-   height: 60%;
-   width: 70%;
-   border-bottom: solid rgb(130, 160, 180) 2px;
-   border-left: solid rgb(130, 160, 180) 2px;
-   border-right: solid rgb(130, 160, 180) 2px;
-   border-radius: 7%;
-   background:linear-gradient(rgb(255, 255, 255) 5%, rgb(185, 215, 235) 90%);
+   display: flex;
+   flex-direction: column;
+   margin-top: 25px;
+   height: 90px;
+   width: 100%;
+   border-top: 3px solid;
+   border-bottom: 3px solid;
+   border-image: linear-gradient(to right, white, rgb(0, 0, 255), white);
+   border-image-slice: 1;
+   background-image: linear-gradient(to right, white, rgba(170, 180, 255, 0.8), white);
 }
 
 .filters-header {
+   align-self: center;
    text-decoration: underline;
-   height: 10%;
-   margin: 5%;
-   text-align: left;
+   height: 15px;
+   width: 100%;
+   margin-top: 0;
+   font-weight: bold;
 }
 
 .filter-style {
    display: flex;
-   padding-top: 10px;
-   margin: 0;
+   width: 100px;
+   margin-left: 25px;
+   margin-bottom: 12.5px;
    list-style: none;
 }
 
 .filter-ul-style {
-   padding-left: 5px;
-   text-align: center;
-   margin: 0;
+   display: flex;
+   justify-content: center;
+   flex-direction: row;
+   flex-wrap: wrap;
+   height: 100%;
+   padding: 0px;
+   
 }
 
 .e-checkbox-wrapper.school .e-frame.e-check,
@@ -82,15 +91,60 @@
 }
 
 .searchbar-body{
+   display: flex;
+   flex-direction: column;
    width: 100%;
-   height: 15%;
-   padding-bottom: 15px;
-
-   border-bottom: black thin dashed;
+   height: 70px;
+   border-top: 3px solid;
+   border-bottom: 3px solid;
+   border-image: linear-gradient(to right, white, rgb(0, 0, 255), white);
+   border-image-slice: 1;
+   background-image: linear-gradient(to right, white, rgba(170, 180, 255, 0.8), white);
 }
 
 .searchbar-header {
-   padding-bottom: 5px;
+   justify-content: center;
    display: flex;
-   justify-content: left;
+   width: 100%;
+   text-decoration: underline;
+   font-weight: bold;
+}
+
+.searchbar {
+   border: black solid dashed;
+   border-radius: 7.5%;
+   width: 60%;
+   height: 20px;
+   align-self: center;
+   margin-top: 2%;
+}
+
+.alerts-body {
+   display: flex;
+   flex-direction: column;
+   margin-top: 25px;
+   width: 100%;
+   height: 450px;
+   border-top: 3px solid;
+   border-bottom: 3px solid;
+   border-image: linear-gradient(to right, white, rgb(0, 0, 255), white);
+   border-image-slice: 1;
+   background-image: linear-gradient(to right, white, rgba(170, 180, 255, 0.8), white);
+}
+
+.alerts-header {
+   justify-content: center;
+   width: 100%;
+   height: 25px;
+   text-decoration: underline;
+   font-weight: bold;
+}
+
+.alerts-options {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   height: 40px;
+   width: 100%;
+   padding-top: 15px;
 }

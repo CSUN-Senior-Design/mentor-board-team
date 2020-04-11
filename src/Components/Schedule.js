@@ -8,18 +8,6 @@ import '../Css/schedule.css';
 
 export class Schedule extends Component {
 
-    constructor(){
-        super(...arguments);
-
-        this.scheduleObj = React.createRef();
-    }
-
-    filterCalendar(){
-        this.scheduleObj.filterData(dataSource.filteredActivities);
-        console.log(this.scheduleObj);
-    }
-
-
     render() {
         return (
             <React.Fragment>
@@ -28,7 +16,7 @@ export class Schedule extends Component {
             
                 <div className = 'schedulepage-body'>
                     
-                    <Calendar ref={this.scheduleObj} />
+                    <Calendar />
                    
                    
 
