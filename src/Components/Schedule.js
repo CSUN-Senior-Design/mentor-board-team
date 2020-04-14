@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import Header from './Header';
 import Calendar from './Calendar';
 
-import * as dataSource from '../Datasources/scheduleData.json';
 import '../Css/schedule.css';
 
 export class Schedule extends Component {

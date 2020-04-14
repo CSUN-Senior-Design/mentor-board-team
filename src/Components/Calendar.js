@@ -17,13 +17,15 @@ import React, { Component } from 'react';
 
 import {Inject, ScheduleComponent, ViewsDirective, ViewDirective, Week, Month, Agenda,
         DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule';
-import { ColumnDirective, ColumnsDirective, TreeGridComponent, Sort, TreeGrid } from '@syncfusion/ej2-react-treegrid';
+import { ColumnDirective, ColumnsDirective, TreeGridComponent, Sort } from '@syncfusion/ej2-react-treegrid';
 
 import { extend, createElement  } from '@syncfusion/ej2-base';
 import { CheckBoxComponent } from '@syncfusion/ej2-react-buttons';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
-import * as dataSource from '../Datasources/scheduleData.json';
+import { activities } from '../Datasources/scheduleData.js';
+import { scheduleStudentResource } from '../Datasources/scheduleData.js';
+import { scheduleAlertsSortingOptions } from '../Datasources/scheduleData.js';
 
 //CSS Style imports for ej2-react-schedule
 import "@syncfusion/ej2-base/styles/material.css";
@@ -51,7 +53,15 @@ export class Calendar extends Component {
         super();
 
         //Holds all of the main activities for the calendar demo.  Activities all start from Feb 10, 2020.
-        this.data = extend([], dataSource.activities, null, true);
+        this.data = extend([], activities, null, true);
+
+        //Defines the styling for the different types of activities.  The datasource "ActivityType" id points to the Id field in this object.
+        this.resourceData = extend([], scheduleStudentResource, null, true)
+
+        //this.alertsSortingOptions = scheduleAlertsSortingOptions[0];
+
+        this.sortingOptions = scheduleAlertsSortingOptions;
+        
 
         this.state = {
             itemDragStartDate: null,
@@ -59,25 +69,11 @@ export class Calendar extends Component {
             filteredData: this.data,
             selectedFilters: FILTERS_MAX,
             searchText: "",
-            alertData: [],
-            alertsRange: ALERT_SEARCH_RANGE_DEFAULT
+            alertData: null,
+            alertsRange: ALERT_SEARCH_RANGE_DEFAULT,
+            alertsSortingOptions: scheduleAlertsSortingOptions[0]
         }
-
-        //Defines the styling for the different types of activities.  The datasource "ActivityType" id points to the Id field in this object.
-        this.resourceData = [
-            {ActivityType: 'School', Id: 1, Color: 'red'},
-            {ActivityType: 'Tutoring', Id: 2, Color: 'blue'},
-            {ActivityType: 'Other Course', Id: 3, Color: 'orange'},
-            {ActivityType: 'Meeting', Id: 4, Color: 'purple'},
-            {ActivityType: 'Hangout', Id: 5, Color: 'black'}
-        ]
-
-        this.alertsSortingOptions = {
-            columns: [
-                { field: "Priority", direction: "Descending"}
-            ]
-        }
-
+        
         this.minValidation = (args) => {
             return args['value'].length >= FIELD_STR_MIN_LEN;
         }
@@ -256,6 +252,10 @@ export class Calendar extends Component {
         }
     }
 
+    initAlerts(){
+        this.alertsRef.sortSettings.columns = this.sortingOptions;
+    }
+
     getAlerts(args){
         let searchRange = args.value;
         let currentDate = this.scheduleObj.selectedDate;
@@ -277,6 +277,85 @@ export class Calendar extends Component {
         this.alertsRef.dataSource = this.state.alertData;
     }
 
+    sortAlerts(args){
+
+        let sortType = args.target.element.attributes.value.value;
+
+        if (sortType === "Priority"){
+            if (args.target.element.checked){
+                this.alertSortNameRef.checked = false;
+                this.alertSortDateRef.checked = false;
+
+                this.alertSortNameRef.disabled = true;
+                this.alertSortDateRef.disabled = true;
+
+                this.setState({
+                    alertsSortingOptions: scheduleAlertsSortingOptions[0]
+                })
+
+                this.alertsRef.sortByColumn("Priority", "Descending");
+
+                //this.alertsRef.dataSource = this.state.alertData;
+                this.alertsRef.refresh();
+            
+            }
+            else {
+                this.alertSortNameRef.disabled = false;
+                this.alertSortDateRef.disabled = false;
+            }
+        }
+            
+
+        else if (sortType === "Subject"){
+            if (args.target.element.checked){
+                this.alertSortPriorityRef.checked = false;
+                this.alertSortDateRef.checked = false;
+
+                this.alertSortPriorityRef.disabled = true;
+                this.alertSortDateRef.disabled = true;
+
+                this.setState({
+                    alertsSortingOptions: scheduleAlertsSortingOptions[1]
+                })
+
+                this.alertsRef.sortByColumn("Subject", "Ascending");
+
+                //this.alertsRef.dataSource = this.state.alertData;
+                this.alertsRef.refresh();
+            
+            }
+            else {
+                this.alertSortPriorityRef.disabled = false;
+                this.alertSortDateRef.disabled = false;
+            }
+        }
+            
+
+        else if (sortType === "StartTime"){
+            if (args.target.element.checked){
+                this.alertSortNameRef.checked = false;
+                this.alertSortPriorityRef.checked = false;
+
+                this.alertSortNameRef.disabled = true;
+                this.alertSortPriorityRef.disabled = true;
+
+                this.setState({
+                    alertsSortingOptions: scheduleAlertsSortingOptions[2]
+                })
+
+                this.alertsRef.sortByColumn("StartTime", "Ascending");
+
+                //this.alertsRef.dataSource = this.state.alertData;
+                this.alertsRef.refresh();
+            
+            }
+            else {
+                this.alertSortNameRef.disabled = false;
+                this.alertSortPriorityRef.disabled = false;
+            }
+        }
+            
+    }
 
     render(){
         return(
@@ -288,7 +367,7 @@ export class Calendar extends Component {
                     <ScheduleComponent 
                         height="97.5%"
                         ref={schedule => this.scheduleObj = schedule}
-                        selectedDate= {new Date(2020, 3, 13)}
+                        selectedDate= {new Date()}
                         eventSettings={{ 
                             dataSource: this.state.filteredData,
                             fields: {
@@ -371,24 +450,42 @@ export class Calendar extends Component {
                         <div className = "alerts-header"> Alerts </div>
 
                         <div>
-                            <TreeGridComponent ref={TreeGrid => this.alertsRef = TreeGrid} dataSource={this.state.alertData} height = "325px" allowSorting='true' sortSettings={this.alertsSortingOptions} >
+                            <TreeGridComponent ref={TreeGrid => this.alertsRef = TreeGrid} dataSource={this.state.alertData} height = "300px" idMapping= 'id' allowSorting='false' allowResizing='true' created={(this.initAlerts.bind(this))}>
                                 <ColumnsDirective>
-                                    <ColumnDirective field='Priority' headerText='priority' width='85' textAlign='Left'/>
+                                    <ColumnDirective field='Priority' headerText='priority' width='100' textAlign='Left'/>
                                     <ColumnDirective field='Subject' headerText='name' width='225' textAlign='Center'/>
-                                    <ColumnDirective field='StartTime' headerText='date' width='130' format='yMd' textAlign='Center' type='date'/>
+                                    <ColumnDirective field='StartTime' headerText='date' width='250' textAlign='Center' type='date' format='dd/MM/yyyy hh:mm a'/>
                                     <ColumnDirective field='Location' headerText='location' width='200' textAlign='Center'/>
                                 </ColumnsDirective>
-                                <Inject services={[Sort]}/>
+                                <Inject services={[Sort, Resize]}/>
                             </TreeGridComponent>
 
                         </div>
 
-                        <div className = "alerts-options">
-                            
-                            <div style={{paddingRight: "10px", width: "150px", height: "25px", paddingTop: "5px"}}> Days to search:   </div> 
-                            <NumericTextBoxComponent value={this.state.alertsRange} style={{width: "75px", height: "35px", padding: "0px"}} decimals = {0} validateDecimalOnType={true} onChange={(this.getAlerts.bind(this))}/>
+                        <div className="alerts-options-body">
+
+                            <div className = "alerts-range-panel">
+                                
+                                <div style={{width: "100%", height: "25px", alignContent: "center"}}> Range:</div> 
+                                <NumericTextBoxComponent value={this.state.alertsRange} style={{width: "80%", height: "35px", alignSelf: "center"}} decimals = {0} validateDecimalOnType={true} onChange={(this.getAlerts.bind(this))}/>
+
+                            </div>
+
+                            <div className="alerts-sorting-panel">
+
+                                <div style={{width: "100%", height: "25px", alignContent: "center"}}> Sort By</div>
+                                <ul className = "alerts-ul-style">
+                                    <li className="alerts-sorting-positions"> <CheckBoxComponent ref={CheckBox => this.alertSortPriorityRef = CheckBox} name="Sort" value="Priority" label="priority" checked={false} onChange={(this.sortAlerts.bind(this))}/> </li>
+                                    <li className="alerts-sorting-positions"> <CheckBoxComponent ref={CheckBox => this.alertSortNameRef = CheckBox} name="Sort" value="Subject" label="name" checked={false} onChange={(this.sortAlerts.bind(this))}/> </li>
+                                    <li className="alerts-sorting-positions"> <CheckBoxComponent ref={CheckBox => this.alertSortDateRef = CheckBox} name="Sort" value="StartTime" label="date" checked={false} onChange={(this.sortAlerts.bind(this))}/> </li>
+
+
+                                </ul>
+                            </div>
 
                         </div>
+
+                        
 
                     </div>
 
