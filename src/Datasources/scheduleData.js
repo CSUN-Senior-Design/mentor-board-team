@@ -25,7 +25,6 @@ export let activities = [
         StartTime: new Date(year, month, day - 7, 9, 30, 0),
         EndTime: new Date(year, month, day - 7, 10, 45, 0),
         IsAllDay: false,
-        IsBlock: false,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;UNTIL=" +  addRecurrenceDate(3, 0),
         ActivityType: 3,
         Priority: 0
@@ -39,7 +38,6 @@ export let activities = [
         StartTime: new Date(year, month, day - 7, 11, 15, 0),
         EndTime: new Date(year, month, day - 7, 13, 30, 0),
         IsAllDay: false,
-        IsBlock: false,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,TU,TH;UNTIL=" +  addRecurrenceDate(3, 0),
         ActivityType: 1,
         Priority: 0
@@ -53,7 +51,6 @@ export let activities = [
         StartTime: new Date(year, month, day - 7, 14, 0, 0),
         EndTime: new Date(year, month, day - 7, 17, 0, 0),
         IsAllDay: false,
-        IsBlock: false,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;UNTIL=" +  addRecurrenceDate(3, 0),
         ActivityType: 3,
         Priority: 4
@@ -67,7 +64,6 @@ export let activities = [
         StartTime: new Date(year, month, day - 7 + 2, 16, 0, 0),
         EndTime: new Date(year, month, day - 7 + 2, 18, 30, 0),
         IsAllDay: false,
-        IsBlock: false,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=TU,TH;UNTIL=" +  addRecurrenceDate(3, 0),
         ActivityType: 2,
         Priority: 3
@@ -78,12 +74,11 @@ export let activities = [
         Subject: "Break Time",
         Description: "",
         Location: "",
-        StartTime: new Date(year, month, day - 7 + 2, 13, 35, 0),
-        EndTime: new Date(year, month, day - 7 + 2, 15, 55, 0),
+        StartTime: new Date(year, month, day - 7 + 2, 13, 50, 0),
+        EndTime: new Date(year, month, day - 7 + 2, 15, 30, 0),
         IsAllDay: false,
-        IsBlock: true,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=TU,TH;UNTIL=" +  addRecurrenceDate(3, 0),
-        ActivityType: null,
+        ActivityType: 6,
         Priority: 0
     },
 
@@ -95,8 +90,7 @@ export let activities = [
         StartTime: new Date(year, month, day, 17, 0, 0),
         EndTime: new Date(year, month, day, 23, 0, 0),
         IsAllDay: false,
-        IsBlock: false,
-        RecurrenceRule: "FREQ=YEARLY;INTERVAL=1;BYDAY=SA,TH",
+        RecurrenceRule: "FREQ=YEARLY;INTERVAL=1;BYDAY=SA",
         ActivityType: 5,
         Priority: 1
     },
@@ -109,7 +103,6 @@ export let activities = [
         StartTime: new Date(year, month, day - 7, 13, 0, 0),
         EndTime: new Date(year, month, day - 7, 19, 0, 0),
         IsAllDay: false,
-        IsBlock: false,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;UNTIL=" +  addRecurrenceDate(3, 0),
         ActivityType: 5,
         Priority: 2
@@ -123,7 +116,6 @@ export let activities = [
         StartTime: new Date(year, month, day - 7, 9, 0, 0),
         EndTime: new Date(year, month, day - 7, 10, 30, 0),
         IsAllDay: false,
-        IsBlock: false,
         RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=TH;UNTIL=" +  addRecurrenceDate(3, 0),
         ActivityType: 4,
         Priority: 5
@@ -135,7 +127,8 @@ export let scheduleStudentResource = [
     {ActivityType: 'Tutoring', Id: 2, Color: 'blue'},
     {ActivityType: 'Other Course', Id: 3, Color: 'orange'},
     {ActivityType: 'Meeting', Id: 4, Color: 'purple'},
-    {ActivityType: 'Hangout', Id: 5, Color: 'black'}
+    {ActivityType: 'Hangout', Id: 5, Color: 'black'},
+    {ActivityType: 'Block', Id: 6, Color: 'grey'}
 ]
 
 export let scheduleAlertsSortingOptions = [
