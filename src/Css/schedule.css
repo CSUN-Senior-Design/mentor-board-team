@@ -142,6 +142,15 @@
    border-image-slice: 1;
 }
 
+.alerts-range-panel {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   height: 75px;
+   width: 100%;
+   margin-top: 10px;
+}
+
 .alerts-header {
    justify-content: center;
    width: 100%;
@@ -149,3 +158,4 @@
    text-decoration: underline;
    font-weight: bold;
 }
+

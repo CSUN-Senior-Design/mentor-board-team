@@ -21,8 +21,8 @@ export class FilterPanel extends Component {
             (activity.ActivityType === 1 && this.schoolFilterRef.checked) || 
             (activity.ActivityType === 2 && this.tutoringFilterRef.checked) ||
             (activity.ActivityType === 3 && this.otherFilterRef.checked) ||
-            (activity.ActivityType === 4 && this.hangoutFilterRef.checked) ||
-            (activity.ActivityType === 5 && this.meetingFilterRef.checked) ||
+            (activity.ActivityType === 4 && this.meetingFilterRef.checked) ||
+            (activity.ActivityType === 5 && this.hangoutFilterRef.checked) ||
             (activity.ActivityType === 6 && this.blocksFilterRef.checked)
             )
 
@@ -42,7 +42,7 @@ export class FilterPanel extends Component {
         this.otherFilterRef.disabled = true;
         this.meetingFilterRef.disabled = true;
         this.hangoutFilterRef.disabled = true;
-        this.blocksFilterRef.checked = true;
+        this.blocksFilterRef.disabled = true;
     }
 
     enableFilters(){
@@ -58,7 +58,7 @@ export class FilterPanel extends Component {
         this.otherFilterRef.disabled = false;
         this.meetingFilterRef.disabled = false;
         this.hangoutFilterRef.disabled = false;
-        this.blocksFilterRef.checked = false;
+        this.blocksFilterRef.disabled = false;
     }
 
     //checks if all filters are activated.  Returns true if all filters are currently checked (default state)
@@ -110,7 +110,7 @@ export class FilterPanel extends Component {
                 <li className="filter-style"> 
                     <CheckBoxComponent 
                         ref = {CheckBox => this.meetingFilterRef = CheckBox} 
-                        cssClass = "meeting" 
+                        cssClass = "hangout" 
                         name = "Filter" 
                         value = "Meeting" 
                         label = "Meeting" 
@@ -122,7 +122,7 @@ export class FilterPanel extends Component {
                 <li className="filter-style"> 
                     <CheckBoxComponent 
                         ref = {CheckBox => this.hangoutFilterRef = CheckBox} 
-                        cssClass = "hangout" 
+                        cssClass = "meeting" 
                         name = "Filter" 
                         value = "Hangout" 
                         label = "Hangout" 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,51 +9,37 @@ import Paper from '@material-ui/core/Paper';
 
 
 const columns = [
-    {id: "Priority", label: "Priority", minWidth: 25, maxWidth: 55, align: "left"},
+    {id: "Priority", label: "Priority", minWidth: 10, maxWidth: 35, align: "left"},
     {id: "Subject", label: "Name", minWidth: 75, maxWidth: 150, align: "left"},
     {id: "StartTime", label: "Date", minWidth: 75, maxWidth: 150, align: "left"},
     {id: "Location", label: "Location", minWidth: 75, maxWidth: 150, align: "left"}
 ];
 
-const useStyles = makeStyles({
-    tableStyle: {
-        minWidth: 250,
-        maxHeight: 400,
-        padding: 0,
-        overflow: "auto"
-    }
-});
-
-const SEARCH_RANGE_DEFAULT = 7;
-
 export class AlertsPanel extends Component {
-
-    filterData(){
-        
-        let today = new Date()
-        let searchEndDate = new Date(today.getTime() + (SEARCH_RANGE_DEFAULT * 86400000));
-
-        //let calendarOccurances = this.props.getCalendarOccurances(today, searchEndDate);
-        //console.log(calendarOccurances)
-
-        return (this.state.data)
-    }
 
     constructor(props){
         super()
 
         this.state = {
-            data: props.data
+            data: []
         };
+    }
+
+    
+    printAlerts(occurances){
+        
+        this.setState({
+            data: occurances
+        })
     }
 
     render() {
         return (
 
             
-            <Paper className = {useStyles.tableStyle}>
-                <TableContainer>
-                    <Table stickyHeader aria-label="sticky table">
+            <Paper>
+                <TableContainer style = {{maxHeight: 420, overflow: "auto"}}>
+                    <Table>
                         <TableHead>
                             <TableRow>
                                 {columns.map((column) => (
@@ -75,11 +60,12 @@ export class AlertsPanel extends Component {
                         </TableHead>
 
                         <TableBody>
-                            {this.filterData().map((row) => (
+                            {this.state.data.map((row) => (
                                 <TableRow key={row.id}>
                                     
                                     <TableCell align="left">{row.Priority}</TableCell>
                                     <TableCell align="right">{row.Subject}</TableCell>
+                                    <TableCell align="right">{row.StartTime.toUTCString()}</TableCell>
                                     <TableCell align="right">{row.Location}</TableCell>
                                 </TableRow>
                             ))}

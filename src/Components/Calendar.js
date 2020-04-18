@@ -246,7 +246,9 @@ export class Calendar extends Component {
     }
 
     getOccurances(startDate, endDate){
-        return (this.scheduleObj.getOccurrencesByRange(startDate, endDate))
+        let occurances = this.scheduleObj.getOccurrencesByRange(startDate, endDate)
+        let priorityOccurances = occurances.filter(activity => activity.Priority > 0);
+        return priorityOccurances;
     }
 
     render(){

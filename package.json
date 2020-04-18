@@ -14,7 +14,6 @@
     "@syncfusion/ej2-react-buttons": "^18.1.43",
     "@syncfusion/ej2-react-inputs": "^18.1.43",
     "@syncfusion/ej2-react-schedule": "^17.4.55",
-    "@syncfusion/ej2-react-treegrid": "^18.1.43",
     "font-awesome": "^4.7.0",
     "material-ui": "^0.20.2",
     "moment": "^2.24.0",
