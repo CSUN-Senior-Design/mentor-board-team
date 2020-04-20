@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import Header from "./Header"
 
 export class Home extends Component {
-    render() {
-        return (
-            <React.Fragment>
+   render() {
+      return (
+         <React.Fragment>
             <div>
-                <Header/>
+               <Header />
             </div>
             <div>
-                <h1>Home</h1>
+               <h1>Home</h1>
             </div>
-            </React.Fragment>
-        )
-    }
+         </React.Fragment>
+      );
+   }
 }
 
-export default Home
+export default Home;
