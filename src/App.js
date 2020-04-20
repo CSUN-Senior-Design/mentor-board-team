@@ -10,6 +10,7 @@ import SettingsNavbar from "./Components/SettingsNavbar";
 import LandingPage from "./Components/LandingPage";
 import ActivityInfoPage from "./Components/ActivityInfo/ActivityInfoPage";
 import CourseItem2 from "./Components/courses/test"
+import Contact from "./Components/Contact";
 
 function App() {
    return (
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/tutors" component={Tutors} />
                   <Route path="/settingsnavbar" component={SettingsNavbar} />
                   <Route path="/activityinfopage"component={ActivityInfoPage} />
+                  <Route path="/Contact"component={Contact} />
                </Switch>
             </div>
          </div>
