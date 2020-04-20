@@ -12,6 +12,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsNavbar from "./SettingsNavbar";
+import Contact from "./Contact";
 
 const useStyles = makeStyles({
    list: {
@@ -66,7 +67,7 @@ export default function TemporaryDrawer() {
          </List>
          <Divider />
          <List>
-            {["About Us", "Contact Us"].map((text, index) => (
+            {["About Us"].map((text, index) => (
                <ListItem
                   button
                   key={text}
@@ -81,6 +82,24 @@ export default function TemporaryDrawer() {
                </ListItem>
             ))}
          </List>
+         <List>
+            {["Contact Us"].map((text, index) => (
+               <ListItem
+                  button
+                  key={text}
+                  component={Link}
+                  to="/Contact"
+                  // to="/SettingsNavbar"
+                  edge="start"
+               >
+                  <ListItemIcon>
+                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+               </ListItem>
+            ))}
+         </List>
+   
       </div>
    );
 

@@ -1,0 +1,115 @@
+import React,{ Component } from "react";
+import Carousel from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+import "./Activity.css"
+
+import courseData from "./Courses";
+
+import { makeStyles } from "@material-ui/core/styles";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import IconButton from "@material-ui/core/IconButton";
+import InfoRoundedIcon from "@material-ui/icons/InfoRounded";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import Courses from "./Courses";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Rating from "@material-ui/lab/Rating";
+import Box from "@material-ui/core/Box";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+
+const CourseItem2 = props => {
+   const {
+      key,
+      image_url,
+      class_name,
+      class_type,
+      class_time,
+      rating
+   } = props.course;
+   const useStyles = makeStyles(theme => ({
+      root: {
+         flexGrow: 1
+      },
+      paper: {
+         padding: theme.spacing(0.5),
+         margin: "auto",
+         maxWidth: 500,
+         background: "linear-gradient(30deg, #173aa1 30%, #0f508b 70%)",
+         alignItems: "flex-start",
+         boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+         color: "white",
+         height: "auto"
+         // padding: 'auto',
+      },
+      image: {
+         width: 128,
+         height: 128
+      },
+      img: {
+         margin: "auto",
+         display: "block",
+         maxWidth: "100%",
+         maxHeight: "100%"
+      },
+      menuButton: {
+         marginRight: theme.spacing(10)
+      },
+
+   }));
+   const style = useStyles();
+
+   return (
+      <div className={style.root}>
+         <Paper className={style.paper}>
+            <Grid container spacing={2}>
+               <Grid item>
+                  <ButtonBase className={style.image}>
+                     <img className={style.img} alt="complex" src={image_url} />
+                  </ButtonBase>
+               </Grid>
+               <Grid item xs={12} sm container direction="column">
+                  <Grid item xs container direction="row" spacing={2}>
+                     <Grid item xs>
+                        <Typography gutterBottom variant="subtitle1">
+                           <b> {class_name}</b>
+                        </Typography>
+                        <Typography variant="body2" gutterBottom>
+                           {class_type}
+                        </Typography>
+                        <Rating
+                           name="rating"
+                           value={rating}
+                           precision={0.1}
+                           readOnly
+                        />
+                     </Grid>
+                  </Grid>
+                  <Grid item>
+                  <IconButton
+                        component={Link}
+                        to={'/activityinfopage/' + key} 
+                        edge="start"
+                        className={style.menuButton}
+                        color="red"
+                        aria-label="menu"
+                     >
+                        More
+                     </IconButton>
+                  </Grid>
+                  <Grid item>
+                     <Typography variant="subtitle1"></Typography>
+                  </Grid>
+               </Grid>
+            </Grid>
+         </Paper>
+      </div>
+   );
+};
+
+export default CourseItem2;
+

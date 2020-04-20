@@ -15,11 +15,6 @@ const columns = [
     {id: "Location", label: "Location", minWidth: 75, maxWidth: 150, align: "left"}
 ];
 
-   
-const SORT_ASCENDING = "Ascending"
-const SORT_DESCENDING = "Descending"
-const SORT_OFF = "Off"
-
 export class AlertsPanel extends Component {
 
     constructor(props){
@@ -27,7 +22,8 @@ export class AlertsPanel extends Component {
 
         this.state = {
             data: [],
-            sortMode: SORT_OFF
+            sortMode: "off",
+            sortVar: "none"
         };
     }
 
@@ -40,17 +36,65 @@ export class AlertsPanel extends Component {
     }
 
     handleColumnClick(colName){
-        let sortVar = colName
-
-        console.log(this.state.data)
+        let sortVar = this.state.sortVar
+        let sortMode = ""
+        let stateSortMode = this.state.sortMode
 
         let sortedAry = this.state.data.sort(function(a, b) {
-            var nameA = a.Priority // ignore upper and lowercase
-            var nameB = b.Priority; // ignore upper and lowercase
-            if (nameA < nameB) {
+
+            let fieldA = null;
+            let fieldB = null;
+
+            //Get the fields for comparison, depends on the header cell thats clicked.
+            if(colName === "Priority"){
+                fieldA = a.Priority
+                fieldB = b.Priority
+            }
+            else if(colName === "Subject"){
+                fieldA = a.Subject.toLowerCase()
+                fieldB = b.Subject.toLowerCase()
+            }
+
+            else if(colName === "StartTime"){
+                fieldA = a.StartTime
+                fieldB = b.StartTime
+            }
+
+            else{
+                fieldA = a.Location.toLowerCase()
+                fieldB = b.Location.toLowerCase()
+            }
+
+
+            //Determine whether to sort by descending or ascending order based on last mode.
+            //If the user clicked on a column that is already being sorted, then switch the mode.
+            if (colName === sortVar){
+
+                //If sort mode is being set to descending, then order of variables must be swapped.
+                if(stateSortMode === "ascending"){
+                    let tempField = fieldB
+
+                    fieldB = fieldA
+                    fieldA = tempField
+                    
+                    sortMode = "descending"
+                }
+
+                
+                else if(stateSortMode === "descending")
+                    sortMode = "off"
+                
+                else sortMode = "ascending"
+            }
+
+            //Sort has been requested for a column that isn't being sorted yet.
+            else sortMode = "ascending"
+            
+            //Compare the fields and return either less than, greater than, or equal
+            if (fieldA < fieldB) {
               return -1;
             }
-            if (nameA > nameB) {
+            if (fieldA > fieldB) {
               return 1;
             }
           
@@ -59,25 +103,21 @@ export class AlertsPanel extends Component {
           });
 
         this.setState({
-            data: sortedAry
+            data: sortedAry,
+            sortVar: colName,
+            sortMode: sortMode
         })
-
-        console.log(sortedAry)
     }
 
 
     render() {
         return (
-
-            
             <Paper>
                 <TableContainer style = {{maxHeight: 420, overflow: "auto"}}>
                     <Table>
                         <TableHead>
                             <TableRow>
-                                {columns.map((column) => (
-                                    
-                                    
+                                {columns.map((column) => (                               
                                         <TableCell
                                             key={column.id}
                                             align={column.align}
@@ -86,21 +126,19 @@ export class AlertsPanel extends Component {
                                                 minWidth: column.minWidth,
                                                 maxWidth: column.maxWidth,
                                                 marginTop: column.padding,
-                                                marginBottom: column.padding
+                                                marginBottom: column.padding,
+                                                cursor: "pointer"
                                             }}
                                             >
                                             {column.label}
                                         </TableCell>
-                                    
-                                    
                             ))}
                             </TableRow>
                         </TableHead>
 
                         <TableBody>
                             {this.state.data.map((row) => (
-                                <TableRow key={row.id}>
-                                    
+                                <TableRow>
                                     <TableCell align="left">{row.Priority}</TableCell>
                                     <TableCell align="right">{row.Subject}</TableCell>
                                     <TableCell align="right">{row.StartTime.toUTCString()}</TableCell>
@@ -108,7 +146,6 @@ export class AlertsPanel extends Component {
                                 </TableRow>
                             ))}
                         </TableBody>
-
                     </Table>
                 </TableContainer>
             </Paper>
