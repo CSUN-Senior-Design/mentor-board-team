@@ -28,16 +28,11 @@ export class Calendar extends Component {
     constructor(props){
         super(props);
 
-        //Defines the columns for the sorting function inside the alerts table.
-        //this.sortingOptions = scheduleAlertsSortingOptions;
-        
         this.state = {
             data: props.calendarData,
             itemDragStartDate: null,
             itemDragEndDate: null,
-            // alertData: null,
-            // alertsRange: ALERT_SEARCH_RANGE_DEFAULT,
-            // alertsSortingOptions: scheduleAlertsSortingOptions[0]
+            editorOpened: false
         }
         
         this.minValidation = (args) => {
@@ -52,7 +47,7 @@ export class Calendar extends Component {
     }
 
     onPopupOpen(args) {
-        if (args.type === 'Editor') {
+        if (args.type === 'Editor' && this.state.editorOpened === false) {
             if (!args.element.querySelector('.custom-field-row')) {
                 let priorityDiv = createElement('div', { className: 'editor-priority-container' });
 
@@ -79,6 +74,10 @@ export class Calendar extends Component {
                 priorityField.appendTo(priorityInputEle);
                 priorityInputEle.setAttribute('name', 'Priority');
             }
+
+            this.setState({
+                editorOpened: true
+            })
         }
     }
 
