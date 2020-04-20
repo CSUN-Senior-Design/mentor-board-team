@@ -38,7 +38,6 @@ import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-buttons/styles/material.css";
 
 import "@syncfusion/ej2-base/styles/material.css";
-import "@syncfusion/ej2-react-inputs/styles/material.css";
 import { TextField } from 'material-ui';
 
 const FIELD_STR_MIN_LEN = 5;
