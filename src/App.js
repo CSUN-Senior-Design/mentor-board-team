@@ -9,6 +9,7 @@ import Tutors from "./Components/Tutors";
 import SettingsNavbar from "./Components/SettingsNavbar";
 import LandingPage from "./Components/LandingPage";
 import ActivityInfoPage from "./Components/ActivityInfo/ActivityInfoPage";
+import CourseItem2 from "./Components/courses/test"
 
 function App() {
    return (
@@ -27,6 +28,8 @@ function App() {
                </Switch>
             </div>
          </div>
+         {/* Austin's test page for new activities page */}
+         <Route path="/1" component={CourseItem2} />
       </Router>
    );
 }

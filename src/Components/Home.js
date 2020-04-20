@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Header from "./Header"
-import Login from "./Login"
 
 export class Home extends Component {
     render() {

@@ -1,10 +1,6 @@
-import React, { Component } from 'react'
-import CourseItem from './CourseItem'
 
-export class Courses extends Component {
-    state = {
-        courses: [
-            {
+const courseData =[
+        {
                 key: '1',
                 class_name: 'Guitar Class',
                 class_type: 'Music',
@@ -68,31 +64,14 @@ export class Courses extends Component {
                 image_url: 'https://image.shutterstock.com/z/stock-photo-pianist-musician-performing-live-playing-keyboard-in-a-band-with-saxophone-player-in-background-576862291.jpg',
                 rating: '4',
             },
-            // {
-            //     key: '9',
-            //     class_name: 'Physics Tutor',
-            //     class_type: 'Science',
-            //     class_time: '4pm - 5pm',
-            //     image_url: 'https://image.shutterstock.com/image-vector/algebra-concept-icon-advanced-calculations-600w-1434691847.jpg'
-            // },
+            
+            {
+                key: '9',
+                class_name: 'Physics Tutor',
+                class_type: 'Science',
+                class_time: '4pm - 5pm',
+                image_url: 'https://image.shutterstock.com/image-vector/algebra-concept-icon-advanced-calculations-600w-1434691847.jpg'
+            },
         ]
-    }
-
-    render() {
-        return (
-            <div style ={courseStyle}>
-                {this.state.courses.map(course => (
-                     <CourseItem key = {course.key} course = {course}/>
-                ))}
-            </div>
-        )
-    }
-}
-
-const courseStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3,1fr)',
-    gridGap: '4rem'
-}
-
-export default Courses
+        
+export default courseData

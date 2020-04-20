@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Courses from "./courses/Courses";
-import Navbar from "./Navbar";
 import Header from "./Header";
-import Button from '@material-ui/core/Button';
+import CoursesItem from "./courses/CourseItem"
+import "./courses/Activity.css"
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 
 export class Activities extends Component {
@@ -12,11 +13,22 @@ export class Activities extends Component {
             <div>
                <Header></Header>
             </div>
-            <div className="App-body">
-               <Courses />
-                {/* temporary link to info */}
-               <Button variant="contained" color="primary" href="activityinfopage"> Info </Button>
-            </div>
+            <Grid container spacing={3}>
+               <Grid item xs={9}>
+                  <div className="App-body">
+                     <CoursesItem />
+                  </div>
+               </Grid>
+               <Grid item xs={2}>
+                  <div className= "Ad-container">
+                     <div className= "Ad"> 
+                        <h1>Ad Space</h1>
+                     </div>
+                  </div>
+               </Grid>
+               <Grid item xs={1}>
+               </Grid>
+            </Grid>
          </React.Fragment>
       );
    }
