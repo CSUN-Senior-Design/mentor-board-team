@@ -9,11 +9,16 @@ import Paper from '@material-ui/core/Paper';
 
 
 const columns = [
-    {id: "Priority", label: "Priority", minWidth: 10, maxWidth: 35, align: "left"},
+    {id: "Priority", label: "Priority", minWidth: 20, maxWidth: 40, align: "left"},
     {id: "Subject", label: "Name", minWidth: 75, maxWidth: 150, align: "left"},
     {id: "StartTime", label: "Date", minWidth: 75, maxWidth: 150, align: "left"},
     {id: "Location", label: "Location", minWidth: 75, maxWidth: 150, align: "left"}
 ];
+
+   
+const SORT_ASCENDING = "Ascending"
+const SORT_DESCENDING = "Descending"
+const SORT_OFF = "Off"
 
 export class AlertsPanel extends Component {
 
@@ -21,7 +26,8 @@ export class AlertsPanel extends Component {
         super()
 
         this.state = {
-            data: []
+            data: [],
+            sortMode: SORT_OFF
         };
     }
 
@@ -33,6 +39,33 @@ export class AlertsPanel extends Component {
         })
     }
 
+    handleColumnClick(colName){
+        let sortVar = colName
+
+        console.log(this.state.data)
+
+        let sortedAry = this.state.data.sort(function(a, b) {
+            var nameA = a.Priority // ignore upper and lowercase
+            var nameB = b.Priority; // ignore upper and lowercase
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          
+            // names must be equal
+            return 0;
+          });
+
+        this.setState({
+            data: sortedAry
+        })
+
+        console.log(sortedAry)
+    }
+
+
     render() {
         return (
 
@@ -43,18 +76,23 @@ export class AlertsPanel extends Component {
                         <TableHead>
                             <TableRow>
                                 {columns.map((column) => (
-                                    <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                    style={{ 
-                                        minWidth: column.minWidth,
-                                        maxWidth: column.maxWidth,
-                                        marginTop: column.padding,
-                                        marginBottom: column.padding
-                                     }}
-                                    >
-                                    {column.label}
-                                    </TableCell>
+                                    
+                                    
+                                        <TableCell
+                                            key={column.id}
+                                            align={column.align}
+                                            onClick = {() => this.handleColumnClick(column.id)}
+                                            style={{ 
+                                                minWidth: column.minWidth,
+                                                maxWidth: column.maxWidth,
+                                                marginTop: column.padding,
+                                                marginBottom: column.padding
+                                            }}
+                                            >
+                                            {column.label}
+                                        </TableCell>
+                                    
+                                    
                             ))}
                             </TableRow>
                         </TableHead>

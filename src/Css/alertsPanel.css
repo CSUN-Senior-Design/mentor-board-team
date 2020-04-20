@@ -1,0 +1,16 @@
+.headerColumn {
+    display: flex;
+    align-items: center;
+  }
+
+  .sortIcon {
+    cursor: pointer;
+    fill: black !important;
+    pointer-events: none;
+    
+  }
+
+  .header-clickable {
+      width: 50px;
+      height: 30px;
+  }

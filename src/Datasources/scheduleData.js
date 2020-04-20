@@ -84,7 +84,7 @@ export let activities = [
 
     {
         id: 6,
-        Subject: "Johns Birthday",
+        Subject: "Doing Random Stuff",
         Description: "I hate him, but i like cake.",
         Location: "646 Maple, Glendale",
         StartTime: new Date(year, month, day, 17, 0, 0),
