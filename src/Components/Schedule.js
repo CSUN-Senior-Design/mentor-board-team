@@ -19,8 +19,8 @@ import '@syncfusion/ej2-buttons/styles/material.css';
 import '@syncfusion/ej2-popups/styles/material.css';
 import '@syncfusion/ej2-navigations/styles/material.css';
 
-var calendarData = extend([], activities, null, true)
-var calendarResources =  extend([], scheduleStudentResource, null, true)
+// var calendarData = extend([], activities, null, true)
+// var calendarResources =  extend([], scheduleStudentResource, null, true)
 const ALERTS_SEARCH_RANGE_DEFAULT = 7
 
 export class Schedule extends Component {
@@ -31,6 +31,8 @@ export class Schedule extends Component {
         this.calendarRef = React.createRef()
 
         this.state = {
+            calendarData: extend([], activities, null, true),
+            calendarResources: extend([], scheduleStudentResource, null, true),
             alertsRange: ALERTS_SEARCH_RANGE_DEFAULT
         }
     }
@@ -53,20 +55,18 @@ export class Schedule extends Component {
             this.searchbarRef.clear()
     }
 
-    getCalendarOccurances(startDate, endDate){
-        let occurances = this.calendarRef.getOccurances(startDate, endDate);
-        console.log(occurances)
-    }
-
     onAlertRangeChange(args){
         let searchRange = args.value;
 
         let today = new Date()
         let searchEndDate = new Date(today.getTime() + (searchRange * 86400000));
 
-        let occurances = this.calendarRef.getOccurances(today, searchEndDate);
+        let recurringActivities = this.calendarRef.getOccurances(today, searchEndDate);
+        let nonrecurringActivities = this.state.calendarData.filter(activity => activity.Priority > 0)
 
-        this.alertsRef.printAlerts(occurances);
+        let finalActivities = recurringActivities.concat(nonrecurringActivities)
+
+        this.alertsRef.printAlerts(finalActivities);
     }
 
     render() {
@@ -78,8 +78,8 @@ export class Schedule extends Component {
                 <div className = 'schedulepage-body'>
                     
                     <Calendar 
-                        calendarData = {calendarData}
-                        calendarResourceData = {calendarResources}
+                        calendarData = {this.state.calendarData}
+                        calendarResourceData = {this.state.calendarResources}
                         ref = {ScheduleComponent => this.calendarRef = ScheduleComponent}
                         cssStyle = "schedulepage-calendar"
                     />
@@ -96,7 +96,7 @@ export class Schedule extends Component {
                                 name = "calendarSearch" 
                                 type = "text"
                                 placeholder = "Activity Name" 
-                                calendarInitialData = {calendarData} 
+                                calendarInitialData = {this.state.calendarData} 
                                 setSearchData = {(this.setSearchData.bind(this))}
                             /> 
 
@@ -112,7 +112,7 @@ export class Schedule extends Component {
                                     name = "Calendar Filters"
                                     label = "Filters"
                                     checked = {true} 
-                                    data = {calendarData}
+                                    data = {this.state.calendarData}
                                     setFilteredData = {(this.setFilteredData.bind(this))}
                                 /> 
                         </div>
@@ -121,8 +121,7 @@ export class Schedule extends Component {
                             <div className = "alerts-header"> Alerts </div>
                             
                             <AlertsPanel
-                                data = {calendarData}
-                                getCalendarOccurances = {(this.getCalendarOccurances.bind(this))}
+                                data = {this.state.calendarData}
                                 ref = {NumericTextBoxComponent => this.alertsRef = NumericTextBoxComponent}
                             />
 

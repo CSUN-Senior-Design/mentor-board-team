@@ -108,8 +108,6 @@ export class Calendar extends Component {
         //Reset original start and end times for next drag operation.
         this.state.itemDragStartDate = 0;
         this.state.itemDragEndDate = 0;
-
-        console.log(args.data);
     }
 
 
@@ -126,7 +124,6 @@ export class Calendar extends Component {
             let startDate = eventData[eventField.startTime];
             let endDate = eventData[eventField.endTime];
             args.cancel = !this.scheduleObj.isSlotAvailable(startDate, endDate);
-            console.log(args.cancel);
         }
     }
 
