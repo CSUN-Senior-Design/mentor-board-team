@@ -12,6 +12,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.33",
     "@syncfusion/ej2-react-buttons": "^18.1.42",
+    "@syncfusion/ej2-react-inputs": "^18.1.44",
     "@syncfusion/ej2-react-navigations": "^17.4.49",
     "@syncfusion/ej2-react-schedule": "^17.4.47",
     "font-awesome": "^4.7.0",
