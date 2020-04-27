@@ -136,3 +136,17 @@ export let scheduleAlertsSortingOptions = [
     { field: 'Subject', direction: 'Ascending' },
     { field: 'StartTime', direction: 'Ascending' }
 ]
+
+export let scheduleAlertsColumns = [
+    {id: "Priority", label: "Priority", minWidth: 20, maxWidth: 40, align: "left"},
+    {id: "Subject", label: "Name", minWidth: 150, maxWidth: 250, align: "left"},
+    {id: "StartTime", label: "Date", minWidth: 75, maxWidth: 100, align: "left"},
+    {id: "Location", label: "Location", minWidth: 100, maxWidth: 250, align: "left"}
+];
+
+export let scheduleAlertsMapping = [
+    "Priority",
+    "Subject",
+    "StartTime",
+    "Location"
+]

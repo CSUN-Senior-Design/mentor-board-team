@@ -1,0 +1,81 @@
+.home-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 750px;
+}
+
+.home-body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 85%;
+    height: 100%;
+    border: solid black 2px;
+}
+
+.home-adbar {
+    position: absolute;
+    right: 0px;
+    width: 10%;
+    height: 750px;
+    border: solid black 2px;
+}
+
+.home-payments-container {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    min-width: 150px;
+    max-width: 300px;
+    min-height: 100px;
+    max-height: 700px;
+    overflow: auto;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),
+    0px 6px 10px 0px rgba(0,0,0,0.14),
+    0px 1px 18px 0px rgba(0,0,0,0.12);
+
+}
+
+.home-payments-header {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.home-events-body {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 300px;
+    max-height: 700px;
+    overflow: auto;
+
+}
+
+.home-events-toolbar {
+    height: 150px;
+    width: 100%;
+    top: 5px;
+}
+
+.home-events-header {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.home-events-container {
+    width: 90%;
+    margin: 15px;
+    min-height: 150px;
+    max-height: 600px;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),
+    0px 6px 10px 0px rgba(0,0,0,0.14),
+    0px 1px 18px 0px rgba(0,0,0,0.12);
+}

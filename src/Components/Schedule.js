@@ -4,13 +4,15 @@ import Header from './Header';
 import Calendar from './Calendar';
 import Searchbar from './Searchbar';
 import FilterPanel from './FilterPanel';
-import AlertsPanel from './AlertsPanel';
+import CustomTable from './CustomTable';
 
 import { extend } from '@syncfusion/ej2-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-react-inputs';
 
 import { activities } from '../Datasources/scheduleData.js';
 import { scheduleStudentResource } from '../Datasources/scheduleData.js';
+import { scheduleAlertsColumns } from '../Datasources/scheduleData.js';
+import { scheduleAlertsMapping } from '../Datasources/scheduleData.js';
 
 import '../Css/schedule.css';
 
@@ -120,10 +122,20 @@ export class Schedule extends Component {
                         <div className = "alerts-body">
                             <div className = "alerts-header"> Alerts </div>
                             
-                            <AlertsPanel
-                                data = {this.state.calendarData}
-                                ref = {NumericTextBoxComponent => this.alertsRef = NumericTextBoxComponent}
-                            />
+                                <CustomTable
+                                    ref = {NumericTextBoxComponent => this.alertsRef = NumericTextBoxComponent}
+                                    data = {[]}
+                                    elevation = {5}
+                                    tableHeader = {scheduleAlertsColumns}
+                                    mapping = {scheduleAlertsMapping}
+                                    containerStyle = {{
+                                        minHeight: 75, 
+                                        maxHeight: 435, 
+                                        minWidth: 150,
+                                        maxWidth: 650,
+                                        overflow: "auto"
+                                    }}
+                                />
 
                             <div className = "alerts-range-panel">
                             

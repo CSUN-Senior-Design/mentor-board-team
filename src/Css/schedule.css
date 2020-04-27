@@ -4,11 +4,6 @@
    height: 50px;
 }
 
-.editor-isBlock-container {
-   width: 120px;
-   height: 25px;
-}
-
 .schedulepage-body {
     display: flex;
     position: 'absolute';
