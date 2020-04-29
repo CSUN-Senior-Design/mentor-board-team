@@ -1,24 +1,32 @@
 {
   "files": {
-    "main.css": "/mbdeploy/static/css/main.4fa231ad.chunk.css",
-    "main.js": "/mbdeploy/static/js/main.e51c6c4e.chunk.js",
-    "main.js.map": "/mbdeploy/static/js/main.e51c6c4e.chunk.js.map",
-    "runtime-main.js": "/mbdeploy/static/js/runtime-main.b5168e7e.js",
-    "runtime-main.js.map": "/mbdeploy/static/js/runtime-main.b5168e7e.js.map",
-    "static/css/2.25b83785.chunk.css": "/mbdeploy/static/css/2.25b83785.chunk.css",
-    "static/js/2.a3fba446.chunk.js": "/mbdeploy/static/js/2.a3fba446.chunk.js",
-    "static/js/2.a3fba446.chunk.js.map": "/mbdeploy/static/js/2.a3fba446.chunk.js.map",
-    "index.html": "/mbdeploy/index.html",
-    "precache-manifest.1532ffb836b540b10ab249c874e5bd8b.js": "/mbdeploy/precache-manifest.1532ffb836b540b10ab249c874e5bd8b.js",
-    "service-worker.js": "/mbdeploy/service-worker.js",
-    "static/css/2.25b83785.chunk.css.map": "/mbdeploy/static/css/2.25b83785.chunk.css.map",
-    "static/css/main.4fa231ad.chunk.css.map": "/mbdeploy/static/css/main.4fa231ad.chunk.css.map"
+    "main.css": "/mentor-board-team/static/css/main.63910e0c.chunk.css",
+    "main.js": "/mentor-board-team/static/js/main.f392c732.chunk.js",
+    "main.js.map": "/mentor-board-team/static/js/main.f392c732.chunk.js.map",
+    "runtime-main.js": "/mentor-board-team/static/js/runtime-main.c6223c57.js",
+    "runtime-main.js.map": "/mentor-board-team/static/js/runtime-main.c6223c57.js.map",
+    "static/css/2.2b8ec9c3.chunk.css": "/mentor-board-team/static/css/2.2b8ec9c3.chunk.css",
+    "static/js/2.cfc1595e.chunk.js": "/mentor-board-team/static/js/2.cfc1595e.chunk.js",
+    "static/js/2.cfc1595e.chunk.js.map": "/mentor-board-team/static/js/2.cfc1595e.chunk.js.map",
+    "index.html": "/mentor-board-team/index.html",
+    "precache-manifest.2f067f2ffaa7a80c5423490724944136.js": "/mentor-board-team/precache-manifest.2f067f2ffaa7a80c5423490724944136.js",
+    "service-worker.js": "/mentor-board-team/service-worker.js",
+    "static/css/2.2b8ec9c3.chunk.css.map": "/mentor-board-team/static/css/2.2b8ec9c3.chunk.css.map",
+    "static/css/main.63910e0c.chunk.css.map": "/mentor-board-team/static/css/main.63910e0c.chunk.css.map",
+    "static/js/2.cfc1595e.chunk.js.LICENSE.txt": "/mentor-board-team/static/js/2.cfc1595e.chunk.js.LICENSE.txt",
+    "static/media/MathTutorPic.jpg": "/mentor-board-team/static/media/MathTutorPic.924e3517.jpg",
+    "static/media/style.css": "/mentor-board-team/static/media/background.57ddb1ed.jpg",
+    "static/media/guitar.jpeg": "/mentor-board-team/static/media/guitar.9fdc18b4.jpeg",
+    "static/media/math.jpg": "/mentor-board-team/static/media/math.54a7ce16.jpg",
+    "static/media/mindhive2.png": "/mentor-board-team/static/media/mindhive2.b77103ea.png",
+    "static/media/piano.jpeg": "/mentor-board-team/static/media/piano.879fd455.jpeg",
+    "static/media/swim.jpg": "/mentor-board-team/static/media/swim.edc7f0c9.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b5168e7e.js",
-    "static/css/2.25b83785.chunk.css",
-    "static/js/2.a3fba446.chunk.js",
-    "static/css/main.4fa231ad.chunk.css",
-    "static/js/main.e51c6c4e.chunk.js"
+    "static/js/runtime-main.c6223c57.js",
+    "static/css/2.2b8ec9c3.chunk.css",
+    "static/js/2.cfc1595e.chunk.js",
+    "static/css/main.63910e0c.chunk.css",
+    "static/js/main.f392c732.chunk.js"
   ]
 }
