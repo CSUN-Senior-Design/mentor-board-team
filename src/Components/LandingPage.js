@@ -23,6 +23,9 @@ export class LandingPage extends Component {
                         </div>
                     </div>
                 </nav>
+                <div className = "bg-image-full bg-img-1">
+                        
+                </div>
                 <div>
                     <Login/>
                 </div>
