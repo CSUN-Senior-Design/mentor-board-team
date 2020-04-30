@@ -15,19 +15,19 @@ import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-
-const CourseItem = props => {
+const CourseItem = (props) => {
    const {
       key,
       image_url,
       class_name,
       class_type,
       class_time,
-      rating
+      rating,
    } = props.course;
-   const useStyles = makeStyles(theme => ({
+
+   const useStyles = makeStyles((theme) => ({
       root: {
-         flexGrow: 1
+         flexGrow: 1,
       },
       paper: {
          padding: theme.spacing(0.5),
@@ -37,23 +37,22 @@ const CourseItem = props => {
          alignItems: "flex-start",
          boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
          color: "white",
-         height: "auto"
+         height: "auto",
          // padding: 'auto',
       },
       image: {
          width: 128,
-         height: 128
+         height: 128,
       },
       img: {
          margin: "auto",
          display: "block",
          maxWidth: "100%",
-         maxHeight: "100%"
+         maxHeight: "100%",
       },
       menuButton: {
-         marginRight: theme.spacing(10)
+         marginRight: theme.spacing(10),
       },
-
    }));
    const style = useStyles();
 
@@ -84,9 +83,9 @@ const CourseItem = props => {
                      </Grid>
                   </Grid>
                   <Grid item>
-                  <IconButton
+                     <IconButton
                         component={Link}
-                        to={'/activityinfopage/' + key} 
+                        to={"/activityinfopage/" + key}
                         edge="start"
                         className={style.menuButton}
                         color="red"
