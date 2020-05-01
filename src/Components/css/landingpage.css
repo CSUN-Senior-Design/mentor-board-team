@@ -1,3 +1,4 @@
+/* NAVBAR */
 .fixed-top {
     position: fixed;
     top: 0;
@@ -43,19 +44,94 @@ nav {
     padding-bottom: 3px;
 }
 
+.menu{
+    /* padding-left: 2px; */
+}
+.menu-buttons{
+    color: white!important;
+    border-color: white!important;
+}
+/* ENDOF NAVBAR */
+
 .bg-image-full {
     background: no-repeat center center scroll;
     background-size: cover;
-    background-position:bottom;
+    background-position:center;
     padding-bottom: 3rem!important;
     padding-top: 5rem!important;
     display: block;
     width: 100%;
     height:100%;
     
+    position: relative;
+    
 }
 
 .bg-img-1 {
-    background-image: url("../image/bg1.jpg");
-    height:500px;
+    background-image: url("../image/bg5.jpg");
+    height:930px;
 }
+
+.text-container {
+    height: 50%;
+    width: 50%;
+    margin:auto;
+    padding-top: 27vmin;
+}
+.quote {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    vertical-align: text-bottom;
+    padding-bottom: 15px;
+    font-weight: 900;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.subquote {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    vertical-align: top;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.join-button {
+    width: 100%;
+    height: 100%;
+    margin-top:80px;
+}
+
+.join-button Button {
+    height: 200%;
+}
+
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+    margin:auto;
+}
+
+.slideshow {
+    position: relative;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.about {
+    background-image: url("../image/bg2.jpg");
+    background-position:0% 50%;
+    background-size: cover;
+    height: 420px;
+    width: 50%;
+    margin: auto;
+    position: relative;
+    color: white;
+}
+
+.about-container {
+    text-align: left;
+    padding-top: 10px;
+    background-color: #2096FF;
+}
+

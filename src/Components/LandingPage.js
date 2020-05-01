@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import Login from "./Login"
 import "./css/landingpage.css"
 import logo from "./Logos/mindhive2.png";
+import Slideshow2 from "./LandingPage/Slideshow2"
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { green, purple } from '@material-ui/core/colors';
+
+
+  
 export class LandingPage extends Component {
     render() {
         return (
@@ -18,21 +26,50 @@ export class LandingPage extends Component {
                                  MentorBoard
                             </div>
                             <div className = "menu">
-                                Login and signup
+                                <Button color="black" className = "menu-buttons">Sign in</Button>
+                                <Button variant="outlined" color="primary" className = "menu-buttons">
+                                Sign up
+                                </Button>
                             </div>
                         </div>
                     </div>
                 </nav>
                 <div className = "bg-image-full bg-img-1">
-                        
+                        <div className= "text-container"> 
+                            <h1 className = "quote">
+                                The Best Time to Learn Was Yesterday
+                            </h1>
+                            <h2 className = "subquote">
+                                The Next Best Time is Now! Explore and Enroll Now Here at MentorBoard.
+                            </h2>
+                            <div className= "join-button">
+                                <Button variant="contained" color="primary" href="#contained-buttons" disableElevation>
+                                    Join for Free
+                                </Button>
+                            </div>
+                        </div>
                 </div>
-                <div>
-                    <Login/>
+                <div className = "about-container">
+                    <div className= "about">
+                        <h2>
+                            MentorBoard is a website that bridges the gap between instructors and students. MentorBoard allows users to search for any type of instructor in their area ranging from subjects that range from academic type classes (i.e. math and english) to more extracurricular such as guitar playing or archery. Users are able to review and rate instructors as well as recommend them to other students. Students are also able to instantly communicate with the instructor if they have additional questions or want to make any scheduling changes, etc.
+                        </h2>
+                    </div>
                 </div>
-                <div>
-                    <Login/>
+                <div className = "slideshow-container">
+                    <div className = "slideshow">
+                        <Grid container spacing={1}>
+                            <Grid item xs={4}>
+                                <p>
+                                    yo whatup bros ddsadsadas dssad sdas dsad sad sa dsa.
+                                </p>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <Slideshow2/>
+                            </Grid>
+                        </Grid>
+                    </div>
                 </div>
-                
 
             </React.Fragment>
         )
