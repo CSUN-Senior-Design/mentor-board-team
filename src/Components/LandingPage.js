@@ -5,11 +5,9 @@ import logo from "./Logos/mindhive2.png";
 import Slideshow2 from "./LandingPage/Slideshow2"
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { green, purple } from '@material-ui/core/colors';
+import Popup from "reactjs-popup";
 
 
-  
 export class LandingPage extends Component {
     render() {
         return (
@@ -26,10 +24,22 @@ export class LandingPage extends Component {
                                  MentorBoard
                             </div>
                             <div className = "menu">
-                                <Button color="black" className = "menu-buttons">Sign in</Button>
-                                <Button variant="outlined" color="primary" className = "menu-buttons">
-                                Sign up
-                                </Button>
+                                <Popup
+                                    trigger = {<Button color="black" className = "menu-buttons">Sign in</Button>}
+                                    modal
+                                    closeOnDocumentClick
+                                >
+                                    <Login/>
+                                </Popup>
+                                <Popup
+                                     trigger = {<Button variant="outlined" color="primary" className = "menu-buttons">
+                                    Sign up
+                                    </Button>}
+                                    modal
+                                    closeOnDocumentClick
+                                >
+                                    <Login/>
+                                </Popup>
                             </div>
                         </div>
                     </div>
@@ -43,9 +53,15 @@ export class LandingPage extends Component {
                                 The Next Best Time is Now! Explore and Enroll Now Here at MentorBoard.
                             </h2>
                             <div className= "join-button">
-                                <Button variant="contained" color="primary" href="#contained-buttons" disableElevation>
-                                    Join for Free
-                                </Button>
+                                <Popup
+                                    trigger = {<Button variant="contained" color="primary" href="#contained-buttons" disableElevation>
+                                        Join for Free
+                                    </Button>}
+                                     modal
+                                     closeOnDocumentClick
+                                >
+                                    <Login/>
+                                </Popup>
                             </div>
                         </div>
                 </div>

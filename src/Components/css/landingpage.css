@@ -53,6 +53,13 @@ nav {
 }
 /* ENDOF NAVBAR */
 
+/* POPUP */
+.popup-content {
+    display: flex;
+}
+
+
+/* CONTENTS  */
 .bg-image-full {
     background: no-repeat center center scroll;
     background-size: cover;
