@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Login from "./Login"
 import "./css/landingpage.css"
 import logo from "./Logos/mindhive2.png";
-import Slideshow2 from "./LandingPage/Slideshow2"
+import Slideshow from "./LandingPage/Slideshow2"
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Popup from "reactjs-popup";
@@ -65,11 +65,17 @@ export class LandingPage extends Component {
                             </div>
                         </div>
                 </div>
-                <div className = "about-container">
-                    <div className= "about">
+                <div className = "about">
+                         <h1>
+                            MentorBoard: a knowledge platform.
+                        </h1>
                         <h2>
                             MentorBoard is a website that bridges the gap between instructors and students. MentorBoard allows users to search for any type of instructor in their area ranging from subjects that range from academic type classes (i.e. math and english) to more extracurricular such as guitar playing or archery. Users are able to review and rate instructors as well as recommend them to other students. Students are also able to instantly communicate with the instructor if they have additional questions or want to make any scheduling changes, etc.
                         </h2>
+                </div>
+                <div className = "bg2-container">
+                    <div className= "bg2">
+
                     </div>
                 </div>
                 <div className = "slideshow-container">
@@ -81,7 +87,7 @@ export class LandingPage extends Component {
                                 </p>
                             </Grid>
                             <Grid item xs={8}>
-                                <Slideshow2/>
+                                
                             </Grid>
                         </Grid>
                     </div>
