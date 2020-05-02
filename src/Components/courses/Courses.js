@@ -1,12 +1,21 @@
-
 const courseData =[
-        {
-                key: '1',
+            {
+                key: '1', 
                 class_name: 'Guitar Class',
                 class_type: 'Music',
-                class_time: '4am - 5pm',
+                class_time: '4pm - 5am',
                 image_url:'https://image.shutterstock.com/image-vector/cartoon-bass-guitar-260nw-1066103675.jpg',
                 rating: '4.2',
+                // below variables are added for scheduleData.json
+                id: 1,
+                Subject: 'Guitar Class',
+                Description: "Advanced cords and melodies with professor Kobain",
+                Location: "1445 Maple, Glendale",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '2',
@@ -15,6 +24,16 @@ const courseData =[
                 class_time: '4pm - 5am',
                 image_url:'https://ak8.picdn.net/shutterstock/videos/1926718/thumb/1.jpg',
                 rating: '4',
+                // below variables are added for scheduleData.json
+                id: 2,
+                Subject: 'Piano Class',
+                Description: "Take a piano sheet of your favorite music to practice",
+                Location: "1115 Maple, Glendale",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '3',
@@ -23,6 +42,16 @@ const courseData =[
                 class_time: '4pm - 5pm',
                 image_url:'https://image.shutterstock.com/image-vector/math-educational-vector-seamless-pattern-600w-795328972.jpg',
                 rating: '5',
+                // below variables are added for scheduleData.json
+                id: 3,
+                Subject: 'Math Tutor',
+                Description: "Good tutor makes mathematics interesting",
+                Location: "Science and Math hall 1111 in CSUN",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '4',
@@ -31,6 +60,16 @@ const courseData =[
                 class_time: '4am - 5pm',
                 image_url:'https://image.shutterstock.com/image-photo/closeup-detail-drum-set-against-600w-1452235409.jpg',
                 rating: '3.7',
+                // below variables are added for scheduleData.json
+                id: 4,
+                Subject: 'Drums Class',
+                Description: "Professor Drum Master",
+                Location: "2225 Maple, Glendale",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '5',
@@ -39,6 +78,16 @@ const courseData =[
                 class_time: '4pm - 5am',
                 image_url: 'https://image.shutterstock.com/z/stock-photo-pianist-musician-performing-live-playing-keyboard-in-a-band-with-saxophone-player-in-background-576862291.jpg',
                 rating: '4.4',
+                // below variables are added for scheduleData.json
+                id: 5,
+                Subject: 'Keyboard Class',
+                Description: "Learn how to use VSTi interacting with a MIDI keyboard",
+                Location: "2225 Maple, Glendale",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '6',
@@ -47,6 +96,16 @@ const courseData =[
                 class_time: '4pm - 5pm',
                 image_url: 'https://image.shutterstock.com/image-vector/algebra-concept-icon-advanced-calculations-600w-1434691847.jpg',
                 rating: '4.5',
+                // below variables are added for scheduleData.json
+                id: 6,
+                Subject: 'Algebra Tutor',
+                Description: "I, II, linear, abstract algebra",
+                Location: "Science and Math hall 2222 in CSUN",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '7',
@@ -55,6 +114,16 @@ const courseData =[
                 class_time: '4am - 5pm',
                 image_url:'https://image.shutterstock.com/image-photo/closeup-detail-drum-set-against-600w-1452235409.jpg',
                 rating: '3.3',
+                // below variables are added for scheduleData.json
+                id: 7,
+                Subject: 'Chem Tutor',
+                Description: "Learn chemical from prof Paracelsus",
+                Location: "Science and Math hall 3333 in CSUN",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             {
                 key: '8',
@@ -63,6 +132,16 @@ const courseData =[
                 class_time: '4pm - 5am',
                 image_url: 'https://image.shutterstock.com/z/stock-photo-pianist-musician-performing-live-playing-keyboard-in-a-band-with-saxophone-player-in-background-576862291.jpg',
                 rating: '4',
+                // below variables are added for scheduleData.json
+                id: 8,
+                Subject: 'Bio Tutor',
+                Description: "Cover any biology class",
+                Location: "Science and Math hall 4444 in CSUN",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
             
             {
@@ -70,7 +149,18 @@ const courseData =[
                 class_name: 'Physics Tutor',
                 class_type: 'Science',
                 class_time: '4pm - 5pm',
-                image_url: 'https://image.shutterstock.com/image-vector/algebra-concept-icon-advanced-calculations-600w-1434691847.jpg'
+                image_url: 'https://image.shutterstock.com/image-vector/algebra-concept-icon-advanced-calculations-600w-1434691847.jpg',
+                rating: '3',
+                // below variables are added for scheduleData.json
+                id: 9,
+                Subject: 'Physics Tutor',
+                Description: "Cover any physics class",
+                Location: "Science and Math hall 5555 in CSUN",
+                StartTime: "2020-02-10T16:00",
+                EndTime: "2020-02-10T5:00",
+                IsAllDay: false,
+                RecurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO,WE,FR;COUNT=15;",
+                ActivityType: 3
             },
         ]
         
