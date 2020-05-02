@@ -1,40 +1,18 @@
-.home-container {
+.home-body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 750px;
-}
-
-.home-body {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 85%;
     height: 100%;
-    border: solid black 2px;
-}
-
-.home-adbar {
-    position: absolute;
-    right: 0px;
-    width: 10%;
-    height: 750px;
-    border: solid black 2px;
 }
 
 .home-payments-container {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-    min-width: 150px;
-    max-width: 300px;
-    min-height: 100px;
-    max-height: 700px;
-    overflow: auto;
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),
-    0px 6px 10px 0px rgba(0,0,0,0.14),
-    0px 1px 18px 0px rgba(0,0,0,0.12);
-
+    min-width: 10%;
+    max-width: 25%;
+    min-height: 20%;
+    max-height: 90%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .home-payments-header {
@@ -45,17 +23,13 @@
 }
 
 .home-events-body {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 25px;
-    top: 25px;
-    min-width: 300px;
-    max-width: 500px;
-    min-height: 300px;
-    max-height: 700px;
-    overflow: auto;
-
+    min-width: 25%;
+    max-width: 50%;
+    min-height: 20%;
+    max-height: 90%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .home-events-toolbar {
@@ -65,17 +39,67 @@
 }
 
 .home-events-header {
+    margin-top: 5px;
     margin-bottom: 15px;
     font-weight: bold;
     font-size: large;
 }
 
 .home-events-container {
-    width: 90%;
-    margin: 15px;
-    min-height: 150px;
-    max-height: 600px;
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),
-    0px 6px 10px 0px rgba(0,0,0,0.14),
-    0px 1px 18px 0px rgba(0,0,0,0.12);
+    width: 95%;
+    margin: auto;
+    height: 100%;
+}
+
+
+.progress-table-body {
+    min-width: 10%;
+    max-width: 25%;
+    height: 100%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+}
+
+.progress-table-container {
+    width: 95%;
+    height: 95%;
+    margin: auto;
+}
+
+.circular-progress-container {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border: blue dotted 1px;
+    border-radius: 100%;
+}
+
+.circular-progress-text {
+    position: absolute;
+    font-size: small;
+    top: 13px;
+    right: 11px;
+    color: blue;
+}
+
+.course-progression-ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: flex-start;
+}
+
+.progress-cell-container {
+    min-width: 100;
+    max-width: 200;
+    margin-top: 25;
+}
+
+.home-progress-header {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: large;
 }
