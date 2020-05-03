@@ -1,6 +1,6 @@
 //import React, { Component } from 'react'
 import React, {useState} from 'react'
-
+import './css/profile.css';
 // export class Profile extends React.Component {
     function Profile() {
         const [image, setImage] = useState('')
@@ -26,7 +26,7 @@ import React, {useState} from 'react'
         }
             return (
                 <div className = "profile_image">
-                    <h1>profile image</h1>
+                    <div className = "text_type">Set your profile image</div>
                     <input type ="file"
                         name="file"
                         placeholder ="Upload and image"
@@ -36,8 +36,9 @@ import React, {useState} from 'react'
                         <h3>loading....</h3>
                     ) : (
                         <img src ={image} style = {{width: '300px'}} />
-                    )}   
+                    )}
                 </div>
+                
             )
     }
 // }

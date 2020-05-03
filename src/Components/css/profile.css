@@ -1,0 +1,142 @@
+.mainBoxProfile {
+    width: 1100px;
+    overflow: hidden;
+    margin: 100px auto 30px;
+    background-image: url("../image/background.jpg");
+}
+.container{
+    width: 500px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.leftPart{
+    float: left;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    height: 678px;
+    width: 538px;
+    border: 1px solid blue;
+}
+
+.rightPart{
+    width: 458px;
+    height: 678px;
+    float: right;
+    border: 1px solid blue;
+    border-bottom-right-radius: 90px;
+    margin-right: 100px;
+}
+
+.inputNickName {
+    width: 310px;
+    height: 42px;
+    margin-bottom: 10px;
+}
+
+.inputN {
+    width: 65%;
+    height: 97%;
+    font-size: 19px;
+    color: black;
+    text-indent: 10px;
+    border: 0;
+    outline: none;
+    float: left;
+    border-bottom: 1px solid black;
+}
+.inputEmail{
+    width: 310px;
+    height: 42px;
+    margin-bottom: 10px;
+}
+.inputM {
+    width: 65%;
+    height: 97%;
+    font-size: 19px;
+    color: black;
+    text-indent: 10px;
+    border: 0;
+    outline: none;
+    float: left;
+    border-bottom: 1px solid black;
+}
+
+.button_place{
+    margin-top: -28px;
+    margin-right: 10px;
+    background: skyblue;
+    border-radius: 20px;
+}
+
+.button_place:hover {
+    background-color: red;
+}
+.inputForLoginPWD {
+    width: 310px;
+    height: 42px;
+    margin-bottom: 10px;
+}
+
+.inputS {
+    width: 100%;
+    height: 97%;
+    font-size: 19px;
+    color: black;
+    text-indent: 10px;
+    border: 0;
+    outline: none;
+}
+
+.text_type {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    color: skyblue;
+}
+
+.pic_bio{
+    margin-top: 50px;
+}
+
+.submit_change {
+    background: skyblue;
+    border-radius: 20px;
+    width: 330px;
+    text-align: 20px;
+    margin-top:160px;
+}
+
+.submit_change:hover {
+    background-color: red;
+}
+
+.inputS1 {
+    width: 100%;
+    height: 97%;
+    font-size: 19px;
+    color: black;
+    text-indent: 10px;
+    border: 0;
+    outline: none;
+}
+
+.inputS2 {
+    width: 100%;
+    height: 97%;
+    font-size: 19px;
+    color: black;
+    text-indent: 10px;
+    border: 0;
+    outline: none;
+}
+
+.boxProfile {
+    width: 310px;
+    height: 415px;
+    margin: 32px auto;
+}
