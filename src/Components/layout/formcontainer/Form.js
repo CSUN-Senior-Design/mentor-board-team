@@ -13,8 +13,9 @@ export class Form extends Component {
         name: "",
         creditCard: "",
         expiredCard: "",
-        ccvCard: ""
-      }
+        ccvCard: "",
+        zipCode: "",
+      },
     };
     this.handleFullName = this.handleFullName.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -26,11 +27,11 @@ export class Form extends Component {
   handleFullName(e) {
     let value = e.target.value;
     this.setState(
-      prevState => ({
+      (prevState) => ({
         newUser: {
           ...prevState.newUser,
-          name: value
-        }
+          name: value,
+        },
       }),
       () => console.log(this.state.newUser)
     );
@@ -39,11 +40,11 @@ export class Form extends Component {
     let value = e.target.value;
     let name = e.target.name;
     this.setState(
-      prevState => ({
+      (prevState) => ({
         newUser: {
           ...prevState.newUser,
-          [name]: value
-        }
+          [name]: value,
+        },
       }),
       () => console.log(this.state.newUser)
     );
@@ -57,10 +58,10 @@ export class Form extends Component {
       body: JSON.stringify(userData),
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    }).then(response => {
-      response.json().then(data => {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      response.json().then((data) => {
         console.log("Successful" + data);
       });
     });
@@ -72,8 +73,9 @@ export class Form extends Component {
         name: "",
         creditCard: "",
         expiredCard: "",
-        ccvCard: ""
-      }
+        ccvCard: "",
+        zipCode: "",
+      },
     });
   }
   render() {
@@ -122,7 +124,7 @@ export class Form extends Component {
                   inputType={"text"}
                   title={"Zip Code:"}
                   name={"zipCode"}
-                  value={this.state.newUser.ccvCard}
+                  value={this.state.newUser.zipCode}
                   placeholder={" "}
                   handleChange={this.handleInput}
                 />
@@ -165,18 +167,18 @@ const buttonStyle = {
   margin: "10px 10px 10px 10px",
   padding: "5px",
   width: "17%",
-  height: "30px"
+  height: "30px",
 };
 
 const fieldStyle = {
-  padding: "10px 30px 0"
+  padding: "10px 30px 0",
 };
 
 const formBody = {
   fontFamily: "sans-serif",
   margin: "20px auto",
   maxWidth: "800px",
-  padding: "10px"
+  padding: "10px",
 };
 
 const legendStyle = {
@@ -184,7 +186,7 @@ const legendStyle = {
   color: "white",
   background: "black",
   padding: "5px 10px",
-  border: "none"
+  border: "none",
 };
 
 export default Form;

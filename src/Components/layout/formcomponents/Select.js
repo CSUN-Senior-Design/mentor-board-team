@@ -1,6 +1,6 @@
 import React from "react";
 
-const Select = props => {
+const Select = (props) => {
   return (
     <div className="form-group">
       <label for={props.name} className="form-label">
@@ -22,6 +22,14 @@ const Select = props => {
       </select>
       <select style={selectStyle}>
         <option>2020</option>
+        <option>2021</option>
+        <option>2022</option>
+        <option>2023</option>
+        <option>2024</option>
+        <option>2025</option>
+        <option>2026</option>
+        <option>2027</option>
+        <option>2028</option>
       </select>
     </div>
   );
@@ -34,7 +42,7 @@ const selectStyle = {
   height: "20px",
   fontSize: "0.8rem",
   color: "black",
-  margin: "9px 9px 9px 9px"
+  margin: "9px 9px 9px 9px",
 };
 
 export default Select;
