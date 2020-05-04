@@ -13,6 +13,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsNavbar from "./SettingsNavbar";
 import Contact from "./Contact";
+import SettingsIcon from '@material-ui/icons/Settings';
+import GroupIcon from '@material-ui/icons/Group';
 
 const useStyles = makeStyles({
    list: {
@@ -48,7 +50,7 @@ export default function TemporaryDrawer() {
          onKeyDown={toggleDrawer(side, false)}
       >
          <List>
-            {["Settings", "Messages", "Option 3", "Option 4"].map(
+            {["Messages"].map(
                (text, index) => (
                   <ListItem
                      button
@@ -58,7 +60,25 @@ export default function TemporaryDrawer() {
                      edge="start"
                   >
                      <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        <MailIcon/>
+                     </ListItemIcon>
+                     <ListItemText primary={text} />
+                  </ListItem>
+               )
+            )}
+         </List>
+         <List>
+            {["Settings"].map(
+               (text, index) => (
+                  <ListItem
+                     button
+                     key={text}
+                     component={Link}
+                     to="/SettingsNavbar"
+                     edge="start"
+                  >
+                     <ListItemIcon>
+                        <SettingsIcon/>
                      </ListItemIcon>
                      <ListItemText primary={text} />
                   </ListItem>
@@ -76,7 +96,7 @@ export default function TemporaryDrawer() {
                   edge="start"
                >
                   <ListItemIcon>
-                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                     <GroupIcon />
                   </ListItemIcon>
                   <ListItemText primary={text} />
                </ListItem>
