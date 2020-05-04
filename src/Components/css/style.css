@@ -120,7 +120,7 @@
 
 .inputL {
     width: 100%;
-    height: 97%;
+    /* height: 97%; */
     font-size: 19px;
     color: black;
     text-indent: 10px;
@@ -196,4 +196,8 @@
     width: 184px;
     height: 47px;
     margin: 0 auto;
+}
+
+.space {
+    height: 10px;
 }

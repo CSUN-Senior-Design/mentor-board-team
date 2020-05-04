@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import Login from "./Login"
+import Login from "./LandingPage/Login"
 import "./css/landingpage.css"
 import logo from "./Logos/mindhive2.png";
 import Slideshow from "./LandingPage/Slideshow2"
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Popup from "reactjs-popup";
-
+import SignUp from "./LandingPage/SignUp"
+import Footer from "./Footer.js"
 
 export class LandingPage extends Component {
     render() {
@@ -38,7 +39,7 @@ export class LandingPage extends Component {
                                     modal
                                     closeOnDocumentClick
                                 >
-                                    <Login/>
+                                    <SignUp/>
                                 </Popup>
                             </div>
                         </div>
@@ -82,15 +83,15 @@ export class LandingPage extends Component {
                     <div className = "slideshow">
                         <Grid container spacing={1}>
                             <Grid item xs={4}>
-                                <p>
-                                    yo whatup bros ddsadsadas dssad sdas dsad sad sa dsa.
-                                </p>
                             </Grid>
                             <Grid item xs={8}>
                                 
                             </Grid>
                         </Grid>
                     </div>
+                </div>
+                <div className = "footer">
+                    <Footer/>
                 </div>
 
             </React.Fragment>

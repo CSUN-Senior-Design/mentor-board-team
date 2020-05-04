@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import logo from "./Logos/mindhive2.png";
+import logo from "./images/mindhive2.png";
 import Button from '@material-ui/core/Button';
-import './css/style.css';
+import '../css/style.css';
 import { Checkbox } from 'material-ui';
 import IconButton from '@material-ui/core/IconButton'
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
