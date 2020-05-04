@@ -16,6 +16,7 @@
       "@syncfusion/ej2-react-inputs": "^18.1.43",
       "@syncfusion/ej2-react-navigations": "^17.4.49",
       "@syncfusion/ej2-react-schedule": "^17.4.47",
+      "axios": "^0.19.2",
       "font-awesome": "^4.7.0",
       "material-ui": "^0.20.2",
       "moment": "^2.24.0",
