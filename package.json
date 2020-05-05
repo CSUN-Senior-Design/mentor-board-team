@@ -2,7 +2,6 @@
    "name": "mbdraft1",
    "version": "0.1.0",
    "private": true,
-   "homepage": "https://csun-senior-design.github.io/mentor-board-team/",
    "dependencies": {
       "@brainhubeu/react-carousel": "^1.13.38",
       "@ckeditor/ckeditor5-build-classic": "^17.0.0",
