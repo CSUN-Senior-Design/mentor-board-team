@@ -1,0 +1,16 @@
+.footer{
+    text-align: center;
+}
+
+.content-wrap{
+    max-width: 950px;
+    margin: auto;
+    overflow: hidden;
+    display: inline;
+  }
+
+.contact-info a{
+    padding: 10px; 
+    padding-top: 0px;
+    display: inline-block;
+} 

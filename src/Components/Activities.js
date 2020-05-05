@@ -3,7 +3,6 @@ import Header from "./Header";
 import CoursesItem from "./courses/CourseItem"
 import "./courses/Activity.css"
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
 
 export class Activities extends Component {
