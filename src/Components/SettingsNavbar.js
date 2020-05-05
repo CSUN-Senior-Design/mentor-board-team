@@ -18,9 +18,8 @@ import Divider from '@material-ui/core/Divider';
 import Consultation from "./ActivityInfo/Consultation";
 import ContactInfo from "./ActivityInfo/ContactInfo";
 import Form from "../Components/layout/formcontainer/Form";
-
-import Profile from "./Profile";
-import Bio from "./Bio";
+import './css/style.css';
+import ProfileSetting from "./ProfileSetting";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -191,8 +190,7 @@ export default function SimpleTabs() {
       </AppBar>
       <TabPanel value={value} index={1}>
         {/* INSERT COMPONENT HERE */}        
-          <Profile />
-          <Bio />
+             <ProfileSetting />
       </TabPanel>
       <TabPanel value={value} index={2}>
         {/* INSERT COMPONENT HERE */}

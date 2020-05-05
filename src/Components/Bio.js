@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-
+import './css/profile.css';
 
 function Bio() {
     const [value, setValue] = useState("")
@@ -12,7 +12,7 @@ function Bio() {
     }
     return (
         <div className="container">
-            <h3>bio</h3>
+            <div className="text_type">Set your Person Bio</div>
             <CKEditor
                 editor = {ClassicEditor}
                 onChange = {handleOnChage}
