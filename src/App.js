@@ -7,7 +7,7 @@ import Schedule from "./Components/Schedule";
 import Messages from "./Components/Messages";
 import Tutors from "./Components/Tutors";
 import SettingsNavbar from "./Components/SettingsNavbar";
-import LandingPage from "./Components/login/LandingPage";
+import LandingPage from "./Components/LandingPage";
 import ActivityInfoPage from "./Components/ActivityInfo/ActivityInfoPage";
 import CourseItem2 from "./Components/courses/test";
 import Contact from "./Components/Contact";
